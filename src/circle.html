@@ -3,25 +3,29 @@
 <head>
 	<title>Circle</title>
 	<script src="http://d3js.org/d3.v3.min.js"></script>
-<\head>
+</head>
 <body>
 	<script>
+		var canvas_height = 500;
+		var canvas_width = 500;
+		var test_values = [32, 57, 293];
 
-		<svg width="720" height="120">
-		  <circle cx="40" cy="60" r="10"></circle>
-		  <circle cx="80" cy="60" r="10"></circle>
-		  <circle cx="120" cy="60" r="10"></circle>
-		</svg>
-		/*var dataArray = [20, 40, 50];
-
-		var = canvas = d3.select("body")
+		var canvas = d3.select("body")
 			.append("svg")
-			.attr("width", 500)
-			.attr("height", 500);
+			.attr('width', '100%')
+			.attr('height', '100%')
+			.append("g");
 
-		var vars = canvas.selectAll("rect")
-			.data(dataArray)
-			.enter()*/
+		var circle = canvas.selectAll("circle")
+		    .data(test_values)
+		    .enter()
+				.append("circle")
+				.attr("fill", "steelblue")
+				.attr("cy", 60)
+				.attr("cx", function(d, i) { return i * 100 + 30; })
+				.attr("r", function(d) { return Math.sqrt(d); });
+
+		canvas.append("g");
 	</script>
 </body>
 </html>
