@@ -1,0 +1,2173 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE ODEM PUBLIC "-//PFSW//DTD ODEM 1.1" "http://pfsw.org/ODEM/schema/dtd/odem-1.1.dtd">
+
+<ODEM version="1">
+  <header>
+    <created-by>
+      <exporter version="1.1.1">org.pf.tools.cda.ext.export.xml.XmlFileODEMExporter</exporter>
+      <provider>Manfred Duchrow Consulting &amp; Software</provider>
+    </created-by>
+  </header>
+  <context name="Hadoop Workset">
+    <container name="C:/Users/Michael/Documents/Capstone/InputProjects/hadoop-3.0.0-alpha2/share/hadoop/yarn/hadoop-yarn-client-3.0.0-alpha2.jar" classification="jar">
+      <namespace name="org.apache.hadoop.yarn.client.api">
+        <type name="org.apache.hadoop.yarn.client.api.InvalidContainerRequestException" classification="class" visibility="public">
+          <dependencies count="3">
+            <depends-on name="org.apache.hadoop.yarn.exceptions.YarnRuntimeException" classification="extends" />
+            <depends-on name="java.lang.Throwable" classification="uses" />
+            <depends-on name="java.lang.String" classification="uses" />
+          </dependencies>
+        </type>
+        <type name="org.apache.hadoop.yarn.client.api.NMClient" classification="class" visibility="public" isAbstract="yes">
+          <dependencies count="18">
+            <depends-on name="org.apache.hadoop.service.AbstractService" classification="extends" />
+            <depends-on name="org.apache.hadoop.yarn.client.api.NMTokenCache" classification="uses" />
+            <depends-on name="org.apache.hadoop.classification.InterfaceAudience$Public" classification="uses" />
+            <depends-on name="java.lang.String" classification="uses" />
+            <depends-on name="org.apache.hadoop.classification.InterfaceAudience$Private" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.api.records.Container" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.api.records.ContainerLaunchContext" classification="uses" />
+            <depends-on name="java.util.Map" classification="uses" />
+            <depends-on name="java.nio.ByteBuffer" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.api.records.ContainerId" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.api.records.NodeId" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.api.records.ContainerStatus" classification="uses" />
+            <depends-on name="org.apache.hadoop.classification.InterfaceStability$Stable" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.client.api.impl.NMClientImpl" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.exceptions.YarnException" classification="uses" />
+            <depends-on name="java.io.IOException" classification="uses" />
+            <depends-on name="org.apache.hadoop.classification.InterfaceAudience" classification="uses" />
+            <depends-on name="org.apache.hadoop.classification.InterfaceStability" classification="uses" />
+          </dependencies>
+        </type>
+        <type name="org.apache.hadoop.yarn.client.api.AHSClient" classification="class" visibility="public" isAbstract="yes">
+          <dependencies count="17">
+            <depends-on name="org.apache.hadoop.service.AbstractService" classification="extends" />
+            <depends-on name="org.apache.hadoop.classification.InterfaceAudience$Public" classification="uses" />
+            <depends-on name="java.lang.String" classification="uses" />
+            <depends-on name="org.apache.hadoop.classification.InterfaceAudience$Private" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.api.records.ApplicationId" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.api.records.ApplicationReport" classification="uses" />
+            <depends-on name="java.util.List" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.api.records.ApplicationAttemptId" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.api.records.ApplicationAttemptReport" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.api.records.ContainerId" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.api.records.ContainerReport" classification="uses" />
+            <depends-on name="org.apache.hadoop.classification.InterfaceStability$Stable" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.client.api.impl.AHSClientImpl" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.exceptions.YarnException" classification="uses" />
+            <depends-on name="java.io.IOException" classification="uses" />
+            <depends-on name="org.apache.hadoop.classification.InterfaceAudience" classification="uses" />
+            <depends-on name="org.apache.hadoop.classification.InterfaceStability" classification="uses" />
+          </dependencies>
+        </type>
+        <type name="org.apache.hadoop.yarn.client.api.SharedCacheClient" classification="class" visibility="public" isAbstract="yes">
+          <dependencies count="12">
+            <depends-on name="org.apache.hadoop.service.AbstractService" classification="extends" />
+            <depends-on name="org.apache.hadoop.classification.InterfaceAudience$Public" classification="uses" />
+            <depends-on name="java.lang.String" classification="uses" />
+            <depends-on name="org.apache.hadoop.classification.InterfaceAudience$Private" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.api.records.ApplicationId" classification="uses" />
+            <depends-on name="org.apache.hadoop.fs.Path" classification="uses" />
+            <depends-on name="org.apache.hadoop.classification.InterfaceStability$Unstable" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.client.api.impl.SharedCacheClientImpl" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.exceptions.YarnException" classification="uses" />
+            <depends-on name="java.io.IOException" classification="uses" />
+            <depends-on name="org.apache.hadoop.classification.InterfaceAudience" classification="uses" />
+            <depends-on name="org.apache.hadoop.classification.InterfaceStability" classification="uses" />
+          </dependencies>
+        </type>
+        <type name="org.apache.hadoop.yarn.client.api.YarnClientApplication" classification="class" visibility="public">
+          <dependencies count="7">
+            <depends-on name="java.lang.Object" classification="extends" />
+            <depends-on name="org.apache.hadoop.yarn.api.protocolrecords.GetNewApplicationResponse" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.api.records.ApplicationSubmissionContext" classification="uses" />
+            <depends-on name="org.apache.hadoop.classification.InterfaceAudience$Public" classification="uses" />
+            <depends-on name="org.apache.hadoop.classification.InterfaceStability$Stable" classification="uses" />
+            <depends-on name="org.apache.hadoop.classification.InterfaceAudience" classification="uses" />
+            <depends-on name="org.apache.hadoop.classification.InterfaceStability" classification="uses" />
+          </dependencies>
+        </type>
+        <type name="org.apache.hadoop.yarn.client.api.AMRMClient$ContainerRequest$ContainerRequestBuilder" classification="class" visibility="public" isFinal="yes">
+          <dependencies count="10">
+            <depends-on name="java.lang.Object" classification="extends" />
+            <depends-on name="org.apache.hadoop.yarn.client.api.AMRMClient$ContainerRequest" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.api.records.Resource" classification="uses" />
+            <depends-on name="java.lang.String" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.api.records.Priority" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.api.records.ExecutionTypeRequest" classification="uses" />
+            <depends-on name="java.util.List" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.client.api.AMRMClient" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.client.api.AMRMClient$1" classification="uses" />
+            <depends-on name="com.google.common.collect.ImmutableList" classification="uses" />
+          </dependencies>
+        </type>
+        <type name="org.apache.hadoop.yarn.client.api.package-info" classification="interface" visibility="default" isAbstract="yes">
+          <dependencies count="3">
+            <depends-on name="java.lang.Object" classification="extends" />
+            <depends-on name="org.apache.hadoop.classification.InterfaceAudience$Public" classification="uses" />
+            <depends-on name="org.apache.hadoop.classification.InterfaceAudience" classification="uses" />
+          </dependencies>
+        </type>
+        <type name="org.apache.hadoop.yarn.client.api.AMRMClient" classification="class" visibility="public" isAbstract="yes">
+          <dependencies count="35">
+            <depends-on name="org.apache.hadoop.service.AbstractService" classification="extends" />
+            <depends-on name="org.apache.commons.logging.Log" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.client.api.TimelineClient" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.client.api.NMTokenCache" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.client.api.AMRMClient$ContainerRequest" classification="uses" />
+            <depends-on name="org.apache.hadoop.classification.InterfaceAudience$Public" classification="uses" />
+            <depends-on name="java.lang.String" classification="uses" />
+            <depends-on name="org.apache.hadoop.classification.InterfaceAudience$Private" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.api.protocolrecords.RegisterApplicationMasterResponse" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.api.protocolrecords.AllocateResponse" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.api.records.FinalApplicationStatus" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.api.records.Container" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.api.records.Resource" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.api.records.ContainerId" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.api.records.Priority" classification="uses" />
+            <depends-on name="java.util.List" classification="uses" />
+            <depends-on name="java.util.Collection" classification="uses" />
+            <depends-on name="org.apache.hadoop.classification.InterfaceStability$Evolving" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.api.records.ExecutionType" classification="uses" />
+            <depends-on name="com.google.common.base.Supplier" classification="uses" />
+            <depends-on name="java.lang.Boolean" classification="uses" />
+            <depends-on name="org.apache.hadoop.classification.InterfaceStability$Stable" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.client.api.impl.AMRMClientImpl" classification="uses" />
+            <depends-on name="java.lang.UnsupportedOperationException" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.client.api.AMRMClient$1" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.exceptions.YarnException" classification="uses" />
+            <depends-on name="java.io.IOException" classification="uses" />
+            <depends-on name="java.lang.InterruptedException" classification="uses" />
+            <depends-on name="com.google.common.base.Preconditions" classification="uses" />
+            <depends-on name="java.lang.Object" classification="uses" />
+            <depends-on name="java.lang.Thread" classification="uses" />
+            <depends-on name="org.apache.commons.logging.LogFactory" classification="uses" />
+            <depends-on name="java.lang.Class" classification="uses" />
+            <depends-on name="org.apache.hadoop.classification.InterfaceAudience" classification="uses" />
+            <depends-on name="org.apache.hadoop.classification.InterfaceStability" classification="uses" />
+          </dependencies>
+        </type>
+        <type name="org.apache.hadoop.yarn.client.api.AMRMClient$1" classification="class" visibility="default">
+          <dependencies count="2">
+            <depends-on name="java.lang.Object" classification="extends" />
+            <depends-on name="org.apache.hadoop.yarn.client.api.AMRMClient" classification="uses" />
+          </dependencies>
+        </type>
+        <type name="org.apache.hadoop.yarn.client.api.YarnClient" classification="class" visibility="public" isAbstract="yes">
+          <dependencies count="52">
+            <depends-on name="org.apache.hadoop.service.AbstractService" classification="extends" />
+            <depends-on name="org.apache.hadoop.classification.InterfaceAudience$Public" classification="uses" />
+            <depends-on name="java.lang.String" classification="uses" />
+            <depends-on name="org.apache.hadoop.classification.InterfaceAudience$Private" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.client.api.YarnClientApplication" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.api.records.ApplicationSubmissionContext" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.api.records.ApplicationId" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.api.records.ApplicationAttemptId" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.api.records.ApplicationReport" classification="uses" />
+            <depends-on name="org.apache.hadoop.security.token.Token" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.security.AMRMTokenIdentifier" classification="uses" />
+            <depends-on name="java.util.List" classification="uses" />
+            <depends-on name="java.util.Set" classification="uses" />
+            <depends-on name="java.util.EnumSet" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.api.records.YarnApplicationState" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.api.protocolrecords.GetApplicationsRequest" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.api.records.YarnClusterMetrics" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.api.records.NodeState" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.api.records.NodeReport" classification="uses" />
+            <depends-on name="org.apache.hadoop.io.Text" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.api.records.Token" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.api.records.QueueInfo" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.api.records.QueueUserACLInfo" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.api.records.ApplicationAttemptReport" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.api.records.ContainerId" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.api.records.ContainerReport" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.api.protocolrecords.GetNewReservationResponse" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.api.protocolrecords.ReservationSubmissionRequest" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.api.protocolrecords.ReservationSubmissionResponse" classification="uses" />
+            <depends-on name="org.apache.hadoop.classification.InterfaceStability$Unstable" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.api.protocolrecords.ReservationUpdateRequest" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.api.protocolrecords.ReservationUpdateResponse" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.api.protocolrecords.ReservationDeleteRequest" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.api.protocolrecords.ReservationDeleteResponse" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.api.protocolrecords.ReservationListRequest" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.api.protocolrecords.ReservationListResponse" classification="uses" />
+            <depends-on name="java.util.Map" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.api.records.NodeId" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.api.records.NodeLabel" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.api.records.Priority" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.api.records.SignalContainerCommand" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.api.protocolrecords.UpdateApplicationTimeoutsRequest" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.api.protocolrecords.UpdateApplicationTimeoutsResponse" classification="uses" />
+            <depends-on name="org.apache.hadoop.classification.InterfaceStability$Stable" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.client.api.impl.YarnClientImpl" classification="uses" />
+            <depends-on name="java.lang.UnsupportedOperationException" classification="uses" />
+            <depends-on name="java.lang.StringBuilder" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.exceptions.YarnException" classification="uses" />
+            <depends-on name="java.io.IOException" classification="uses" />
+            <depends-on name="java.lang.Class" classification="uses" />
+            <depends-on name="org.apache.hadoop.classification.InterfaceAudience" classification="uses" />
+            <depends-on name="org.apache.hadoop.classification.InterfaceStability" classification="uses" />
+          </dependencies>
+        </type>
+        <type name="org.apache.hadoop.yarn.client.api.AMRMClient$ContainerRequest" classification="class" visibility="public">
+          <dependencies count="16">
+            <depends-on name="java.lang.Object" classification="extends" />
+            <depends-on name="org.apache.hadoop.yarn.api.records.Resource" classification="uses" />
+            <depends-on name="java.util.List" classification="uses" />
+            <depends-on name="java.lang.String" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.api.records.Priority" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.api.records.ExecutionTypeRequest" classification="uses" />
+            <depends-on name="org.apache.hadoop.classification.InterfaceAudience$Public" classification="uses" />
+            <depends-on name="org.apache.hadoop.classification.InterfaceStability$Evolving" classification="uses" />
+            <depends-on name="java.lang.StringBuilder" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.client.api.AMRMClient$ContainerRequest$ContainerRequestBuilder" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.client.api.AMRMClient$1" classification="uses" />
+            <depends-on name="com.google.common.collect.ImmutableList" classification="uses" />
+            <depends-on name="com.google.common.base.Preconditions" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.client.api.AMRMClient" classification="uses" />
+            <depends-on name="org.apache.hadoop.classification.InterfaceAudience" classification="uses" />
+            <depends-on name="org.apache.hadoop.classification.InterfaceStability" classification="uses" />
+          </dependencies>
+        </type>
+        <type name="org.apache.hadoop.yarn.client.api.NMTokenCache" classification="class" visibility="public">
+          <dependencies count="10">
+            <depends-on name="java.lang.Object" classification="extends" />
+            <depends-on name="java.util.concurrent.ConcurrentHashMap" classification="uses" />
+            <depends-on name="java.lang.String" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.api.records.Token" classification="uses" />
+            <depends-on name="org.apache.hadoop.classification.InterfaceAudience$Public" classification="uses" />
+            <depends-on name="org.apache.hadoop.classification.InterfaceStability$Evolving" classification="uses" />
+            <depends-on name="org.apache.hadoop.classification.InterfaceAudience$Private" classification="uses" />
+            <depends-on name="com.google.common.annotations.VisibleForTesting" classification="uses" />
+            <depends-on name="org.apache.hadoop.classification.InterfaceAudience" classification="uses" />
+            <depends-on name="org.apache.hadoop.classification.InterfaceStability" classification="uses" />
+          </dependencies>
+        </type>
+      </namespace>
+      <namespace name="org.apache.hadoop.yarn.client.api.impl">
+        <type name="org.apache.hadoop.yarn.client.api.impl.SharedCacheClientImpl" classification="class" visibility="public">
+          <dependencies count="34">
+            <depends-on name="org.apache.hadoop.yarn.client.api.SharedCacheClient" classification="extends" />
+            <depends-on name="org.apache.commons.logging.Log" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.api.ClientSCMProtocol" classification="uses" />
+            <depends-on name="java.net.InetSocketAddress" classification="uses" />
+            <depends-on name="org.apache.hadoop.conf.Configuration" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.sharedcache.SharedCacheChecksum" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.ipc.YarnRPC" classification="uses" />
+            <depends-on name="com.google.common.annotations.VisibleForTesting" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.api.records.ApplicationId" classification="uses" />
+            <depends-on name="java.lang.String" classification="uses" />
+            <depends-on name="org.apache.hadoop.fs.Path" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.api.protocolrecords.UseSharedCacheResourceResponse" classification="uses" />
+            <depends-on name="java.lang.Exception" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.api.protocolrecords.UseSharedCacheResourceRequest" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.api.protocolrecords.ReleaseSharedCacheResourceRequest" classification="uses" />
+            <depends-on name="org.apache.hadoop.fs.FileSystem" classification="uses" />
+            <depends-on name="org.apache.hadoop.fs.FSDataInputStream" classification="uses" />
+            <depends-on name="org.apache.hadoop.classification.InterfaceAudience$Private" classification="uses" />
+            <depends-on name="org.apache.hadoop.classification.InterfaceStability$Unstable" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.conf.YarnConfiguration" classification="uses" />
+            <depends-on name="java.lang.StringBuilder" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.exceptions.YarnException" classification="uses" />
+            <depends-on name="java.lang.Throwable" classification="uses" />
+            <depends-on name="java.io.IOException" classification="uses" />
+            <depends-on name="java.lang.Class" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.sharedcache.SharedCacheChecksumFactory" classification="uses" />
+            <depends-on name="java.lang.Object" classification="uses" />
+            <depends-on name="org.apache.hadoop.ipc.RPC" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.util.Records" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.api.protocolrecords.ReleaseSharedCacheResourceResponse" classification="uses" />
+            <depends-on name="java.io.InputStream" classification="uses" />
+            <depends-on name="org.apache.commons.logging.LogFactory" classification="uses" />
+            <depends-on name="org.apache.hadoop.classification.InterfaceAudience" classification="uses" />
+            <depends-on name="org.apache.hadoop.classification.InterfaceStability" classification="uses" />
+          </dependencies>
+        </type>
+        <type name="org.apache.hadoop.yarn.client.api.impl.AMRMClientImpl$ResourceReverseMemoryThenCpuComparator" classification="class" visibility="default">
+          <dependencies count="5">
+            <depends-on name="java.lang.Object" classification="extends" />
+            <depends-on name="java.util.Comparator" classification="uses" />
+            <depends-on name="java.io.Serializable" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.api.records.Resource" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.client.api.impl.AMRMClientImpl" classification="uses" />
+          </dependencies>
+        </type>
+        <type name="org.apache.hadoop.yarn.client.api.impl.NMClientImpl$StartedContainer" classification="class" visibility="public">
+          <dependencies count="5">
+            <depends-on name="java.lang.Object" classification="extends" />
+            <depends-on name="org.apache.hadoop.yarn.api.records.ContainerId" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.api.records.NodeId" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.api.records.ContainerState" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.client.api.impl.NMClientImpl" classification="uses" />
+          </dependencies>
+        </type>
+        <type name="org.apache.hadoop.yarn.client.api.impl.YarnClientImpl" classification="class" visibility="public">
+          <dependencies count="131">
+            <depends-on name="org.apache.hadoop.yarn.client.api.YarnClient" classification="extends" />
+            <depends-on name="org.apache.commons.logging.Log" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.api.ApplicationClientProtocol" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.client.api.AHSClient" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.client.api.TimelineClient" classification="uses" />
+            <depends-on name="org.apache.hadoop.io.Text" classification="uses" />
+            <depends-on name="com.google.common.annotations.VisibleForTesting" classification="uses" />
+            <depends-on name="java.lang.String" classification="uses" />
+            <depends-on name="org.apache.hadoop.conf.Configuration" classification="uses" />
+            <depends-on name="java.lang.NoClassDefFoundError" classification="uses" />
+            <depends-on name="java.io.IOException" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.api.protocolrecords.GetNewApplicationResponse" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.api.protocolrecords.GetNewApplicationRequest" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.client.api.YarnClientApplication" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.api.records.ApplicationSubmissionContext" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.api.records.ApplicationId" classification="uses" />
+            <depends-on name="java.lang.InterruptedException" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.api.records.ApplicationReport" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.api.records.YarnApplicationState" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.exceptions.ApplicationNotFoundException" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.api.protocolrecords.SubmitApplicationRequest" classification="uses" />
+            <depends-on name="java.util.EnumSet" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.api.records.ContainerLaunchContext" classification="uses" />
+            <depends-on name="org.apache.hadoop.security.token.Token" classification="uses" />
+            <depends-on name="org.apache.hadoop.security.Credentials" classification="uses" />
+            <depends-on name="org.apache.hadoop.io.DataInputByteBuffer" classification="uses" />
+            <depends-on name="java.nio.ByteBuffer" classification="uses" />
+            <depends-on name="org.apache.hadoop.io.DataOutputBuffer" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.security.client.TimelineDelegationTokenIdentifier" classification="uses" />
+            <depends-on name="java.lang.Exception" classification="uses" />
+            <depends-on name="org.apache.hadoop.classification.InterfaceAudience$Private" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.api.records.ApplicationAttemptId" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.api.protocolrecords.FailApplicationAttemptRequest" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.api.protocolrecords.KillApplicationResponse" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.api.protocolrecords.KillApplicationRequest" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.api.protocolrecords.GetApplicationReportRequest" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.api.protocolrecords.GetApplicationReportResponse" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.security.AMRMTokenIdentifier" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.api.records.Token" classification="uses" />
+            <depends-on name="java.util.List" classification="uses" />
+            <depends-on name="java.util.Set" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.api.protocolrecords.GetApplicationsRequest" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.api.protocolrecords.GetApplicationsResponse" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.api.records.YarnClusterMetrics" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.api.protocolrecords.GetClusterMetricsRequest" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.api.protocolrecords.GetClusterMetricsResponse" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.api.records.NodeState" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.api.records.NodeReport" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.api.protocolrecords.GetClusterNodesRequest" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.api.protocolrecords.GetClusterNodesResponse" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.api.protocolrecords.GetDelegationTokenRequest" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.api.protocolrecords.GetDelegationTokenResponse" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.api.protocolrecords.GetQueueInfoRequest" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.api.records.QueueInfo" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.api.records.QueueUserACLInfo" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.api.protocolrecords.GetQueueUserAclsInfoRequest" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.api.records.ApplicationAttemptReport" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.api.protocolrecords.GetApplicationAttemptReportRequest" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.api.protocolrecords.GetApplicationAttemptReportResponse" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.exceptions.YarnException" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.api.protocolrecords.GetApplicationAttemptsRequest" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.api.protocolrecords.GetApplicationAttemptsResponse" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.api.records.ContainerId" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.api.records.ContainerReport" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.api.protocolrecords.GetContainerReportRequest" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.api.protocolrecords.GetContainerReportResponse" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.api.protocolrecords.GetContainersRequest" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.api.protocolrecords.GetContainersResponse" classification="uses" />
+            <depends-on name="java.util.Iterator" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.api.protocolrecords.MoveApplicationAcrossQueuesRequest" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.api.protocolrecords.GetNewReservationResponse" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.api.protocolrecords.GetNewReservationRequest" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.api.protocolrecords.ReservationSubmissionRequest" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.api.protocolrecords.ReservationSubmissionResponse" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.api.protocolrecords.ReservationUpdateRequest" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.api.protocolrecords.ReservationUpdateResponse" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.api.protocolrecords.ReservationDeleteRequest" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.api.protocolrecords.ReservationDeleteResponse" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.api.protocolrecords.ReservationListRequest" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.api.protocolrecords.ReservationListResponse" classification="uses" />
+            <depends-on name="java.util.Map" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.api.records.NodeId" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.api.records.NodeLabel" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.api.records.Priority" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.api.protocolrecords.UpdateApplicationPriorityRequest" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.api.records.SignalContainerCommand" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.api.protocolrecords.SignalContainerRequest" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.api.protocolrecords.UpdateApplicationTimeoutsRequest" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.api.protocolrecords.UpdateApplicationTimeoutsResponse" classification="uses" />
+            <depends-on name="org.apache.hadoop.classification.InterfaceStability$Unstable" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.conf.YarnConfiguration" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.exceptions.YarnRuntimeException" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.exceptions.ApplicationIdNotProvidedException" classification="uses" />
+            <depends-on name="java.lang.StringBuilder" classification="uses" />
+            <depends-on name="java.util.ArrayList" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.exceptions.ContainerNotFoundException" classification="uses" />
+            <depends-on name="java.util.HashSet" classification="uses" />
+            <depends-on name="java.lang.Class" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.util.timeline.TimelineUtils" classification="uses" />
+            <depends-on name="java.lang.Object" classification="uses" />
+            <depends-on name="java.lang.Throwable" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.client.ClientRMProxy" classification="uses" />
+            <depends-on name="org.apache.hadoop.ipc.RPC" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.util.Records" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.api.protocolrecords.SubmitApplicationResponse" classification="uses" />
+            <depends-on name="java.lang.System" classification="uses" />
+            <depends-on name="java.lang.Enum" classification="uses" />
+            <depends-on name="java.lang.Thread" classification="uses" />
+            <depends-on name="java.io.DataInputStream" classification="uses" />
+            <depends-on name="java.nio.Buffer" classification="uses" />
+            <depends-on name="java.util.Collection" classification="uses" />
+            <depends-on name="java.io.DataOutputStream" classification="uses" />
+            <depends-on name="java.net.InetSocketAddress" classification="uses" />
+            <depends-on name="org.apache.hadoop.security.SecurityUtil" classification="uses" />
+            <depends-on name="org.apache.hadoop.security.UserGroupInformation" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.api.protocolrecords.FailApplicationAttemptResponse" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.util.ConverterUtils" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.api.protocolrecords.GetQueueInfoResponse" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.api.protocolrecords.GetQueueUserAclsInfoResponse" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.api.protocolrecords.MoveApplicationAcrossQueuesResponse" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.api.protocolrecords.GetNodesToLabelsRequest" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.api.protocolrecords.GetNodesToLabelsResponse" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.api.protocolrecords.GetLabelsToNodesRequest" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.api.protocolrecords.GetLabelsToNodesResponse" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.api.protocolrecords.GetClusterNodeLabelsRequest" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.api.protocolrecords.GetClusterNodeLabelsResponse" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.api.protocolrecords.UpdateApplicationPriorityResponse" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.api.protocolrecords.SignalContainerResponse" classification="uses" />
+            <depends-on name="org.apache.commons.logging.LogFactory" classification="uses" />
+            <depends-on name="org.apache.hadoop.classification.InterfaceAudience" classification="uses" />
+            <depends-on name="org.apache.hadoop.classification.InterfaceStability" classification="uses" />
+          </dependencies>
+        </type>
+        <type name="org.apache.hadoop.yarn.client.api.impl.AHSClientImpl" classification="class" visibility="public">
+          <dependencies count="40">
+            <depends-on name="org.apache.hadoop.yarn.client.api.AHSClient" classification="extends" />
+            <depends-on name="org.apache.hadoop.yarn.api.ApplicationHistoryProtocol" classification="uses" />
+            <depends-on name="java.net.InetSocketAddress" classification="uses" />
+            <depends-on name="org.apache.hadoop.conf.Configuration" classification="uses" />
+            <depends-on name="java.io.IOException" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.api.records.ApplicationId" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.api.records.ApplicationReport" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.api.protocolrecords.GetApplicationReportRequest" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.api.protocolrecords.GetApplicationReportResponse" classification="uses" />
+            <depends-on name="java.util.List" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.api.protocolrecords.GetApplicationsRequest" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.api.protocolrecords.GetApplicationsResponse" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.api.records.ApplicationAttemptId" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.api.records.ApplicationAttemptReport" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.api.protocolrecords.GetApplicationAttemptReportRequest" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.api.protocolrecords.GetApplicationAttemptReportResponse" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.api.protocolrecords.GetApplicationAttemptsRequest" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.api.protocolrecords.GetApplicationAttemptsResponse" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.api.records.ContainerId" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.api.records.ContainerReport" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.api.protocolrecords.GetContainerReportRequest" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.api.protocolrecords.GetContainerReportResponse" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.api.protocolrecords.GetContainersRequest" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.api.protocolrecords.GetContainersResponse" classification="uses" />
+            <depends-on name="org.apache.hadoop.classification.InterfaceAudience$Private" classification="uses" />
+            <depends-on name="org.apache.hadoop.classification.InterfaceStability$Unstable" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.conf.YarnConfiguration" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.exceptions.YarnRuntimeException" classification="uses" />
+            <depends-on name="java.lang.Exception" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.exceptions.YarnException" classification="uses" />
+            <depends-on name="java.lang.Class" classification="uses" />
+            <depends-on name="java.lang.String" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.client.AHSProxy" classification="uses" />
+            <depends-on name="java.lang.Object" classification="uses" />
+            <depends-on name="java.lang.Throwable" classification="uses" />
+            <depends-on name="org.apache.hadoop.ipc.RPC" classification="uses" />
+            <depends-on name="java.util.Set" classification="uses" />
+            <depends-on name="java.util.EnumSet" classification="uses" />
+            <depends-on name="org.apache.hadoop.classification.InterfaceAudience" classification="uses" />
+            <depends-on name="org.apache.hadoop.classification.InterfaceStability" classification="uses" />
+          </dependencies>
+        </type>
+        <type name="org.apache.hadoop.yarn.client.api.impl.ContainerManagementProtocolProxy" classification="class" visibility="public">
+          <dependencies count="31">
+            <depends-on name="java.lang.Object" classification="extends" />
+            <depends-on name="org.apache.commons.logging.Log" classification="uses" />
+            <depends-on name="java.util.Map" classification="uses" />
+            <depends-on name="java.lang.String" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.client.api.impl.ContainerManagementProtocolProxy$ContainerManagementProtocolProxyData" classification="uses" />
+            <depends-on name="org.apache.hadoop.conf.Configuration" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.ipc.YarnRPC" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.client.api.NMTokenCache" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.api.records.ContainerId" classification="uses" />
+            <depends-on name="java.lang.InterruptedException" classification="uses" />
+            <depends-on name="java.lang.Throwable" classification="uses" />
+            <depends-on name="java.util.List" classification="uses" />
+            <depends-on name="org.apache.hadoop.classification.InterfaceAudience$LimitedPrivate" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.conf.YarnConfiguration" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.exceptions.YarnRuntimeException" classification="uses" />
+            <depends-on name="java.lang.StringBuilder" classification="uses" />
+            <depends-on name="java.util.LinkedHashMap" classification="uses" />
+            <depends-on name="org.apache.hadoop.fs.CommonConfigurationKeysPublic" classification="uses" />
+            <depends-on name="java.util.ArrayList" classification="uses" />
+            <depends-on name="org.apache.hadoop.security.token.SecretManager$InvalidToken" classification="uses" />
+            <depends-on name="java.util.Iterator" classification="uses" />
+            <depends-on name="java.util.Collections" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.api.records.Token" classification="uses" />
+            <depends-on name="java.nio.ByteBuffer" classification="uses" />
+            <depends-on name="java.util.Collection" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.api.ContainerManagementProtocol" classification="uses" />
+            <depends-on name="java.util.Set" classification="uses" />
+            <depends-on name="org.apache.commons.logging.LogFactory" classification="uses" />
+            <depends-on name="java.lang.Class" classification="uses" />
+            <depends-on name="org.apache.hadoop.security.token.SecretManager" classification="uses" />
+            <depends-on name="org.apache.hadoop.classification.InterfaceAudience" classification="uses" />
+          </dependencies>
+        </type>
+        <type name="org.apache.hadoop.yarn.client.api.impl.AMRMClientImpl" classification="class" visibility="public">
+          <dependencies count="84">
+            <depends-on name="org.apache.hadoop.yarn.client.api.AMRMClient" classification="extends" />
+            <depends-on name="org.apache.commons.logging.Log" classification="uses" />
+            <depends-on name="java.util.List" classification="uses" />
+            <depends-on name="java.lang.String" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.api.ApplicationMasterProtocol" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.api.records.Resource" classification="uses" />
+            <depends-on name="java.util.Set" classification="uses" />
+            <depends-on name="java.util.Map" classification="uses" />
+            <depends-on name="java.lang.Long" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.client.api.impl.RemoteRequestsTable" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.api.records.ResourceRequest" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.api.records.ContainerId" classification="uses" />
+            <depends-on name="java.util.AbstractMap$SimpleEntry" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.api.records.Container" classification="uses" />
+            <depends-on name="com.google.common.annotations.VisibleForTesting" classification="uses" />
+            <depends-on name="org.apache.hadoop.conf.Configuration" classification="uses" />
+            <depends-on name="java.io.IOException" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.conf.YarnConfiguration" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.api.protocolrecords.RegisterApplicationMasterResponse" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.api.protocolrecords.RegisterApplicationMasterRequest" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.api.protocolrecords.AllocateResponse" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.api.records.ResourceBlacklistRequest" classification="uses" />
+            <depends-on name="java.util.Iterator" classification="uses" />
+            <depends-on name="java.util.Map$Entry" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.exceptions.ApplicationMasterNotRegisteredException" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.api.records.ContainerStatus" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.api.protocolrecords.AllocateRequest" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.api.records.UpdateContainerRequest" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.api.records.ContainerUpdateType" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.api.records.UpdatedContainer" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.api.records.NMToken" classification="uses" />
+            <depends-on name="org.apache.hadoop.classification.InterfaceAudience$Private" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.api.records.FinalApplicationStatus" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.api.protocolrecords.FinishApplicationMasterResponse" classification="uses" />
+            <depends-on name="java.lang.InterruptedException" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.api.protocolrecords.FinishApplicationMasterRequest" classification="uses" />
+            <depends-on name="com.google.common.base.Joiner" classification="uses" />
+            <depends-on name="java.util.HashSet" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.client.api.AMRMClient$ContainerRequest" classification="uses" />
+            <depends-on name="java.util.Collection" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.client.api.impl.AMRMClientImpl$ResourceRequestInfo" classification="uses" />
+            <depends-on name="java.util.LinkedHashSet" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.api.records.Priority" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.api.records.ExecutionType" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.api.records.ExecutionTypeRequest" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.api.records.Token" classification="uses" />
+            <depends-on name="org.apache.hadoop.security.token.Token" classification="uses" />
+            <depends-on name="org.apache.hadoop.security.UserGroupInformation" classification="uses" />
+            <depends-on name="org.apache.hadoop.classification.InterfaceStability$Unstable" classification="uses" />
+            <depends-on name="java.util.HashMap" classification="uses" />
+            <depends-on name="java.util.TreeSet" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.api.records.ResourceRequest$ResourceRequestComparator" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.exceptions.YarnRuntimeException" classification="uses" />
+            <depends-on name="java.util.ArrayList" classification="uses" />
+            <depends-on name="java.lang.StringBuilder" classification="uses" />
+            <depends-on name="java.util.LinkedList" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.client.api.InvalidContainerRequestException" classification="uses" />
+            <depends-on name="org.apache.hadoop.io.Text" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.client.api.impl.AMRMClientImpl$ResourceReverseMemoryThenCpuComparator" classification="uses" />
+            <depends-on name="java.lang.Exception" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.exceptions.YarnException" classification="uses" />
+            <depends-on name="java.lang.Object" classification="uses" />
+            <depends-on name="java.lang.Throwable" classification="uses" />
+            <depends-on name="java.lang.Class" classification="uses" />
+            <depends-on name="java.util.Comparator" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.util.RackResolver" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.client.ClientRMProxy" classification="uses" />
+            <depends-on name="org.apache.hadoop.ipc.RPC" classification="uses" />
+            <depends-on name="com.google.common.base.Preconditions" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.api.protocolrecords.AllocateRequest$AllocateRequestBuilder" classification="uses" />
+            <depends-on name="java.util.AbstractMap" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.util.resource.Resources" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.api.records.ResourceRequest$ResourceRequestBuilder" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.api.records.NodeId" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.client.api.NMTokenCache" classification="uses" />
+            <depends-on name="java.lang.Thread" classification="uses" />
+            <depends-on name="java.lang.Iterable" classification="uses" />
+            <depends-on name="org.apache.hadoop.net.Node" classification="uses" />
+            <depends-on name="java.lang.CharSequence" classification="uses" />
+            <depends-on name="java.nio.ByteBuffer" classification="uses" />
+            <depends-on name="org.apache.commons.logging.LogFactory" classification="uses" />
+            <depends-on name="java.util.Collections" classification="uses" />
+            <depends-on name="org.apache.hadoop.classification.InterfaceAudience" classification="uses" />
+            <depends-on name="org.apache.hadoop.classification.InterfaceStability" classification="uses" />
+          </dependencies>
+        </type>
+        <type name="org.apache.hadoop.yarn.client.api.impl.AMRMClientImpl$ResourceRequestInfo" classification="class" visibility="default">
+          <dependencies count="9">
+            <depends-on name="java.lang.Object" classification="extends" />
+            <depends-on name="org.apache.hadoop.yarn.api.records.ResourceRequest" classification="uses" />
+            <depends-on name="java.util.LinkedHashSet" classification="uses" />
+            <depends-on name="java.lang.Long" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.api.records.Priority" classification="uses" />
+            <depends-on name="java.lang.String" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.api.records.Resource" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.api.records.ResourceRequest$ResourceRequestBuilder" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.client.api.impl.AMRMClientImpl" classification="uses" />
+          </dependencies>
+        </type>
+        <type name="org.apache.hadoop.yarn.client.api.impl.package-info" classification="interface" visibility="default" isAbstract="yes">
+          <dependencies count="3">
+            <depends-on name="java.lang.Object" classification="extends" />
+            <depends-on name="org.apache.hadoop.classification.InterfaceAudience$Public" classification="uses" />
+            <depends-on name="org.apache.hadoop.classification.InterfaceAudience" classification="uses" />
+          </dependencies>
+        </type>
+        <type name="org.apache.hadoop.yarn.client.api.impl.RemoteRequestsTable$RequestInfoIterator" classification="class" visibility="default">
+          <dependencies count="13">
+            <depends-on name="java.lang.Object" classification="extends" />
+            <depends-on name="java.util.Iterator" classification="uses" />
+            <depends-on name="java.util.Map" classification="uses" />
+            <depends-on name="java.lang.String" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.api.records.ExecutionType" classification="uses" />
+            <depends-on name="java.util.TreeMap" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.api.records.Resource" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.client.api.impl.AMRMClientImpl$ResourceRequestInfo" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.client.api.impl.RemoteRequestsTable" classification="uses" />
+            <depends-on name="java.util.LinkedList" classification="uses" />
+            <depends-on name="java.lang.UnsupportedOperationException" classification="uses" />
+            <depends-on name="java.util.Collection" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.client.api.impl.AMRMClientImpl" classification="uses" />
+          </dependencies>
+        </type>
+        <type name="org.apache.hadoop.yarn.client.api.impl.NMClientImpl" classification="class" visibility="public">
+          <dependencies count="51">
+            <depends-on name="org.apache.hadoop.yarn.client.api.NMClient" classification="extends" />
+            <depends-on name="org.apache.commons.logging.Log" classification="uses" />
+            <depends-on name="java.util.concurrent.ConcurrentMap" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.api.records.ContainerId" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.client.api.impl.NMClientImpl$StartedContainer" classification="uses" />
+            <depends-on name="java.util.concurrent.atomic.AtomicBoolean" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.client.api.impl.ContainerManagementProtocolProxy" classification="uses" />
+            <depends-on name="java.lang.String" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.exceptions.YarnException" classification="uses" />
+            <depends-on name="java.io.IOException" classification="uses" />
+            <depends-on name="org.apache.hadoop.conf.Configuration" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.api.records.Container" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.api.records.ContainerLaunchContext" classification="uses" />
+            <depends-on name="java.util.Map" classification="uses" />
+            <depends-on name="java.nio.ByteBuffer" classification="uses" />
+            <depends-on name="java.lang.Throwable" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.api.protocolrecords.StartContainerRequest" classification="uses" />
+            <depends-on name="java.util.List" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.api.protocolrecords.StartContainersRequest" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.api.protocolrecords.StartContainersResponse" classification="uses" />
+            <depends-on name="java.lang.Exception" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.client.api.impl.ContainerManagementProtocolProxy$ContainerManagementProtocolProxyData" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.api.protocolrecords.IncreaseContainersResourceRequest" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.api.protocolrecords.IncreaseContainersResourceResponse" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.api.records.NodeId" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.api.records.ContainerStatus" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.api.protocolrecords.GetContainerStatusesResponse" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.api.protocolrecords.StopContainersResponse" classification="uses" />
+            <depends-on name="org.apache.hadoop.classification.InterfaceAudience$Private" classification="uses" />
+            <depends-on name="org.apache.hadoop.classification.InterfaceStability$Unstable" classification="uses" />
+            <depends-on name="java.util.concurrent.ConcurrentHashMap" classification="uses" />
+            <depends-on name="java.lang.StringBuilder" classification="uses" />
+            <depends-on name="java.lang.IllegalStateException" classification="uses" />
+            <depends-on name="java.util.ArrayList" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.api.records.SerializedException" classification="uses" />
+            <depends-on name="org.apache.hadoop.security.token.SecretManager$InvalidToken" classification="uses" />
+            <depends-on name="java.util.Iterator" classification="uses" />
+            <depends-on name="java.lang.Object" classification="uses" />
+            <depends-on name="java.lang.Class" classification="uses" />
+            <depends-on name="java.util.Collection" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.client.api.NMTokenCache" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.ipc.RPCUtil" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.api.records.Token" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.api.ContainerManagementProtocol" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.api.records.ContainerState" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.api.protocolrecords.GetContainerStatusesRequest" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.api.protocolrecords.StopContainersRequest" classification="uses" />
+            <depends-on name="org.apache.hadoop.security.token.SecretManager" classification="uses" />
+            <depends-on name="org.apache.commons.logging.LogFactory" classification="uses" />
+            <depends-on name="org.apache.hadoop.classification.InterfaceAudience" classification="uses" />
+            <depends-on name="org.apache.hadoop.classification.InterfaceStability" classification="uses" />
+          </dependencies>
+        </type>
+        <type name="org.apache.hadoop.yarn.client.api.impl.ContainerManagementProtocolProxy$ContainerManagementProtocolProxyData" classification="class" visibility="public">
+          <dependencies count="23">
+            <depends-on name="java.lang.Object" classification="extends" />
+            <depends-on name="java.lang.String" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.api.ContainerManagementProtocol" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.api.records.Token" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.client.api.impl.ContainerManagementProtocolProxy" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.ipc.YarnRPC" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.api.records.ContainerId" classification="uses" />
+            <depends-on name="org.apache.hadoop.classification.InterfaceAudience$Private" classification="uses" />
+            <depends-on name="com.google.common.annotations.VisibleForTesting" classification="uses" />
+            <depends-on name="java.net.InetSocketAddress" classification="uses" />
+            <depends-on name="org.apache.hadoop.security.UserGroupInformation" classification="uses" />
+            <depends-on name="org.apache.hadoop.security.token.Token" classification="uses" />
+            <depends-on name="org.apache.hadoop.security.token.SecretManager$InvalidToken" classification="uses" />
+            <depends-on name="java.lang.StringBuilder" classification="uses" />
+            <depends-on name="org.apache.hadoop.security.token.SecretManager" classification="uses" />
+            <depends-on name="org.apache.hadoop.net.NetUtils" classification="uses" />
+            <depends-on name="org.apache.commons.logging.Log" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.api.records.ApplicationAttemptId" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.util.ConverterUtils" classification="uses" />
+            <depends-on name="org.apache.hadoop.conf.Configuration" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.client.NMProxy" classification="uses" />
+            <depends-on name="java.lang.Class" classification="uses" />
+            <depends-on name="org.apache.hadoop.classification.InterfaceAudience" classification="uses" />
+          </dependencies>
+        </type>
+        <type name="org.apache.hadoop.yarn.client.api.impl.RemoteRequestsTable" classification="class" visibility="default">
+          <dependencies count="27">
+            <depends-on name="java.lang.Object" classification="extends" />
+            <depends-on name="java.lang.Iterable" classification="uses" />
+            <depends-on name="org.apache.commons.logging.Log" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.client.api.impl.AMRMClientImpl$ResourceReverseMemoryThenCpuComparator" classification="uses" />
+            <depends-on name="java.util.Map" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.api.records.Priority" classification="uses" />
+            <depends-on name="java.lang.String" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.api.records.ExecutionType" classification="uses" />
+            <depends-on name="java.util.TreeMap" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.api.records.Resource" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.client.api.impl.AMRMClientImpl$ResourceRequestInfo" classification="uses" />
+            <depends-on name="java.util.Iterator" classification="uses" />
+            <depends-on name="java.util.Collection" classification="uses" />
+            <depends-on name="java.util.List" classification="uses" />
+            <depends-on name="java.lang.Long" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.api.records.ExecutionTypeRequest" classification="uses" />
+            <depends-on name="java.util.HashMap" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.client.api.impl.RemoteRequestsTable$RequestInfoIterator" classification="uses" />
+            <depends-on name="java.lang.StringBuilder" classification="uses" />
+            <depends-on name="java.util.LinkedList" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.api.records.ResourceRequest" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.client.api.impl.AMRMClientImpl" classification="uses" />
+            <depends-on name="java.util.Comparator" classification="uses" />
+            <depends-on name="java.util.SortedMap" classification="uses" />
+            <depends-on name="java.util.LinkedHashSet" classification="uses" />
+            <depends-on name="org.apache.commons.logging.LogFactory" classification="uses" />
+            <depends-on name="java.lang.Class" classification="uses" />
+          </dependencies>
+        </type>
+      </namespace>
+      <namespace name="org.apache.hadoop.yarn.client.api.async.impl">
+        <type name="org.apache.hadoop.yarn.client.api.async.impl.NMClientAsyncImpl$IncreaseContainerResourceEvent" classification="class" visibility="public">
+          <dependencies count="7">
+            <depends-on name="org.apache.hadoop.yarn.client.api.async.impl.NMClientAsyncImpl$ContainerEvent" classification="extends" />
+            <depends-on name="org.apache.hadoop.yarn.api.records.Container" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.api.records.ContainerId" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.api.records.NodeId" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.api.records.Token" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.client.api.async.impl.NMClientAsyncImpl$ContainerEventType" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.client.api.async.impl.NMClientAsyncImpl" classification="uses" />
+          </dependencies>
+        </type>
+        <type name="org.apache.hadoop.yarn.client.api.async.impl.NMClientAsyncImpl$ContainerState" classification="enum" visibility="public" isFinal="yes">
+          <dependencies count="5">
+            <depends-on name="java.lang.Enum" classification="extends" />
+            <depends-on name="java.lang.String" classification="uses" />
+            <depends-on name="java.lang.Object" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.client.api.async.impl.NMClientAsyncImpl" classification="uses" />
+            <depends-on name="java.lang.Class" classification="uses" />
+          </dependencies>
+        </type>
+        <type name="org.apache.hadoop.yarn.client.api.async.impl.NMClientAsyncImpl$ContainerEventType" classification="enum" visibility="public" isFinal="yes">
+          <dependencies count="5">
+            <depends-on name="java.lang.Enum" classification="extends" />
+            <depends-on name="java.lang.String" classification="uses" />
+            <depends-on name="java.lang.Object" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.client.api.async.impl.NMClientAsyncImpl" classification="uses" />
+            <depends-on name="java.lang.Class" classification="uses" />
+          </dependencies>
+        </type>
+        <type name="org.apache.hadoop.yarn.client.api.async.impl.NMClientAsyncImpl$StatefulContainer$OutOfOrderTransition" classification="class" visibility="public">
+          <dependencies count="14">
+            <depends-on name="java.lang.Object" classification="extends" />
+            <depends-on name="org.apache.hadoop.yarn.state.SingleArcTransition" classification="implements" />
+            <depends-on name="java.lang.String" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.client.api.async.impl.NMClientAsyncImpl$StatefulContainer" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.client.api.async.impl.NMClientAsyncImpl$ContainerEvent" classification="uses" />
+            <depends-on name="java.lang.Throwable" classification="uses" />
+            <depends-on name="java.lang.StringBuilder" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.client.api.async.NMClientAsync" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.client.api.async.NMClientAsync$CallbackHandler" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.api.records.ContainerId" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.ipc.RPCUtil" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.exceptions.YarnException" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.client.api.async.impl.NMClientAsyncImpl" classification="uses" />
+            <depends-on name="org.apache.commons.logging.Log" classification="uses" />
+          </dependencies>
+        </type>
+        <type name="org.apache.hadoop.yarn.client.api.async.impl.NMClientAsyncImpl$ContainerEvent" classification="class" visibility="public">
+          <dependencies count="7">
+            <depends-on name="org.apache.hadoop.yarn.event.AbstractEvent" classification="extends" />
+            <depends-on name="org.apache.hadoop.yarn.api.records.ContainerId" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.api.records.NodeId" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.api.records.Token" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.client.api.async.impl.NMClientAsyncImpl$ContainerEventType" classification="uses" />
+            <depends-on name="java.lang.Enum" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.client.api.async.impl.NMClientAsyncImpl" classification="uses" />
+          </dependencies>
+        </type>
+        <type name="org.apache.hadoop.yarn.client.api.async.impl.AMRMClientAsyncImpl$CallbackHandlerThread" classification="class" visibility="default">
+          <dependencies count="19">
+            <depends-on name="java.lang.Thread" classification="extends" />
+            <depends-on name="org.apache.hadoop.yarn.client.api.async.impl.AMRMClientAsyncImpl" classification="uses" />
+            <depends-on name="java.lang.Object" classification="uses" />
+            <depends-on name="java.lang.InterruptedException" classification="uses" />
+            <depends-on name="java.util.List" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.api.protocolrecords.AllocateResponse" classification="uses" />
+            <depends-on name="java.lang.String" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.client.api.TimelineClient" classification="uses" />
+            <depends-on name="java.lang.Throwable" classification="uses" />
+            <depends-on name="java.lang.StringBuilder" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.client.api.async.AMRMClientAsync$AbstractCallbackHandler" classification="uses" />
+            <depends-on name="java.util.ArrayList" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.exceptions.YarnRuntimeException" classification="uses" />
+            <depends-on name="java.util.concurrent.BlockingQueue" classification="uses" />
+            <depends-on name="org.apache.commons.logging.Log" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.client.api.async.AMRMClientAsync$CallbackHandler" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.client.api.AMRMClient" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.client.api.async.AMRMClientAsync" classification="uses" />
+            <depends-on name="java.util.Collection" classification="uses" />
+          </dependencies>
+        </type>
+        <type name="org.apache.hadoop.yarn.client.api.async.impl.AMRMClientAsyncImpl" classification="class" visibility="public">
+          <dependencies count="36">
+            <depends-on name="org.apache.hadoop.yarn.client.api.async.AMRMClientAsync" classification="extends" />
+            <depends-on name="org.apache.commons.logging.Log" classification="uses" />
+            <depends-on name="java.util.concurrent.BlockingQueue" classification="uses" />
+            <depends-on name="java.lang.Object" classification="uses" />
+            <depends-on name="java.lang.String" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.client.api.async.AMRMClientAsync$AbstractCallbackHandler" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.client.api.AMRMClient" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.client.api.async.AMRMClientAsync$CallbackHandler" classification="uses" />
+            <depends-on name="java.lang.Deprecated" classification="uses" />
+            <depends-on name="org.apache.hadoop.classification.InterfaceAudience$Private" classification="uses" />
+            <depends-on name="com.google.common.annotations.VisibleForTesting" classification="uses" />
+            <depends-on name="org.apache.hadoop.conf.Configuration" classification="uses" />
+            <depends-on name="java.lang.InterruptedException" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.api.records.Priority" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.api.records.Resource" classification="uses" />
+            <depends-on name="java.util.List" classification="uses" />
+            <depends-on name="java.util.Collection" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.api.protocolrecords.RegisterApplicationMasterResponse" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.api.records.FinalApplicationStatus" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.client.api.AMRMClient$ContainerRequest" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.api.records.Container" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.api.records.ContainerId" classification="uses" />
+            <depends-on name="java.util.concurrent.atomic.AtomicInteger" classification="uses" />
+            <depends-on name="org.apache.hadoop.classification.InterfaceStability$Unstable" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.client.api.impl.AMRMClientImpl" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.client.api.async.impl.AMRMClientAsyncImpl$HeartbeatThread" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.client.api.async.impl.AMRMClientAsyncImpl$CallbackHandlerThread" classification="uses" />
+            <depends-on name="java.util.concurrent.LinkedBlockingQueue" classification="uses" />
+            <depends-on name="java.lang.Exception" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.exceptions.YarnException" classification="uses" />
+            <depends-on name="java.io.IOException" classification="uses" />
+            <depends-on name="java.lang.Throwable" classification="uses" />
+            <depends-on name="org.apache.commons.logging.LogFactory" classification="uses" />
+            <depends-on name="java.lang.Class" classification="uses" />
+            <depends-on name="org.apache.hadoop.classification.InterfaceAudience" classification="uses" />
+            <depends-on name="org.apache.hadoop.classification.InterfaceStability" classification="uses" />
+          </dependencies>
+        </type>
+        <type name="org.apache.hadoop.yarn.client.api.async.impl.NMClientAsyncImpl$StatefulContainer$IncreaseContainerResourceTransition" classification="class" visibility="public">
+          <dependencies count="19">
+            <depends-on name="java.lang.Object" classification="extends" />
+            <depends-on name="org.apache.hadoop.yarn.state.SingleArcTransition" classification="implements" />
+            <depends-on name="org.apache.hadoop.yarn.client.api.async.impl.NMClientAsyncImpl$StatefulContainer" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.client.api.async.impl.NMClientAsyncImpl$ContainerEvent" classification="uses" />
+            <depends-on name="java.lang.Throwable" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.client.api.async.impl.NMClientAsyncImpl$IncreaseContainerResourceEvent" classification="uses" />
+            <depends-on name="java.lang.Exception" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.client.api.async.NMClientAsync$AbstractCallbackHandler" classification="uses" />
+            <depends-on name="java.lang.AssertionError" classification="uses" />
+            <depends-on name="java.lang.StringBuilder" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.client.api.async.NMClientAsync" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.client.api.async.NMClientAsync$CallbackHandler" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.client.api.async.impl.NMClientAsyncImpl" classification="uses" />
+            <depends-on name="org.apache.commons.logging.Log" classification="uses" />
+            <depends-on name="java.lang.String" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.client.api.NMClient" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.api.records.Container" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.api.records.ContainerId" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.api.records.Resource" classification="uses" />
+          </dependencies>
+        </type>
+        <type name="org.apache.hadoop.yarn.client.api.async.impl.NMClientAsyncImpl$1" classification="class" visibility="default">
+          <dependencies count="18">
+            <depends-on name="java.lang.Thread" classification="extends" />
+            <depends-on name="org.apache.hadoop.yarn.client.api.async.impl.NMClientAsyncImpl" classification="uses" />
+            <depends-on name="java.lang.InterruptedException" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.client.api.async.impl.NMClientAsyncImpl$ContainerEvent" classification="uses" />
+            <depends-on name="java.util.Set" classification="uses" />
+            <depends-on name="java.util.HashSet" classification="uses" />
+            <depends-on name="java.lang.StringBuilder" classification="uses" />
+            <depends-on name="java.util.concurrent.atomic.AtomicBoolean" classification="uses" />
+            <depends-on name="java.util.concurrent.BlockingQueue" classification="uses" />
+            <depends-on name="java.lang.Object" classification="uses" />
+            <depends-on name="org.apache.commons.logging.Log" classification="uses" />
+            <depends-on name="java.lang.Throwable" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.api.records.NodeId" classification="uses" />
+            <depends-on name="java.lang.String" classification="uses" />
+            <depends-on name="java.util.concurrent.ThreadPoolExecutor" classification="uses" />
+            <depends-on name="java.lang.Math" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.client.api.async.impl.NMClientAsyncImpl$ContainerEventProcessor" classification="uses" />
+            <depends-on name="java.lang.Runnable" classification="uses" />
+          </dependencies>
+        </type>
+        <type name="org.apache.hadoop.yarn.client.api.async.impl.NMClientAsyncImpl$StatefulContainer" classification="class" visibility="public">
+          <dependencies count="26">
+            <depends-on name="java.lang.Object" classification="extends" />
+            <depends-on name="org.apache.hadoop.yarn.event.EventHandler" classification="implements" />
+            <depends-on name="org.apache.hadoop.yarn.state.StateMachineFactory" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.client.api.async.impl.NMClientAsyncImpl$ContainerState" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.client.api.async.impl.NMClientAsyncImpl$ContainerEventType" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.client.api.async.impl.NMClientAsyncImpl$ContainerEvent" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.client.api.async.NMClientAsync" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.api.records.ContainerId" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.state.StateMachine" classification="uses" />
+            <depends-on name="java.util.concurrent.locks.ReentrantReadWriteLock$ReadLock" classification="uses" />
+            <depends-on name="java.util.concurrent.locks.ReentrantReadWriteLock$WriteLock" classification="uses" />
+            <depends-on name="java.util.concurrent.locks.ReentrantReadWriteLock" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.state.InvalidStateTransitionException" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.event.Event" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.client.api.async.impl.NMClientAsyncImpl$StatefulContainer$StartContainerTransition" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.client.api.async.impl.NMClientAsyncImpl$StatefulContainer$OutOfOrderTransition" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.client.api.async.impl.NMClientAsyncImpl$StatefulContainer$IncreaseContainerResourceTransition" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.client.api.async.impl.NMClientAsyncImpl$StatefulContainer$StopContainerTransition" classification="uses" />
+            <depends-on name="java.lang.Throwable" classification="uses" />
+            <depends-on name="java.lang.Enum" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.client.api.async.impl.NMClientAsyncImpl" classification="uses" />
+            <depends-on name="org.apache.commons.logging.Log" classification="uses" />
+            <depends-on name="java.util.EnumSet" classification="uses" />
+            <depends-on name="java.util.Set" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.state.MultipleArcTransition" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.state.SingleArcTransition" classification="uses" />
+          </dependencies>
+        </type>
+        <type name="org.apache.hadoop.yarn.client.api.async.impl.NMClientAsyncImpl$StatefulContainer$StopContainerTransition" classification="class" visibility="public">
+          <dependencies count="18">
+            <depends-on name="java.lang.Object" classification="extends" />
+            <depends-on name="org.apache.hadoop.yarn.state.MultipleArcTransition" classification="implements" />
+            <depends-on name="org.apache.hadoop.yarn.client.api.async.impl.NMClientAsyncImpl$StatefulContainer" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.client.api.async.impl.NMClientAsyncImpl$ContainerEvent" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.client.api.async.impl.NMClientAsyncImpl$ContainerState" classification="uses" />
+            <depends-on name="java.lang.Throwable" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.exceptions.YarnException" classification="uses" />
+            <depends-on name="java.io.IOException" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.api.records.ContainerId" classification="uses" />
+            <depends-on name="java.lang.Enum" classification="uses" />
+            <depends-on name="java.lang.StringBuilder" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.client.api.async.NMClientAsync" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.client.api.NMClient" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.api.records.NodeId" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.client.api.async.NMClientAsync$CallbackHandler" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.client.api.async.impl.NMClientAsyncImpl" classification="uses" />
+            <depends-on name="org.apache.commons.logging.Log" classification="uses" />
+            <depends-on name="java.lang.String" classification="uses" />
+          </dependencies>
+        </type>
+        <type name="org.apache.hadoop.yarn.client.api.async.impl.NMClientAsyncImpl$StartContainerEvent" classification="class" visibility="public">
+          <dependencies count="8">
+            <depends-on name="org.apache.hadoop.yarn.client.api.async.impl.NMClientAsyncImpl$ContainerEvent" classification="extends" />
+            <depends-on name="org.apache.hadoop.yarn.api.records.Container" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.api.records.ContainerLaunchContext" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.api.records.ContainerId" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.api.records.NodeId" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.api.records.Token" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.client.api.async.impl.NMClientAsyncImpl$ContainerEventType" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.client.api.async.impl.NMClientAsyncImpl" classification="uses" />
+          </dependencies>
+        </type>
+        <type name="org.apache.hadoop.yarn.client.api.async.impl.NMClientAsyncImpl" classification="class" visibility="public">
+          <dependencies count="50">
+            <depends-on name="org.apache.hadoop.yarn.client.api.async.NMClientAsync" classification="extends" />
+            <depends-on name="org.apache.commons.logging.Log" classification="uses" />
+            <depends-on name="java.util.concurrent.ThreadPoolExecutor" classification="uses" />
+            <depends-on name="java.lang.Thread" classification="uses" />
+            <depends-on name="java.util.concurrent.atomic.AtomicBoolean" classification="uses" />
+            <depends-on name="java.util.concurrent.BlockingQueue" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.client.api.async.impl.NMClientAsyncImpl$ContainerEvent" classification="uses" />
+            <depends-on name="java.util.concurrent.ConcurrentMap" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.api.records.ContainerId" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.client.api.async.impl.NMClientAsyncImpl$StatefulContainer" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.client.api.async.NMClientAsync$AbstractCallbackHandler" classification="uses" />
+            <depends-on name="java.lang.String" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.client.api.NMClient" classification="uses" />
+            <depends-on name="org.apache.hadoop.classification.InterfaceAudience$Private" classification="uses" />
+            <depends-on name="com.google.common.annotations.VisibleForTesting" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.client.api.async.NMClientAsync$CallbackHandler" classification="uses" />
+            <depends-on name="java.lang.Deprecated" classification="uses" />
+            <depends-on name="org.apache.hadoop.conf.Configuration" classification="uses" />
+            <depends-on name="java.util.concurrent.ThreadFactory" classification="uses" />
+            <depends-on name="java.lang.InterruptedException" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.api.records.Container" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.api.records.ContainerLaunchContext" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.api.records.NodeId" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.client.api.async.impl.NMClientAsyncImpl$ContainerEventProcessor" classification="uses" />
+            <depends-on name="org.apache.hadoop.classification.InterfaceStability$Unstable" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.client.api.impl.NMClientImpl" classification="uses" />
+            <depends-on name="java.util.concurrent.LinkedBlockingQueue" classification="uses" />
+            <depends-on name="java.util.concurrent.ConcurrentHashMap" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.conf.YarnConfiguration" classification="uses" />
+            <depends-on name="java.lang.StringBuilder" classification="uses" />
+            <depends-on name="com.google.common.util.concurrent.ThreadFactoryBuilder" classification="uses" />
+            <depends-on name="java.lang.Integer" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.client.api.async.impl.NMClientAsyncImpl$1" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.client.api.async.impl.NMClientAsyncImpl$StartContainerEvent" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.client.api.async.impl.NMClientAsyncImpl$IncreaseContainerResourceEvent" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.client.api.async.impl.NMClientAsyncImpl$ContainerEventType" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.client.api.async.impl.NMClientAsyncImpl$ContainerState" classification="uses" />
+            <depends-on name="java.lang.Exception" classification="uses" />
+            <depends-on name="java.lang.Class" classification="uses" />
+            <depends-on name="java.lang.Object" classification="uses" />
+            <depends-on name="java.lang.Math" classification="uses" />
+            <depends-on name="java.util.concurrent.TimeUnit" classification="uses" />
+            <depends-on name="java.lang.Throwable" classification="uses" />
+            <depends-on name="java.util.List" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.ipc.RPCUtil" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.exceptions.YarnException" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.api.records.Token" classification="uses" />
+            <depends-on name="org.apache.commons.logging.LogFactory" classification="uses" />
+            <depends-on name="org.apache.hadoop.classification.InterfaceAudience" classification="uses" />
+            <depends-on name="org.apache.hadoop.classification.InterfaceStability" classification="uses" />
+          </dependencies>
+        </type>
+        <type name="org.apache.hadoop.yarn.client.api.async.impl.package-info" classification="interface" visibility="default" isAbstract="yes">
+          <dependencies count="3">
+            <depends-on name="java.lang.Object" classification="extends" />
+            <depends-on name="org.apache.hadoop.classification.InterfaceAudience$Public" classification="uses" />
+            <depends-on name="org.apache.hadoop.classification.InterfaceAudience" classification="uses" />
+          </dependencies>
+        </type>
+        <type name="org.apache.hadoop.yarn.client.api.async.impl.NMClientAsyncImpl$StatefulContainer$StartContainerTransition" classification="class" visibility="public">
+          <dependencies count="23">
+            <depends-on name="java.lang.Object" classification="extends" />
+            <depends-on name="org.apache.hadoop.yarn.state.MultipleArcTransition" classification="implements" />
+            <depends-on name="org.apache.hadoop.yarn.client.api.async.impl.NMClientAsyncImpl$StatefulContainer" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.client.api.async.impl.NMClientAsyncImpl$ContainerEvent" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.client.api.async.impl.NMClientAsyncImpl$ContainerState" classification="uses" />
+            <depends-on name="java.lang.Throwable" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.client.api.async.impl.NMClientAsyncImpl$StartContainerEvent" classification="uses" />
+            <depends-on name="java.util.Map" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.exceptions.YarnException" classification="uses" />
+            <depends-on name="java.io.IOException" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.api.records.ContainerId" classification="uses" />
+            <depends-on name="java.lang.Enum" classification="uses" />
+            <depends-on name="java.lang.AssertionError" classification="uses" />
+            <depends-on name="java.lang.StringBuilder" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.client.api.async.impl.NMClientAsyncImpl" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.client.api.async.NMClientAsync" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.client.api.NMClient" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.api.records.Container" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.api.records.ContainerLaunchContext" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.client.api.async.NMClientAsync$CallbackHandler" classification="uses" />
+            <depends-on name="org.apache.commons.logging.Log" classification="uses" />
+            <depends-on name="java.lang.String" classification="uses" />
+            <depends-on name="java.lang.Class" classification="uses" />
+          </dependencies>
+        </type>
+        <type name="org.apache.hadoop.yarn.client.api.async.impl.NMClientAsyncImpl$ContainerEventProcessor" classification="class" visibility="public">
+          <dependencies count="20">
+            <depends-on name="java.lang.Object" classification="extends" />
+            <depends-on name="java.lang.Runnable" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.client.api.async.impl.NMClientAsyncImpl$ContainerEvent" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.client.api.async.impl.NMClientAsyncImpl" classification="uses" />
+            <depends-on name="java.lang.Throwable" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.api.records.ContainerStatus" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.exceptions.YarnException" classification="uses" />
+            <depends-on name="java.io.IOException" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.client.api.async.impl.NMClientAsyncImpl$StatefulContainer" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.api.records.ContainerId" classification="uses" />
+            <depends-on name="java.lang.StringBuilder" classification="uses" />
+            <depends-on name="org.apache.commons.logging.Log" classification="uses" />
+            <depends-on name="java.lang.String" classification="uses" />
+            <depends-on name="java.lang.Enum" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.client.api.async.impl.NMClientAsyncImpl$ContainerEventType" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.client.api.NMClient" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.api.records.NodeId" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.client.api.async.NMClientAsync$CallbackHandler" classification="uses" />
+            <depends-on name="java.util.concurrent.ConcurrentMap" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.client.api.async.NMClientAsync" classification="uses" />
+          </dependencies>
+        </type>
+        <type name="org.apache.hadoop.yarn.client.api.async.impl.AMRMClientAsyncImpl$HeartbeatThread" classification="class" visibility="default">
+          <dependencies count="14">
+            <depends-on name="java.lang.Thread" classification="extends" />
+            <depends-on name="org.apache.hadoop.yarn.client.api.async.impl.AMRMClientAsyncImpl" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.exceptions.ApplicationAttemptNotFoundException" classification="uses" />
+            <depends-on name="java.lang.Throwable" classification="uses" />
+            <depends-on name="java.lang.InterruptedException" classification="uses" />
+            <depends-on name="java.lang.Object" classification="uses" />
+            <depends-on name="java.lang.String" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.client.api.AMRMClient" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.api.protocolrecords.AllocateResponse" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.client.api.async.AMRMClientAsync$CallbackHandler" classification="uses" />
+            <depends-on name="org.apache.commons.logging.Log" classification="uses" />
+            <depends-on name="java.util.concurrent.BlockingQueue" classification="uses" />
+            <depends-on name="java.util.concurrent.atomic.AtomicInteger" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.client.api.async.AMRMClientAsync" classification="uses" />
+          </dependencies>
+        </type>
+      </namespace>
+      <namespace name="org.apache.hadoop.yarn.client.api.async">
+        <type name="org.apache.hadoop.yarn.client.api.async.AMRMClientAsync" classification="class" visibility="public" isAbstract="yes">
+          <dependencies count="37">
+            <depends-on name="org.apache.hadoop.service.AbstractService" classification="extends" />
+            <depends-on name="org.apache.commons.logging.Log" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.client.api.AMRMClient" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.client.api.async.AMRMClientAsync$CallbackHandler" classification="uses" />
+            <depends-on name="java.util.concurrent.atomic.AtomicInteger" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.client.api.AMRMClient$ContainerRequest" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.client.api.async.AMRMClientAsync$AbstractCallbackHandler" classification="uses" />
+            <depends-on name="org.apache.hadoop.classification.InterfaceAudience$Private" classification="uses" />
+            <depends-on name="com.google.common.annotations.VisibleForTesting" classification="uses" />
+            <depends-on name="java.lang.Deprecated" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.api.records.Priority" classification="uses" />
+            <depends-on name="java.lang.String" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.api.records.Resource" classification="uses" />
+            <depends-on name="java.util.List" classification="uses" />
+            <depends-on name="java.util.Collection" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.api.records.ExecutionType" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.api.protocolrecords.RegisterApplicationMasterResponse" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.api.records.FinalApplicationStatus" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.api.records.Container" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.api.records.ContainerId" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.client.api.TimelineClient" classification="uses" />
+            <depends-on name="com.google.common.base.Supplier" classification="uses" />
+            <depends-on name="java.lang.Boolean" classification="uses" />
+            <depends-on name="org.apache.hadoop.classification.InterfaceAudience$Public" classification="uses" />
+            <depends-on name="org.apache.hadoop.classification.InterfaceStability$Stable" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.client.api.async.impl.AMRMClientAsyncImpl" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.client.api.impl.AMRMClientImpl" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.exceptions.YarnException" classification="uses" />
+            <depends-on name="java.io.IOException" classification="uses" />
+            <depends-on name="java.lang.InterruptedException" classification="uses" />
+            <depends-on name="java.lang.Class" classification="uses" />
+            <depends-on name="com.google.common.base.Preconditions" classification="uses" />
+            <depends-on name="java.lang.Object" classification="uses" />
+            <depends-on name="java.lang.Thread" classification="uses" />
+            <depends-on name="org.apache.commons.logging.LogFactory" classification="uses" />
+            <depends-on name="org.apache.hadoop.classification.InterfaceAudience" classification="uses" />
+            <depends-on name="org.apache.hadoop.classification.InterfaceStability" classification="uses" />
+          </dependencies>
+        </type>
+        <type name="org.apache.hadoop.yarn.client.api.async.NMClientAsync" classification="class" visibility="public" isAbstract="yes">
+          <dependencies count="19">
+            <depends-on name="org.apache.hadoop.service.AbstractService" classification="extends" />
+            <depends-on name="org.apache.hadoop.yarn.client.api.NMClient" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.client.api.async.NMClientAsync$CallbackHandler" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.client.api.async.NMClientAsync$AbstractCallbackHandler" classification="uses" />
+            <depends-on name="java.lang.String" classification="uses" />
+            <depends-on name="java.lang.Deprecated" classification="uses" />
+            <depends-on name="org.apache.hadoop.classification.InterfaceAudience$Private" classification="uses" />
+            <depends-on name="com.google.common.annotations.VisibleForTesting" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.api.records.Container" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.api.records.ContainerLaunchContext" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.api.records.ContainerId" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.api.records.NodeId" classification="uses" />
+            <depends-on name="org.apache.hadoop.classification.InterfaceAudience$Public" classification="uses" />
+            <depends-on name="org.apache.hadoop.classification.InterfaceStability$Stable" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.client.api.async.impl.NMClientAsyncImpl" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.client.api.impl.NMClientImpl" classification="uses" />
+            <depends-on name="java.lang.Class" classification="uses" />
+            <depends-on name="org.apache.hadoop.classification.InterfaceAudience" classification="uses" />
+            <depends-on name="org.apache.hadoop.classification.InterfaceStability" classification="uses" />
+          </dependencies>
+        </type>
+        <type name="org.apache.hadoop.yarn.client.api.async.NMClientAsync$AbstractCallbackHandler" classification="class" visibility="public" isAbstract="yes">
+          <dependencies count="10">
+            <depends-on name="java.lang.Object" classification="extends" />
+            <depends-on name="org.apache.hadoop.yarn.client.api.async.NMClientAsync$CallbackHandler" classification="implements" />
+            <depends-on name="org.apache.hadoop.yarn.api.records.ContainerId" classification="uses" />
+            <depends-on name="java.util.Map" classification="uses" />
+            <depends-on name="java.lang.String" classification="uses" />
+            <depends-on name="java.nio.ByteBuffer" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.api.records.ContainerStatus" classification="uses" />
+            <depends-on name="java.lang.Throwable" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.api.records.Resource" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.client.api.async.NMClientAsync" classification="uses" />
+          </dependencies>
+        </type>
+        <type name="org.apache.hadoop.yarn.client.api.async.AMRMClientAsync$AbstractCallbackHandler" classification="class" visibility="public" isAbstract="yes">
+          <dependencies count="13">
+            <depends-on name="java.lang.Object" classification="extends" />
+            <depends-on name="org.apache.hadoop.yarn.client.api.async.AMRMClientAsync$CallbackHandler" classification="implements" />
+            <depends-on name="java.util.List" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.api.records.ContainerStatus" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.api.records.Container" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.api.records.UpdatedContainer" classification="uses" />
+            <depends-on name="org.apache.hadoop.classification.InterfaceAudience$Public" classification="uses" />
+            <depends-on name="org.apache.hadoop.classification.InterfaceStability$Unstable" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.api.records.NodeReport" classification="uses" />
+            <depends-on name="java.lang.Throwable" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.client.api.async.AMRMClientAsync" classification="uses" />
+            <depends-on name="org.apache.hadoop.classification.InterfaceAudience" classification="uses" />
+            <depends-on name="org.apache.hadoop.classification.InterfaceStability" classification="uses" />
+          </dependencies>
+        </type>
+        <type name="org.apache.hadoop.yarn.client.api.async.package-info" classification="interface" visibility="default" isAbstract="yes">
+          <dependencies count="3">
+            <depends-on name="java.lang.Object" classification="extends" />
+            <depends-on name="org.apache.hadoop.classification.InterfaceAudience$Public" classification="uses" />
+            <depends-on name="org.apache.hadoop.classification.InterfaceAudience" classification="uses" />
+          </dependencies>
+        </type>
+        <type name="org.apache.hadoop.yarn.client.api.async.AMRMClientAsync$CallbackHandler" classification="interface" visibility="public" isAbstract="yes">
+          <dependencies count="8">
+            <depends-on name="java.lang.Object" classification="extends" />
+            <depends-on name="java.util.List" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.api.records.ContainerStatus" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.api.records.Container" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.api.records.NodeReport" classification="uses" />
+            <depends-on name="java.lang.Throwable" classification="uses" />
+            <depends-on name="java.lang.Deprecated" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.client.api.async.AMRMClientAsync" classification="uses" />
+          </dependencies>
+        </type>
+        <type name="org.apache.hadoop.yarn.client.api.async.NMClientAsync$CallbackHandler" classification="interface" visibility="public" isAbstract="yes">
+          <dependencies count="9">
+            <depends-on name="java.lang.Object" classification="extends" />
+            <depends-on name="org.apache.hadoop.yarn.api.records.ContainerId" classification="uses" />
+            <depends-on name="java.util.Map" classification="uses" />
+            <depends-on name="java.lang.String" classification="uses" />
+            <depends-on name="java.nio.ByteBuffer" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.api.records.ContainerStatus" classification="uses" />
+            <depends-on name="java.lang.Throwable" classification="uses" />
+            <depends-on name="java.lang.Deprecated" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.client.api.async.NMClientAsync" classification="uses" />
+          </dependencies>
+        </type>
+      </namespace>
+      <namespace name="org.apache.hadoop.yarn.client">
+        <type name="org.apache.hadoop.yarn.client.SCMAdmin" classification="class" visibility="public">
+          <dependencies count="23">
+            <depends-on name="org.apache.hadoop.conf.Configured" classification="extends" />
+            <depends-on name="org.apache.hadoop.util.Tool" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.factories.RecordFactory" classification="uses" />
+            <depends-on name="org.apache.hadoop.conf.Configuration" classification="uses" />
+            <depends-on name="java.lang.String" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.server.api.SCMAdminProtocol" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.conf.YarnConfiguration" classification="uses" />
+            <depends-on name="java.net.InetSocketAddress" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.ipc.YarnRPC" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.server.api.protocolrecords.RunSharedCacheCleanerTaskRequest" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.server.api.protocolrecords.RunSharedCacheCleanerTaskResponse" classification="uses" />
+            <depends-on name="java.lang.IllegalArgumentException" classification="uses" />
+            <depends-on name="java.lang.Exception" classification="uses" />
+            <depends-on name="org.apache.hadoop.ipc.RemoteException" classification="uses" />
+            <depends-on name="java.lang.StringBuilder" classification="uses" />
+            <depends-on name="java.io.IOException" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.exceptions.YarnException" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.factory.providers.RecordFactoryProvider" classification="uses" />
+            <depends-on name="java.lang.Object" classification="uses" />
+            <depends-on name="java.lang.System" classification="uses" />
+            <depends-on name="java.io.PrintStream" classification="uses" />
+            <depends-on name="org.apache.hadoop.util.ToolRunner" classification="uses" />
+            <depends-on name="java.lang.Class" classification="uses" />
+          </dependencies>
+        </type>
+      </namespace>
+      <namespace name="org.apache.hadoop.yarn.client.util">
+        <type name="org.apache.hadoop.yarn.client.util.package-info" classification="interface" visibility="default" isAbstract="yes">
+          <dependencies count="3">
+            <depends-on name="java.lang.Object" classification="extends" />
+            <depends-on name="org.apache.hadoop.classification.InterfaceAudience$Public" classification="uses" />
+            <depends-on name="org.apache.hadoop.classification.InterfaceAudience" classification="uses" />
+          </dependencies>
+        </type>
+        <type name="org.apache.hadoop.yarn.client.util.YarnClientUtils" classification="class" visibility="public" isAbstract="yes">
+          <dependencies count="10">
+            <depends-on name="java.lang.Object" classification="extends" />
+            <depends-on name="org.apache.hadoop.conf.Configuration" classification="uses" />
+            <depends-on name="java.lang.String" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.conf.YarnConfiguration" classification="uses" />
+            <depends-on name="com.google.common.annotations.VisibleForTesting" classification="uses" />
+            <depends-on name="java.lang.IllegalArgumentException" classification="uses" />
+            <depends-on name="java.io.IOException" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.conf.HAUtil" classification="uses" />
+            <depends-on name="java.net.InetSocketAddress" classification="uses" />
+            <depends-on name="org.apache.hadoop.security.SecurityUtil" classification="uses" />
+          </dependencies>
+        </type>
+      </namespace>
+      <namespace name="org.apache.hadoop.yarn.client.cli">
+        <type name="org.apache.hadoop.yarn.client.cli.LogsCLI" classification="class" visibility="public">
+          <dependencies count="77">
+            <depends-on name="org.apache.hadoop.conf.Configured" classification="extends" />
+            <depends-on name="org.apache.hadoop.util.Tool" classification="uses" />
+            <depends-on name="java.lang.String" classification="uses" />
+            <depends-on name="java.io.PrintStream" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.client.api.YarnClient" classification="uses" />
+            <depends-on name="java.lang.NumberFormatException" classification="uses" />
+            <depends-on name="org.apache.commons.cli.CommandLine" classification="uses" />
+            <depends-on name="org.apache.commons.cli.ParseException" classification="uses" />
+            <depends-on name="java.lang.Exception" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.api.records.ContainerId" classification="uses" />
+            <depends-on name="java.io.File" classification="uses" />
+            <depends-on name="org.apache.commons.cli.Options" classification="uses" />
+            <depends-on name="org.apache.commons.cli.CommandLineParser" classification="uses" />
+            <depends-on name="java.util.List" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.api.records.ApplicationId" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.logaggregation.LogCLIHelpers" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.api.records.YarnApplicationState" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.api.records.ApplicationReport" classification="uses" />
+            <depends-on name="java.util.Set" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.logaggregation.ContainerLogsRequest" classification="uses" />
+            <depends-on name="com.google.common.annotations.VisibleForTesting" classification="uses" />
+            <depends-on name="org.apache.hadoop.conf.Configuration" classification="uses" />
+            <depends-on name="org.apache.commons.cli.HelpFormatter" classification="uses" />
+            <depends-on name="org.codehaus.jettison.json.JSONObject" classification="uses" />
+            <depends-on name="com.sun.jersey.api.client.Client" classification="uses" />
+            <depends-on name="com.sun.jersey.api.client.WebResource" classification="uses" />
+            <depends-on name="com.sun.jersey.api.client.ClientResponse" classification="uses" />
+            <depends-on name="org.codehaus.jettison.json.JSONArray" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.client.cli.LogsCLI$PerLogFileInfo" classification="uses" />
+            <depends-on name="java.lang.RuntimeException" classification="uses" />
+            <depends-on name="java.lang.StringBuilder" classification="uses" />
+            <depends-on name="java.io.InputStream" classification="uses" />
+            <depends-on name="org.apache.hadoop.classification.InterfaceAudience$Private" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.api.records.ContainerReport" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.api.records.ContainerState" classification="uses" />
+            <depends-on name="org.apache.commons.cli.Option" classification="uses" />
+            <depends-on name="java.util.Collection" classification="uses" />
+            <depends-on name="java.util.regex.Pattern" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.api.records.ApplicationAttemptReport" classification="uses" />
+            <depends-on name="java.util.Map" classification="uses" />
+            <depends-on name="org.apache.hadoop.classification.InterfaceAudience$Public" classification="uses" />
+            <depends-on name="org.apache.hadoop.classification.InterfaceStability$Evolving" classification="uses" />
+            <depends-on name="org.apache.commons.cli.GnuParser" classification="uses" />
+            <depends-on name="java.util.ArrayList" classification="uses" />
+            <depends-on name="java.lang.Long" classification="uses" />
+            <depends-on name="java.io.IOException" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.exceptions.YarnException" classification="uses" />
+            <depends-on name="java.util.HashSet" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.conf.YarnConfiguration" classification="uses" />
+            <depends-on name="javax.ws.rs.core.MediaType" classification="uses" />
+            <depends-on name="com.sun.jersey.api.client.ClientHandlerException" classification="uses" />
+            <depends-on name="com.sun.jersey.api.client.UniformInterfaceException" classification="uses" />
+            <depends-on name="java.lang.Object" classification="uses" />
+            <depends-on name="java.util.TreeMap" classification="uses" />
+            <depends-on name="java.lang.Throwable" classification="uses" />
+            <depends-on name="org.codehaus.jettison.json.JSONException" classification="uses" />
+            <depends-on name="java.util.Iterator" classification="uses" />
+            <depends-on name="java.lang.System" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.api.records.ApplicationAttemptId" classification="uses" />
+            <depends-on name="java.util.Arrays" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.webapp.util.WebAppUtils" classification="uses" />
+            <depends-on name="com.sun.jersey.api.client.WebResource$Builder" classification="uses" />
+            <depends-on name="java.lang.Class" classification="uses" />
+            <depends-on name="java.util.Collections" classification="uses" />
+            <depends-on name="javax.ws.rs.core.Response$StatusType" classification="uses" />
+            <depends-on name="com.sun.jersey.api.client.ClientResponse$Status" classification="uses" />
+            <depends-on name="org.apache.commons.lang.StringUtils" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.util.Times" classification="uses" />
+            <depends-on name="org.apache.commons.io.IOUtils" classification="uses" />
+            <depends-on name="java.lang.Integer" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.api.records.NodeId" classification="uses" />
+            <depends-on name="org.apache.hadoop.security.UserGroupInformation" classification="uses" />
+            <depends-on name="java.lang.CharSequence" classification="uses" />
+            <depends-on name="java.util.regex.Matcher" classification="uses" />
+            <depends-on name="org.apache.hadoop.classification.InterfaceAudience" classification="uses" />
+            <depends-on name="org.apache.hadoop.classification.InterfaceStability" classification="uses" />
+            <depends-on name="javax.ws.rs.core.Response" classification="uses" />
+          </dependencies>
+        </type>
+        <type name="org.apache.hadoop.yarn.client.cli.TopCLI$10" classification="class" visibility="default" isFinal="yes">
+          <dependencies count="4">
+            <depends-on name="java.lang.Object" classification="extends" />
+            <depends-on name="java.util.Comparator" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.client.cli.TopCLI$ApplicationInformation" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.client.cli.TopCLI" classification="uses" />
+          </dependencies>
+        </type>
+        <type name="org.apache.hadoop.yarn.client.cli.TopCLI$15" classification="class" visibility="default" isFinal="yes">
+          <dependencies count="5">
+            <depends-on name="java.lang.Object" classification="extends" />
+            <depends-on name="java.util.Comparator" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.client.cli.TopCLI$ApplicationInformation" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.client.cli.TopCLI" classification="uses" />
+            <depends-on name="java.lang.String" classification="uses" />
+          </dependencies>
+        </type>
+        <type name="org.apache.hadoop.yarn.client.cli.TopCLI$3" classification="class" visibility="default" isFinal="yes">
+          <dependencies count="5">
+            <depends-on name="java.lang.Object" classification="extends" />
+            <depends-on name="java.util.Comparator" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.client.cli.TopCLI$ApplicationInformation" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.client.cli.TopCLI" classification="uses" />
+            <depends-on name="java.lang.String" classification="uses" />
+          </dependencies>
+        </type>
+        <type name="org.apache.hadoop.yarn.client.cli.TopCLI$8" classification="class" visibility="default" isFinal="yes">
+          <dependencies count="5">
+            <depends-on name="java.lang.Object" classification="extends" />
+            <depends-on name="java.util.Comparator" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.client.cli.TopCLI$ApplicationInformation" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.client.cli.TopCLI" classification="uses" />
+            <depends-on name="java.lang.Long" classification="uses" />
+          </dependencies>
+        </type>
+        <type name="org.apache.hadoop.yarn.client.cli.ApplicationCLI" classification="class" visibility="public">
+          <dependencies count="67">
+            <depends-on name="org.apache.hadoop.yarn.client.cli.YarnCLI" classification="extends" />
+            <depends-on name="java.lang.String" classification="uses" />
+            <depends-on name="com.google.common.annotations.VisibleForTesting" classification="uses" />
+            <depends-on name="org.apache.commons.cli.Option" classification="uses" />
+            <depends-on name="org.apache.commons.cli.MissingArgumentException" classification="uses" />
+            <depends-on name="java.lang.IllegalArgumentException" classification="uses" />
+            <depends-on name="java.util.Set" classification="uses" />
+            <depends-on name="java.util.EnumSet" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.api.records.SignalContainerCommand" classification="uses" />
+            <depends-on name="org.apache.commons.cli.Options" classification="uses" />
+            <depends-on name="org.apache.commons.cli.CommandLine" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.api.records.ApplicationTimeoutType" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.api.records.ApplicationId" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.api.protocolrecords.UpdateApplicationTimeoutsRequest" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.api.records.ContainerId" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.exceptions.ApplicationNotFoundException" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.exceptions.ApplicationAttemptNotFoundException" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.api.records.ApplicationAttemptReport" classification="uses" />
+            <depends-on name="java.io.ByteArrayOutputStream" classification="uses" />
+            <depends-on name="java.io.PrintWriter" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.exceptions.ContainerNotFoundException" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.api.records.ContainerReport" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.api.records.YarnApplicationState" classification="uses" />
+            <depends-on name="java.text.DecimalFormat" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.api.records.ApplicationReport" classification="uses" />
+            <depends-on name="java.util.List" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.api.records.ApplicationAttemptId" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.api.records.ApplicationTimeout" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.api.records.ApplicationResourceUsageReport" classification="uses" />
+            <depends-on name="java.lang.StringBuilder" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.api.records.Priority" classification="uses" />
+            <depends-on name="java.util.Collection" classification="uses" />
+            <depends-on name="org.apache.hadoop.classification.InterfaceAudience$Private" classification="uses" />
+            <depends-on name="org.apache.hadoop.classification.InterfaceStability$Unstable" classification="uses" />
+            <depends-on name="org.apache.commons.cli.GnuParser" classification="uses" />
+            <depends-on name="java.util.HashSet" classification="uses" />
+            <depends-on name="org.apache.commons.cli.HelpFormatter" classification="uses" />
+            <depends-on name="java.io.OutputStreamWriter" classification="uses" />
+            <depends-on name="java.lang.Object" classification="uses" />
+            <depends-on name="java.lang.Exception" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.exceptions.YarnException" classification="uses" />
+            <depends-on name="java.io.IOException" classification="uses" />
+            <depends-on name="java.util.Iterator" classification="uses" />
+            <depends-on name="java.lang.System" classification="uses" />
+            <depends-on name="java.io.PrintStream" classification="uses" />
+            <depends-on name="org.apache.hadoop.util.ToolRunner" classification="uses" />
+            <depends-on name="org.apache.hadoop.util.Tool" classification="uses" />
+            <depends-on name="java.util.Arrays" classification="uses" />
+            <depends-on name="org.apache.hadoop.util.StringUtils" classification="uses" />
+            <depends-on name="java.lang.Class" classification="uses" />
+            <depends-on name="java.lang.Long" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.util.Times" classification="uses" />
+            <depends-on name="java.util.Collections" classification="uses" />
+            <depends-on name="java.util.Map" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.client.api.YarnClient" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.api.protocolrecords.UpdateApplicationTimeoutsResponse" classification="uses" />
+            <depends-on name="java.nio.charset.Charset" classification="uses" />
+            <depends-on name="java.io.OutputStream" classification="uses" />
+            <depends-on name="java.io.Writer" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.api.records.YarnApplicationAttemptState" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.api.records.ContainerState" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.api.records.NodeId" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.api.records.FinalApplicationStatus" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.api.records.LogAggregationStatus" classification="uses" />
+            <depends-on name="java.lang.Integer" classification="uses" />
+            <depends-on name="org.apache.hadoop.classification.InterfaceAudience" classification="uses" />
+            <depends-on name="org.apache.hadoop.classification.InterfaceStability" classification="uses" />
+          </dependencies>
+        </type>
+        <type name="org.apache.hadoop.yarn.client.cli.TopCLI$9" classification="class" visibility="default" isFinal="yes">
+          <dependencies count="4">
+            <depends-on name="java.lang.Object" classification="extends" />
+            <depends-on name="java.util.Comparator" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.client.cli.TopCLI$ApplicationInformation" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.client.cli.TopCLI" classification="uses" />
+          </dependencies>
+        </type>
+        <type name="org.apache.hadoop.yarn.client.cli.QueueCLI" classification="class" visibility="public">
+          <dependencies count="35">
+            <depends-on name="org.apache.hadoop.yarn.client.cli.YarnCLI" classification="extends" />
+            <depends-on name="java.lang.String" classification="uses" />
+            <depends-on name="org.apache.commons.cli.MissingArgumentException" classification="uses" />
+            <depends-on name="org.apache.commons.cli.Options" classification="uses" />
+            <depends-on name="org.apache.commons.cli.CommandLine" classification="uses" />
+            <depends-on name="com.google.common.annotations.VisibleForTesting" classification="uses" />
+            <depends-on name="java.io.PrintWriter" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.api.records.QueueInfo" classification="uses" />
+            <depends-on name="java.text.DecimalFormat" classification="uses" />
+            <depends-on name="java.util.Set" classification="uses" />
+            <depends-on name="java.lang.StringBuilder" classification="uses" />
+            <depends-on name="java.lang.Boolean" classification="uses" />
+            <depends-on name="org.apache.hadoop.classification.InterfaceAudience$Private" classification="uses" />
+            <depends-on name="org.apache.hadoop.classification.InterfaceStability$Unstable" classification="uses" />
+            <depends-on name="org.apache.commons.cli.GnuParser" classification="uses" />
+            <depends-on name="org.apache.commons.cli.HelpFormatter" classification="uses" />
+            <depends-on name="java.io.OutputStreamWriter" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.api.records.NodeLabel" classification="uses" />
+            <depends-on name="java.lang.Exception" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.exceptions.YarnException" classification="uses" />
+            <depends-on name="java.io.IOException" classification="uses" />
+            <depends-on name="java.util.Iterator" classification="uses" />
+            <depends-on name="java.lang.System" classification="uses" />
+            <depends-on name="java.io.PrintStream" classification="uses" />
+            <depends-on name="org.apache.hadoop.util.ToolRunner" classification="uses" />
+            <depends-on name="org.apache.hadoop.util.Tool" classification="uses" />
+            <depends-on name="org.apache.commons.cli.Option" classification="uses" />
+            <depends-on name="java.nio.charset.Charset" classification="uses" />
+            <depends-on name="java.io.OutputStream" classification="uses" />
+            <depends-on name="java.io.Writer" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.client.api.YarnClient" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.api.records.QueueState" classification="uses" />
+            <depends-on name="java.lang.Object" classification="uses" />
+            <depends-on name="org.apache.hadoop.classification.InterfaceAudience" classification="uses" />
+            <depends-on name="org.apache.hadoop.classification.InterfaceStability" classification="uses" />
+          </dependencies>
+        </type>
+        <type name="org.apache.hadoop.yarn.client.cli.TopCLI$6" classification="class" visibility="default" isFinal="yes">
+          <dependencies count="4">
+            <depends-on name="java.lang.Object" classification="extends" />
+            <depends-on name="java.util.Comparator" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.client.cli.TopCLI$ApplicationInformation" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.client.cli.TopCLI" classification="uses" />
+          </dependencies>
+        </type>
+        <type name="org.apache.hadoop.yarn.client.cli.TopCLI$14" classification="class" visibility="default" isFinal="yes">
+          <dependencies count="5">
+            <depends-on name="java.lang.Object" classification="extends" />
+            <depends-on name="java.util.Comparator" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.client.cli.TopCLI$ApplicationInformation" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.client.cli.TopCLI" classification="uses" />
+            <depends-on name="java.lang.Long" classification="uses" />
+          </dependencies>
+        </type>
+        <type name="org.apache.hadoop.yarn.client.cli.TopCLI$11" classification="class" visibility="default" isFinal="yes">
+          <dependencies count="5">
+            <depends-on name="java.lang.Object" classification="extends" />
+            <depends-on name="java.util.Comparator" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.client.cli.TopCLI$ApplicationInformation" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.client.cli.TopCLI" classification="uses" />
+            <depends-on name="java.lang.Long" classification="uses" />
+          </dependencies>
+        </type>
+        <type name="org.apache.hadoop.yarn.client.cli.TopCLI" classification="class" visibility="public">
+          <dependencies count="106">
+            <depends-on name="org.apache.hadoop.yarn.client.cli.YarnCLI" classification="extends" />
+            <depends-on name="java.lang.String" classification="uses" />
+            <depends-on name="org.apache.commons.logging.Log" classification="uses" />
+            <depends-on name="com.google.common.cache.Cache" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.api.protocolrecords.GetApplicationsRequest" classification="uses" />
+            <depends-on name="java.util.List" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.api.records.ApplicationReport" classification="uses" />
+            <depends-on name="java.util.Comparator" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.client.cli.TopCLI$ApplicationInformation" classification="uses" />
+            <depends-on name="org.apache.commons.cli.Options" classification="uses" />
+            <depends-on name="org.apache.commons.cli.CommandLine" classification="uses" />
+            <depends-on name="java.util.Set" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.client.cli.TopCLI$DisplayScreen" classification="uses" />
+            <depends-on name="java.util.concurrent.atomic.AtomicBoolean" classification="uses" />
+            <depends-on name="java.lang.Object" classification="uses" />
+            <depends-on name="java.util.Map" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.client.cli.TopCLI$Columns" classification="uses" />
+            <depends-on name="java.lang.Thread" classification="uses" />
+            <depends-on name="java.util.EnumMap" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.client.cli.TopCLI$ColumnInformation" classification="uses" />
+            <depends-on name="java.lang.Exception" classification="uses" />
+            <depends-on name="java.lang.InterruptedException" classification="uses" />
+            <depends-on name="java.util.Map$Entry" classification="uses" />
+            <depends-on name="java.lang.NumberFormatException" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.client.cli.TopCLI$NodesInformation" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.api.records.YarnClusterMetrics" classification="uses" />
+            <depends-on name="java.io.IOException" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.exceptions.YarnException" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.client.cli.TopCLI$QueueMetrics" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.api.records.QueueInfo" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.api.records.QueueStatistics" classification="uses" />
+            <depends-on name="java.net.URL" classification="uses" />
+            <depends-on name="org.codehaus.jettison.json.JSONObject" classification="uses" />
+            <depends-on name="java.net.URLConnection" classification="uses" />
+            <depends-on name="java.io.InputStream" classification="uses" />
+            <depends-on name="java.util.Collection" classification="uses" />
+            <depends-on name="org.apache.hadoop.conf.Configuration" classification="uses" />
+            <depends-on name="com.google.common.annotations.VisibleForTesting" classification="uses" />
+            <depends-on name="javax.net.ssl.SSLSocketFactory" classification="uses" />
+            <depends-on name="javax.net.ssl.HttpsURLConnection" classification="uses" />
+            <depends-on name="org.apache.hadoop.security.authentication.client.AuthenticatedURL" classification="uses" />
+            <depends-on name="org.apache.hadoop.security.ssl.SSLFactory" classification="uses" />
+            <depends-on name="org.apache.hadoop.security.authentication.client.AuthenticatedURL$Token" classification="uses" />
+            <depends-on name="java.lang.StringBuilder" classification="uses" />
+            <depends-on name="java.util.EnumSet" classification="uses" />
+            <depends-on name="java.lang.Process" classification="uses" />
+            <depends-on name="java.util.HashSet" classification="uses" />
+            <depends-on name="java.util.HashMap" classification="uses" />
+            <depends-on name="java.util.ArrayList" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.client.cli.TopCLI$KeyboardMonitor" classification="uses" />
+            <depends-on name="org.apache.commons.cli.GnuParser" classification="uses" />
+            <depends-on name="org.apache.commons.cli.HelpFormatter" classification="uses" />
+            <depends-on name="java.lang.Throwable" classification="uses" />
+            <depends-on name="java.net.ConnectException" classification="uses" />
+            <depends-on name="org.apache.hadoop.security.authentication.client.KerberosAuthenticator" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.client.cli.TopCLI$1" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.client.cli.TopCLI$2" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.client.cli.TopCLI$3" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.client.cli.TopCLI$4" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.client.cli.TopCLI$5" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.client.cli.TopCLI$6" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.client.cli.TopCLI$7" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.client.cli.TopCLI$8" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.client.cli.TopCLI$9" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.client.cli.TopCLI$10" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.client.cli.TopCLI$11" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.client.cli.TopCLI$12" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.client.cli.TopCLI$13" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.client.cli.TopCLI$14" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.client.cli.TopCLI$15" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.client.cli.TopCLI$16" classification="uses" />
+            <depends-on name="org.apache.commons.cli.ParseException" classification="uses" />
+            <depends-on name="java.util.Iterator" classification="uses" />
+            <depends-on name="org.codehaus.jettison.json.JSONException" classification="uses" />
+            <depends-on name="org.apache.hadoop.http.HttpConfig$Policy" classification="uses" />
+            <depends-on name="java.net.MalformedURLException" classification="uses" />
+            <depends-on name="com.google.common.cache.CacheBuilder" classification="uses" />
+            <depends-on name="java.util.concurrent.TimeUnit" classification="uses" />
+            <depends-on name="java.lang.Class" classification="uses" />
+            <depends-on name="java.util.Collections" classification="uses" />
+            <depends-on name="java.lang.System" classification="uses" />
+            <depends-on name="java.io.PrintStream" classification="uses" />
+            <depends-on name="org.apache.hadoop.util.ToolRunner" classification="uses" />
+            <depends-on name="org.apache.hadoop.util.Tool" classification="uses" />
+            <depends-on name="java.util.Arrays" classification="uses" />
+            <depends-on name="java.lang.Integer" classification="uses" />
+            <depends-on name="org.apache.commons.lang.StringUtils" classification="uses" />
+            <depends-on name="java.lang.Enum" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.client.api.YarnClient" classification="uses" />
+            <depends-on name="org.apache.commons.io.IOUtils" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.conf.HAUtil" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.webapp.util.WebAppUtils" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.conf.YarnConfiguration" classification="uses" />
+            <depends-on name="org.apache.hadoop.security.ssl.SSLFactory$Mode" classification="uses" />
+            <depends-on name="org.apache.hadoop.security.authentication.client.Authenticator" classification="uses" />
+            <depends-on name="org.apache.hadoop.security.authentication.client.ConnectionConfigurator" classification="uses" />
+            <depends-on name="java.net.HttpURLConnection" classification="uses" />
+            <depends-on name="org.apache.hadoop.util.Time" classification="uses" />
+            <depends-on name="java.lang.Long" classification="uses" />
+            <depends-on name="org.apache.commons.lang.time.DateFormatUtils" classification="uses" />
+            <depends-on name="org.apache.commons.lang.time.FastDateFormat" classification="uses" />
+            <depends-on name="org.apache.hadoop.security.UserGroupInformation" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.api.records.YarnApplicationState" classification="uses" />
+            <depends-on name="java.lang.Runtime" classification="uses" />
+            <depends-on name="org.apache.commons.logging.LogFactory" classification="uses" />
+            <depends-on name="org.apache.hadoop.http.HttpConfig" classification="uses" />
+          </dependencies>
+        </type>
+        <type name="org.apache.hadoop.yarn.client.cli.TopCLI$ApplicationInformation" classification="class" visibility="default">
+          <dependencies count="18">
+            <depends-on name="java.lang.Object" classification="extends" />
+            <depends-on name="java.lang.String" classification="uses" />
+            <depends-on name="java.util.EnumMap" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.client.cli.TopCLI$Columns" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.api.records.ApplicationReport" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.api.records.Priority" classification="uses" />
+            <depends-on name="java.lang.StringBuilder" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.client.cli.TopCLI" classification="uses" />
+            <depends-on name="java.lang.Class" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.api.records.ApplicationId" classification="uses" />
+            <depends-on name="java.lang.Enum" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.api.records.YarnApplicationState" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.api.records.ApplicationResourceUsageReport" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.api.records.Resource" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.api.records.ApplicationAttemptId" classification="uses" />
+            <depends-on name="org.apache.hadoop.util.Time" classification="uses" />
+            <depends-on name="org.apache.commons.lang.time.DurationFormatUtils" classification="uses" />
+            <depends-on name="java.lang.Float" classification="uses" />
+          </dependencies>
+        </type>
+        <type name="org.apache.hadoop.yarn.client.cli.TopCLI$Columns" classification="enum" visibility="default" isFinal="yes">
+          <dependencies count="5">
+            <depends-on name="java.lang.Enum" classification="extends" />
+            <depends-on name="java.lang.String" classification="uses" />
+            <depends-on name="java.lang.Object" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.client.cli.TopCLI" classification="uses" />
+            <depends-on name="java.lang.Class" classification="uses" />
+          </dependencies>
+        </type>
+        <type name="org.apache.hadoop.yarn.client.cli.TopCLI$5" classification="class" visibility="default" isFinal="yes">
+          <dependencies count="4">
+            <depends-on name="java.lang.Object" classification="extends" />
+            <depends-on name="java.util.Comparator" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.client.cli.TopCLI$ApplicationInformation" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.client.cli.TopCLI" classification="uses" />
+          </dependencies>
+        </type>
+        <type name="org.apache.hadoop.yarn.client.cli.TopCLI$1" classification="class" visibility="default" isFinal="yes">
+          <dependencies count="5">
+            <depends-on name="java.lang.Object" classification="extends" />
+            <depends-on name="java.util.Comparator" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.client.cli.TopCLI$ApplicationInformation" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.client.cli.TopCLI" classification="uses" />
+            <depends-on name="java.lang.String" classification="uses" />
+          </dependencies>
+        </type>
+        <type name="org.apache.hadoop.yarn.client.cli.RMAdminCLI" classification="class" visibility="public">
+          <dependencies count="91">
+            <depends-on name="org.apache.hadoop.ha.HAAdmin" classification="extends" />
+            <depends-on name="org.apache.hadoop.yarn.factories.RecordFactory" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.nodelabels.CommonNodeLabelsManager" classification="uses" />
+            <depends-on name="java.lang.String" classification="uses" />
+            <depends-on name="java.util.Map" classification="uses" />
+            <depends-on name="org.apache.hadoop.ha.HAAdmin$UsageInfo" classification="uses" />
+            <depends-on name="org.apache.hadoop.conf.Configuration" classification="uses" />
+            <depends-on name="java.io.PrintStream" classification="uses" />
+            <depends-on name="java.lang.StringBuilder" classification="uses" />
+            <depends-on name="java.util.Map$Entry" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.server.api.ResourceManagerAdministrationProtocol" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.conf.YarnConfiguration" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.server.api.protocolrecords.RefreshQueuesRequest" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.server.api.protocolrecords.RefreshNodesRequest" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.api.records.NodeId" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.server.api.protocolrecords.CheckForDecommissioningNodesResponse" classification="uses" />
+            <depends-on name="java.util.Set" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.server.api.protocolrecords.CheckForDecommissioningNodesRequest" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.server.api.protocolrecords.RefreshNodesResourcesRequest" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.server.api.protocolrecords.RefreshUserToGroupsMappingsRequest" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.server.api.protocolrecords.RefreshSuperUserGroupsConfigurationRequest" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.server.api.protocolrecords.RefreshAdminAclsRequest" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.server.api.protocolrecords.RefreshServiceAclsRequest" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.server.api.protocolrecords.RefreshClusterMaxPriorityRequest" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.server.api.protocolrecords.UpdateNodeResourceRequest" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.api.records.Resource" classification="uses" />
+            <depends-on name="java.util.List" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.api.records.NodeLabel" classification="uses" />
+            <depends-on name="org.apache.commons.cli.MissingArgumentException" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.server.api.protocolrecords.AddToClusterNodeLabelsRequest" classification="uses" />
+            <depends-on name="org.apache.commons.cli.Options" classification="uses" />
+            <depends-on name="org.apache.commons.cli.CommandLine" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.server.api.protocolrecords.RemoveFromClusterNodeLabelsRequest" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.server.api.protocolrecords.ReplaceLabelsOnNodeRequest" classification="uses" />
+            <depends-on name="java.lang.IllegalArgumentException" classification="uses" />
+            <depends-on name="java.lang.Exception" classification="uses" />
+            <depends-on name="org.apache.hadoop.ipc.RemoteException" classification="uses" />
+            <depends-on name="org.apache.commons.cli.Option" classification="uses" />
+            <depends-on name="java.lang.NumberFormatException" classification="uses" />
+            <depends-on name="org.apache.hadoop.ha.HAServiceTarget" classification="uses" />
+            <depends-on name="java.io.IOException" classification="uses" />
+            <depends-on name="java.util.Collection" classification="uses" />
+            <depends-on name="org.apache.hadoop.classification.InterfaceAudience$Private" classification="uses" />
+            <depends-on name="org.apache.hadoop.classification.InterfaceStability$Unstable" classification="uses" />
+            <depends-on name="java.lang.InterruptedException" classification="uses" />
+            <depends-on name="java.util.HashMap" classification="uses" />
+            <depends-on name="java.util.ArrayList" classification="uses" />
+            <depends-on name="java.util.HashSet" classification="uses" />
+            <depends-on name="org.apache.commons.cli.GnuParser" classification="uses" />
+            <depends-on name="java.lang.Object" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.api.records.ResourceOption" classification="uses" />
+            <depends-on name="org.apache.hadoop.fs.CommonConfigurationKeys" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.client.RMHAServiceTarget" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.exceptions.YarnRuntimeException" classification="uses" />
+            <depends-on name="java.util.Iterator" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.exceptions.YarnException" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.api.records.DecommissionType" classification="uses" />
+            <depends-on name="org.apache.commons.cli.ParseException" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.factory.providers.RecordFactoryProvider" classification="uses" />
+            <depends-on name="java.lang.System" classification="uses" />
+            <depends-on name="org.apache.hadoop.util.ToolRunner" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.client.ClientRMProxy" classification="uses" />
+            <depends-on name="java.lang.Class" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.server.api.protocolrecords.RefreshQueuesResponse" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.server.api.protocolrecords.RefreshNodesResponse" classification="uses" />
+            <depends-on name="java.lang.Integer" classification="uses" />
+            <depends-on name="java.lang.Thread" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.server.api.protocolrecords.RefreshNodesResourcesResponse" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.server.api.protocolrecords.RefreshUserToGroupsMappingsResponse" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.server.api.protocolrecords.RefreshSuperUserGroupsConfigurationResponse" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.server.api.protocolrecords.RefreshAdminAclsResponse" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.server.api.protocolrecords.RefreshServiceAclsResponse" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.server.api.protocolrecords.RefreshClusterMaxPriorityResponse" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.util.resource.Resources" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.server.api.protocolrecords.UpdateNodeResourceResponse" classification="uses" />
+            <depends-on name="org.apache.hadoop.security.UserGroupInformation" classification="uses" />
+            <depends-on name="java.lang.CharSequence" classification="uses" />
+            <depends-on name="com.google.common.collect.ImmutableSet" classification="uses" />
+            <depends-on name="java.lang.Boolean" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.server.api.protocolrecords.AddToClusterNodeLabelsResponse" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.server.api.protocolrecords.RemoveFromClusterNodeLabelsResponse" classification="uses" />
+            <depends-on name="com.google.common.base.Preconditions" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.util.ConverterUtils" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.server.api.protocolrecords.ReplaceLabelsOnNodeResponse" classification="uses" />
+            <depends-on name="java.util.Arrays" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.conf.HAUtil" classification="uses" />
+            <depends-on name="org.apache.hadoop.util.Tool" classification="uses" />
+            <depends-on name="com.google.common.collect.ImmutableMap" classification="uses" />
+            <depends-on name="com.google.common.collect.ImmutableMap$Builder" classification="uses" />
+            <depends-on name="org.apache.hadoop.classification.InterfaceAudience" classification="uses" />
+            <depends-on name="org.apache.hadoop.classification.InterfaceStability" classification="uses" />
+          </dependencies>
+        </type>
+        <type name="org.apache.hadoop.yarn.client.cli.TopCLI$16" classification="class" visibility="default" isFinal="yes">
+          <dependencies count="4">
+            <depends-on name="java.lang.Object" classification="extends" />
+            <depends-on name="java.util.Comparator" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.client.cli.TopCLI$ApplicationInformation" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.client.cli.TopCLI" classification="uses" />
+          </dependencies>
+        </type>
+        <type name="org.apache.hadoop.yarn.client.cli.LogsCLI$PerLogFileInfo" classification="class" visibility="default">
+          <dependencies count="3">
+            <depends-on name="java.lang.Object" classification="extends" />
+            <depends-on name="java.lang.String" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.client.cli.LogsCLI" classification="uses" />
+          </dependencies>
+        </type>
+        <type name="org.apache.hadoop.yarn.client.cli.NodeCLI" classification="class" visibility="public">
+          <dependencies count="46">
+            <depends-on name="org.apache.hadoop.yarn.client.cli.YarnCLI" classification="extends" />
+            <depends-on name="java.lang.String" classification="uses" />
+            <depends-on name="org.apache.commons.cli.MissingArgumentException" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.api.records.NodeState" classification="uses" />
+            <depends-on name="java.lang.IllegalArgumentException" classification="uses" />
+            <depends-on name="java.util.Set" classification="uses" />
+            <depends-on name="org.apache.commons.cli.Options" classification="uses" />
+            <depends-on name="org.apache.commons.cli.Option" classification="uses" />
+            <depends-on name="org.apache.commons.cli.CommandLine" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.api.records.NodeReport" classification="uses" />
+            <depends-on name="java.io.PrintWriter" classification="uses" />
+            <depends-on name="java.util.List" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.api.records.NodeId" classification="uses" />
+            <depends-on name="java.io.ByteArrayOutputStream" classification="uses" />
+            <depends-on name="java.lang.StringBuilder" classification="uses" />
+            <depends-on name="org.apache.hadoop.classification.InterfaceAudience$Private" classification="uses" />
+            <depends-on name="org.apache.hadoop.classification.InterfaceStability$Unstable" classification="uses" />
+            <depends-on name="org.apache.commons.cli.GnuParser" classification="uses" />
+            <depends-on name="java.util.HashSet" classification="uses" />
+            <depends-on name="org.apache.commons.cli.HelpFormatter" classification="uses" />
+            <depends-on name="java.io.OutputStreamWriter" classification="uses" />
+            <depends-on name="java.lang.Object" classification="uses" />
+            <depends-on name="java.util.ArrayList" classification="uses" />
+            <depends-on name="java.util.Date" classification="uses" />
+            <depends-on name="java.lang.Exception" classification="uses" />
+            <depends-on name="java.util.Iterator" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.exceptions.YarnException" classification="uses" />
+            <depends-on name="java.io.IOException" classification="uses" />
+            <depends-on name="java.lang.System" classification="uses" />
+            <depends-on name="java.io.PrintStream" classification="uses" />
+            <depends-on name="org.apache.hadoop.util.ToolRunner" classification="uses" />
+            <depends-on name="org.apache.hadoop.util.Tool" classification="uses" />
+            <depends-on name="org.apache.hadoop.util.StringUtils" classification="uses" />
+            <depends-on name="java.nio.charset.Charset" classification="uses" />
+            <depends-on name="java.io.OutputStream" classification="uses" />
+            <depends-on name="java.io.Writer" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.client.api.YarnClient" classification="uses" />
+            <depends-on name="java.lang.Integer" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.api.records.Resource" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.api.records.ResourceUtilization" classification="uses" />
+            <depends-on name="java.util.Collection" classification="uses" />
+            <depends-on name="java.util.Collections" classification="uses" />
+            <depends-on name="org.apache.commons.lang.StringUtils" classification="uses" />
+            <depends-on name="org.apache.commons.lang.time.DateFormatUtils" classification="uses" />
+            <depends-on name="org.apache.hadoop.classification.InterfaceAudience" classification="uses" />
+            <depends-on name="org.apache.hadoop.classification.InterfaceStability" classification="uses" />
+          </dependencies>
+        </type>
+        <type name="org.apache.hadoop.yarn.client.cli.TopCLI$NodesInformation" classification="class" visibility="default">
+          <dependencies count="3">
+            <depends-on name="java.lang.Object" classification="extends" />
+            <depends-on name="org.apache.hadoop.yarn.client.cli.TopCLI$1" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.client.cli.TopCLI" classification="uses" />
+          </dependencies>
+        </type>
+        <type name="org.apache.hadoop.yarn.client.cli.TopCLI$DisplayScreen" classification="enum" visibility="default" isFinal="yes">
+          <dependencies count="5">
+            <depends-on name="java.lang.Enum" classification="extends" />
+            <depends-on name="java.lang.String" classification="uses" />
+            <depends-on name="java.lang.Object" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.client.cli.TopCLI" classification="uses" />
+            <depends-on name="java.lang.Class" classification="uses" />
+          </dependencies>
+        </type>
+        <type name="org.apache.hadoop.yarn.client.cli.TopCLI$4" classification="class" visibility="default" isFinal="yes">
+          <dependencies count="5">
+            <depends-on name="java.lang.Object" classification="extends" />
+            <depends-on name="java.util.Comparator" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.client.cli.TopCLI$ApplicationInformation" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.client.cli.TopCLI" classification="uses" />
+            <depends-on name="java.lang.String" classification="uses" />
+          </dependencies>
+        </type>
+        <type name="org.apache.hadoop.yarn.client.cli.TopCLI$QueueMetrics" classification="class" visibility="default">
+          <dependencies count="3">
+            <depends-on name="java.lang.Object" classification="extends" />
+            <depends-on name="org.apache.hadoop.yarn.client.cli.TopCLI$1" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.client.cli.TopCLI" classification="uses" />
+          </dependencies>
+        </type>
+        <type name="org.apache.hadoop.yarn.client.cli.YarnCLI" classification="class" visibility="public" isAbstract="yes">
+          <dependencies count="11">
+            <depends-on name="org.apache.hadoop.conf.Configured" classification="extends" />
+            <depends-on name="org.apache.hadoop.util.Tool" classification="uses" />
+            <depends-on name="java.lang.String" classification="uses" />
+            <depends-on name="java.io.PrintStream" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.client.api.YarnClient" classification="uses" />
+            <depends-on name="org.apache.hadoop.classification.InterfaceAudience$Private" classification="uses" />
+            <depends-on name="org.apache.hadoop.classification.InterfaceStability$Unstable" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.conf.YarnConfiguration" classification="uses" />
+            <depends-on name="org.apache.hadoop.conf.Configuration" classification="uses" />
+            <depends-on name="org.apache.hadoop.classification.InterfaceAudience" classification="uses" />
+            <depends-on name="org.apache.hadoop.classification.InterfaceStability" classification="uses" />
+          </dependencies>
+        </type>
+        <type name="org.apache.hadoop.yarn.client.cli.package-info" classification="interface" visibility="default" isAbstract="yes">
+          <dependencies count="3">
+            <depends-on name="java.lang.Object" classification="extends" />
+            <depends-on name="org.apache.hadoop.classification.InterfaceAudience$Public" classification="uses" />
+            <depends-on name="org.apache.hadoop.classification.InterfaceAudience" classification="uses" />
+          </dependencies>
+        </type>
+        <type name="org.apache.hadoop.yarn.client.cli.TopCLI$KeyboardMonitor" classification="class" visibility="default">
+          <dependencies count="13">
+            <depends-on name="java.lang.Thread" classification="extends" />
+            <depends-on name="org.apache.hadoop.yarn.client.cli.TopCLI" classification="uses" />
+            <depends-on name="java.lang.Exception" classification="uses" />
+            <depends-on name="java.lang.String" classification="uses" />
+            <depends-on name="java.util.Scanner" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.client.cli.TopCLI$1" classification="uses" />
+            <depends-on name="java.lang.System" classification="uses" />
+            <depends-on name="java.io.InputStream" classification="uses" />
+            <depends-on name="java.util.concurrent.atomic.AtomicBoolean" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.client.cli.TopCLI$DisplayScreen" classification="uses" />
+            <depends-on name="org.apache.commons.logging.Log" classification="uses" />
+            <depends-on name="java.lang.Object" classification="uses" />
+            <depends-on name="java.lang.Throwable" classification="uses" />
+          </dependencies>
+        </type>
+        <type name="org.apache.hadoop.yarn.client.cli.TopCLI$12" classification="class" visibility="default" isFinal="yes">
+          <dependencies count="5">
+            <depends-on name="java.lang.Object" classification="extends" />
+            <depends-on name="java.util.Comparator" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.client.cli.TopCLI$ApplicationInformation" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.client.cli.TopCLI" classification="uses" />
+            <depends-on name="java.lang.Long" classification="uses" />
+          </dependencies>
+        </type>
+        <type name="org.apache.hadoop.yarn.client.cli.TopCLI$2" classification="class" visibility="default" isFinal="yes">
+          <dependencies count="5">
+            <depends-on name="java.lang.Object" classification="extends" />
+            <depends-on name="java.util.Comparator" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.client.cli.TopCLI$ApplicationInformation" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.client.cli.TopCLI" classification="uses" />
+            <depends-on name="java.lang.String" classification="uses" />
+          </dependencies>
+        </type>
+        <type name="org.apache.hadoop.yarn.client.cli.TopCLI$ColumnInformation" classification="class" visibility="default">
+          <dependencies count="3">
+            <depends-on name="java.lang.Object" classification="extends" />
+            <depends-on name="java.lang.String" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.client.cli.TopCLI" classification="uses" />
+          </dependencies>
+        </type>
+        <type name="org.apache.hadoop.yarn.client.cli.TopCLI$7" classification="class" visibility="default" isFinal="yes">
+          <dependencies count="5">
+            <depends-on name="java.lang.Object" classification="extends" />
+            <depends-on name="java.util.Comparator" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.client.cli.TopCLI$ApplicationInformation" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.client.cli.TopCLI" classification="uses" />
+            <depends-on name="java.lang.Long" classification="uses" />
+          </dependencies>
+        </type>
+        <type name="org.apache.hadoop.yarn.client.cli.ClusterCLI" classification="class" visibility="public">
+          <dependencies count="34">
+            <depends-on name="org.apache.hadoop.yarn.client.cli.YarnCLI" classification="extends" />
+            <depends-on name="java.lang.String" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.nodelabels.CommonNodeLabelsManager" classification="uses" />
+            <depends-on name="org.apache.commons.cli.MissingArgumentException" classification="uses" />
+            <depends-on name="org.apache.commons.cli.Options" classification="uses" />
+            <depends-on name="org.apache.commons.cli.CommandLine" classification="uses" />
+            <depends-on name="java.util.List" classification="uses" />
+            <depends-on name="org.apache.hadoop.conf.Configuration" classification="uses" />
+            <depends-on name="com.google.common.annotations.VisibleForTesting" classification="uses" />
+            <depends-on name="java.io.ByteArrayOutputStream" classification="uses" />
+            <depends-on name="java.io.PrintWriter" classification="uses" />
+            <depends-on name="org.apache.hadoop.classification.InterfaceAudience$Private" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.conf.YarnConfiguration" classification="uses" />
+            <depends-on name="org.apache.commons.cli.GnuParser" classification="uses" />
+            <depends-on name="java.util.ArrayList" classification="uses" />
+            <depends-on name="java.lang.Object" classification="uses" />
+            <depends-on name="java.io.OutputStreamWriter" classification="uses" />
+            <depends-on name="org.apache.commons.cli.HelpFormatter" classification="uses" />
+            <depends-on name="java.lang.Exception" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.exceptions.YarnException" classification="uses" />
+            <depends-on name="java.io.IOException" classification="uses" />
+            <depends-on name="java.io.UnsupportedEncodingException" classification="uses" />
+            <depends-on name="java.lang.System" classification="uses" />
+            <depends-on name="java.io.PrintStream" classification="uses" />
+            <depends-on name="org.apache.hadoop.util.ToolRunner" classification="uses" />
+            <depends-on name="org.apache.hadoop.util.Tool" classification="uses" />
+            <depends-on name="java.util.Collection" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.client.api.YarnClient" classification="uses" />
+            <depends-on name="java.util.Iterator" classification="uses" />
+            <depends-on name="org.apache.commons.lang.StringUtils" classification="uses" />
+            <depends-on name="java.nio.charset.Charset" classification="uses" />
+            <depends-on name="java.io.OutputStream" classification="uses" />
+            <depends-on name="java.io.Writer" classification="uses" />
+            <depends-on name="org.apache.hadoop.classification.InterfaceAudience" classification="uses" />
+          </dependencies>
+        </type>
+        <type name="org.apache.hadoop.yarn.client.cli.TopCLI$13" classification="class" visibility="default" isFinal="yes">
+          <dependencies count="5">
+            <depends-on name="java.lang.Object" classification="extends" />
+            <depends-on name="java.util.Comparator" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.client.cli.TopCLI$ApplicationInformation" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.client.cli.TopCLI" classification="uses" />
+            <depends-on name="java.lang.Float" classification="uses" />
+          </dependencies>
+        </type>
+      </namespace>
+      <namespace name="org.apache.hadoop.yarn.proto">
+        <type name="org.apache.hadoop.yarn.proto.YarnSecurityTestAMRMTokenProtos$AMRMTokenIdentifierForTestProto" classification="class" visibility="public" isFinal="yes">
+          <dependencies count="34">
+            <depends-on name="com.google.protobuf.GeneratedMessage" classification="extends" />
+            <depends-on name="org.apache.hadoop.yarn.proto.YarnSecurityTestAMRMTokenProtos$AMRMTokenIdentifierForTestProtoOrBuilder" classification="implements" />
+            <depends-on name="com.google.protobuf.UnknownFieldSet" classification="uses" />
+            <depends-on name="com.google.protobuf.Parser" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.proto.YarnProtos$ApplicationAttemptIdProto" classification="uses" />
+            <depends-on name="java.lang.Object" classification="uses" />
+            <depends-on name="com.google.protobuf.GeneratedMessage$Builder" classification="uses" />
+            <depends-on name="com.google.protobuf.CodedInputStream" classification="uses" />
+            <depends-on name="com.google.protobuf.ExtensionRegistryLite" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.proto.YarnProtos$ApplicationAttemptIdProto$Builder" classification="uses" />
+            <depends-on name="com.google.protobuf.InvalidProtocolBufferException" classification="uses" />
+            <depends-on name="java.io.IOException" classification="uses" />
+            <depends-on name="com.google.protobuf.UnknownFieldSet$Builder" classification="uses" />
+            <depends-on name="com.google.protobuf.Descriptors$Descriptor" classification="uses" />
+            <depends-on name="com.google.protobuf.GeneratedMessage$FieldAccessorTable" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.proto.YarnProtos$ApplicationAttemptIdProtoOrBuilder" classification="uses" />
+            <depends-on name="java.lang.String" classification="uses" />
+            <depends-on name="com.google.protobuf.ByteString" classification="uses" />
+            <depends-on name="com.google.protobuf.CodedOutputStream" classification="uses" />
+            <depends-on name="java.io.InputStream" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.proto.YarnSecurityTestAMRMTokenProtos$AMRMTokenIdentifierForTestProto$Builder" classification="uses" />
+            <depends-on name="com.google.protobuf.GeneratedMessage$BuilderParent" classification="uses" />
+            <depends-on name="com.google.protobuf.Message$Builder" classification="uses" />
+            <depends-on name="com.google.protobuf.MessageLite$Builder" classification="uses" />
+            <depends-on name="com.google.protobuf.MessageLite" classification="uses" />
+            <depends-on name="com.google.protobuf.Message" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.proto.YarnSecurityTestAMRMTokenProtos$1" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.proto.YarnSecurityTestAMRMTokenProtos$AMRMTokenIdentifierForTestProto$1" classification="uses" />
+            <depends-on name="java.lang.Throwable" classification="uses" />
+            <depends-on name="java.io.ObjectStreamException" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.proto.YarnProtos" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.proto.YarnSecurityTestAMRMTokenProtos" classification="uses" />
+            <depends-on name="java.lang.Class" classification="uses" />
+            <depends-on name="com.google.protobuf.Descriptors" classification="uses" />
+          </dependencies>
+        </type>
+        <type name="org.apache.hadoop.yarn.proto.YarnSecurityTestAMRMTokenProtos" classification="class" visibility="public" isFinal="yes">
+          <dependencies count="13">
+            <depends-on name="java.lang.Object" classification="extends" />
+            <depends-on name="com.google.protobuf.Descriptors$Descriptor" classification="uses" />
+            <depends-on name="com.google.protobuf.GeneratedMessage$FieldAccessorTable" classification="uses" />
+            <depends-on name="com.google.protobuf.Descriptors$FileDescriptor" classification="uses" />
+            <depends-on name="com.google.protobuf.ExtensionRegistry" classification="uses" />
+            <depends-on name="java.lang.String" classification="uses" />
+            <depends-on name="com.google.protobuf.Descriptors$FileDescriptor$InternalDescriptorAssigner" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.proto.YarnSecurityTestAMRMTokenProtos$1" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.proto.YarnSecurityTestAMRMTokenProtos$AMRMTokenIdentifierForTestProto" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.proto.YarnSecurityTestAMRMTokenProtos$AMRMTokenIdentifierForTestProtoOrBuilder" classification="uses" />
+            <depends-on name="com.google.protobuf.Descriptors" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.proto.YarnProtos" classification="uses" />
+            <depends-on name="com.google.protobuf.GeneratedMessage" classification="uses" />
+          </dependencies>
+        </type>
+        <type name="org.apache.hadoop.yarn.proto.YarnSecurityTestAMRMTokenProtos$AMRMTokenIdentifierForTestProto$1" classification="class" visibility="default" isFinal="yes">
+          <dependencies count="8">
+            <depends-on name="com.google.protobuf.AbstractParser" classification="extends" />
+            <depends-on name="com.google.protobuf.CodedInputStream" classification="uses" />
+            <depends-on name="com.google.protobuf.ExtensionRegistryLite" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.proto.YarnSecurityTestAMRMTokenProtos$AMRMTokenIdentifierForTestProto" classification="uses" />
+            <depends-on name="java.lang.Object" classification="uses" />
+            <depends-on name="com.google.protobuf.InvalidProtocolBufferException" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.proto.YarnSecurityTestAMRMTokenProtos" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.proto.YarnSecurityTestAMRMTokenProtos$1" classification="uses" />
+          </dependencies>
+        </type>
+        <type name="org.apache.hadoop.yarn.proto.YarnSecurityTestAMRMTokenProtos$AMRMTokenIdentifierForTestProtoOrBuilder" classification="interface" visibility="public" isAbstract="yes">
+          <dependencies count="8">
+            <depends-on name="java.lang.Object" classification="extends" />
+            <depends-on name="com.google.protobuf.MessageOrBuilder" classification="extends" />
+            <depends-on name="org.apache.hadoop.yarn.proto.YarnProtos$ApplicationAttemptIdProto" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.proto.YarnProtos$ApplicationAttemptIdProtoOrBuilder" classification="uses" />
+            <depends-on name="java.lang.String" classification="uses" />
+            <depends-on name="com.google.protobuf.ByteString" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.proto.YarnSecurityTestAMRMTokenProtos" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.proto.YarnProtos" classification="uses" />
+          </dependencies>
+        </type>
+        <type name="org.apache.hadoop.yarn.proto.YarnSecurityTestAMRMTokenProtos$1" classification="class" visibility="default" isFinal="yes">
+          <dependencies count="11">
+            <depends-on name="java.lang.Object" classification="extends" />
+            <depends-on name="com.google.protobuf.Descriptors$FileDescriptor$InternalDescriptorAssigner" classification="uses" />
+            <depends-on name="com.google.protobuf.Descriptors$FileDescriptor" classification="uses" />
+            <depends-on name="com.google.protobuf.ExtensionRegistry" classification="uses" />
+            <depends-on name="com.google.protobuf.Descriptors$Descriptor" classification="uses" />
+            <depends-on name="com.google.protobuf.GeneratedMessage$FieldAccessorTable" classification="uses" />
+            <depends-on name="java.lang.String" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.proto.YarnSecurityTestAMRMTokenProtos" classification="uses" />
+            <depends-on name="java.util.List" classification="uses" />
+            <depends-on name="com.google.protobuf.Descriptors" classification="uses" />
+            <depends-on name="com.google.protobuf.GeneratedMessage" classification="uses" />
+          </dependencies>
+        </type>
+        <type name="org.apache.hadoop.yarn.proto.YarnSecurityTestAMRMTokenProtos$AMRMTokenIdentifierForTestProto$Builder" classification="class" visibility="public" isFinal="yes">
+          <dependencies count="38">
+            <depends-on name="com.google.protobuf.GeneratedMessage$Builder" classification="extends" />
+            <depends-on name="org.apache.hadoop.yarn.proto.YarnSecurityTestAMRMTokenProtos$AMRMTokenIdentifierForTestProtoOrBuilder" classification="implements" />
+            <depends-on name="org.apache.hadoop.yarn.proto.YarnProtos$ApplicationAttemptIdProto" classification="uses" />
+            <depends-on name="com.google.protobuf.SingleFieldBuilder" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.proto.YarnProtos$ApplicationAttemptIdProto$Builder" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.proto.YarnProtos$ApplicationAttemptIdProtoOrBuilder" classification="uses" />
+            <depends-on name="java.lang.Object" classification="uses" />
+            <depends-on name="com.google.protobuf.Descriptors$Descriptor" classification="uses" />
+            <depends-on name="com.google.protobuf.GeneratedMessage$FieldAccessorTable" classification="uses" />
+            <depends-on name="com.google.protobuf.GeneratedMessage$BuilderParent" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.proto.YarnSecurityTestAMRMTokenProtos$AMRMTokenIdentifierForTestProto" classification="uses" />
+            <depends-on name="com.google.protobuf.Message" classification="uses" />
+            <depends-on name="com.google.protobuf.CodedInputStream" classification="uses" />
+            <depends-on name="com.google.protobuf.ExtensionRegistryLite" classification="uses" />
+            <depends-on name="com.google.protobuf.InvalidProtocolBufferException" classification="uses" />
+            <depends-on name="java.lang.String" classification="uses" />
+            <depends-on name="com.google.protobuf.ByteString" classification="uses" />
+            <depends-on name="com.google.protobuf.AbstractMessage$Builder" classification="uses" />
+            <depends-on name="com.google.protobuf.Message$Builder" classification="uses" />
+            <depends-on name="com.google.protobuf.MessageLite$Builder" classification="uses" />
+            <depends-on name="com.google.protobuf.MessageLite" classification="uses" />
+            <depends-on name="com.google.protobuf.AbstractMessageLite$Builder" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.proto.YarnSecurityTestAMRMTokenProtos$1" classification="uses" />
+            <depends-on name="java.lang.NullPointerException" classification="uses" />
+            <depends-on name="java.lang.Throwable" classification="uses" />
+            <depends-on name="java.io.IOException" classification="uses" />
+            <depends-on name="java.lang.CloneNotSupportedException" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.proto.YarnSecurityTestAMRMTokenProtos" classification="uses" />
+            <depends-on name="java.lang.Class" classification="uses" />
+            <depends-on name="com.google.protobuf.UninitializedMessageException" classification="uses" />
+            <depends-on name="com.google.protobuf.GeneratedMessage" classification="uses" />
+            <depends-on name="org.apache.hadoop.yarn.proto.YarnProtos" classification="uses" />
+            <depends-on name="com.google.protobuf.UnknownFieldSet" classification="uses" />
+            <depends-on name="com.google.protobuf.Parser" classification="uses" />
+            <depends-on name="com.google.protobuf.MessageOrBuilder" classification="uses" />
+            <depends-on name="com.google.protobuf.Descriptors" classification="uses" />
+            <depends-on name="com.google.protobuf.AbstractMessage" classification="uses" />
+            <depends-on name="com.google.protobuf.AbstractMessageLite" classification="uses" />
+          </dependencies>
+        </type>
+      </namespace>
+    </container>
+  </context>
+</ODEM>
