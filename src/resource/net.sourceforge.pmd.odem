@@ -1,0 +1,693 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE ODEM PUBLIC "-//PFSW//DTD ODEM 1.1" "http://pfsw.org/ODEM/schema/dtd/odem-1.1.dtd">
+
+<ODEM version="1">
+  <header>
+    <created-by>
+      <exporter version="1.1.1">org.pf.tools.cda.ext.export.xml.XmlFileODEMExporter</exporter>
+      <provider>Manfred Duchrow Consulting &amp; Software</provider>
+    </created-by>
+  </header>
+  <context name="PMD Workset">
+    <container name="C:/Users/Michael/Documents/Capstone/Asats/pmd-bin-5.5.4/pmd-bin-5.5.4/lib/pmd-core-5.5.4.jar" classification="jar">
+      <namespace name="net.sourceforge.pmd">
+        <type name="net.sourceforge.pmd.RuleSetFactoryCompatibility$RuleSetFilter" classification="class" visibility="default">
+          <dependencies count="9">
+            <depends-on name="java.lang.Object" classification="extends" />
+            <depends-on name="java.util.regex.Pattern" classification="uses" />
+            <depends-on name="java.lang.String" classification="uses" />
+            <depends-on name="java.util.regex.Matcher" classification="uses" />
+            <depends-on name="java.lang.StringBuilder" classification="uses" />
+            <depends-on name="net.sourceforge.pmd.RuleSetFactoryCompatibility" classification="uses" />
+            <depends-on name="java.lang.CharSequence" classification="uses" />
+            <depends-on name="java.util.logging.Logger" classification="uses" />
+            <depends-on name="java.util.logging.Level" classification="uses" />
+          </dependencies>
+        </type>
+        <type name="net.sourceforge.pmd.RulesetsFactoryUtils" classification="class" visibility="public" isFinal="yes">
+          <dependencies count="19">
+            <depends-on name="java.lang.Object" classification="extends" />
+            <depends-on name="java.util.logging.Logger" classification="uses" />
+            <depends-on name="java.lang.String" classification="uses" />
+            <depends-on name="net.sourceforge.pmd.RuleSetFactory" classification="uses" />
+            <depends-on name="net.sourceforge.pmd.RuleSets" classification="uses" />
+            <depends-on name="net.sourceforge.pmd.RuleSetNotFoundException" classification="uses" />
+            <depends-on name="net.sourceforge.pmd.PMDConfiguration" classification="uses" />
+            <depends-on name="net.sourceforge.pmd.Rule" classification="uses" />
+            <depends-on name="java.util.Iterator" classification="uses" />
+            <depends-on name="java.lang.StringBuilder" classification="uses" />
+            <depends-on name="java.lang.IllegalArgumentException" classification="uses" />
+            <depends-on name="java.lang.Throwable" classification="uses" />
+            <depends-on name="java.util.logging.Level" classification="uses" />
+            <depends-on name="java.lang.System" classification="uses" />
+            <depends-on name="net.sourceforge.pmd.benchmark.Benchmark" classification="uses" />
+            <depends-on name="net.sourceforge.pmd.benchmark.Benchmarker" classification="uses" />
+            <depends-on name="net.sourceforge.pmd.RulePriority" classification="uses" />
+            <depends-on name="java.util.Set" classification="uses" />
+            <depends-on name="java.lang.Class" classification="uses" />
+          </dependencies>
+        </type>
+        <type name="net.sourceforge.pmd.RuleViolationComparator" classification="class" visibility="public" isFinal="yes">
+          <dependencies count="5">
+            <depends-on name="java.lang.Object" classification="extends" />
+            <depends-on name="java.util.Comparator" classification="uses" />
+            <depends-on name="net.sourceforge.pmd.RuleViolation" classification="uses" />
+            <depends-on name="java.lang.String" classification="uses" />
+            <depends-on name="net.sourceforge.pmd.Rule" classification="uses" />
+          </dependencies>
+        </type>
+        <type name="net.sourceforge.pmd.NumericPropertyDescriptor" classification="interface" visibility="public" isAbstract="yes">
+          <dependencies count="3">
+            <depends-on name="java.lang.Object" classification="extends" />
+            <depends-on name="net.sourceforge.pmd.PropertyDescriptor" classification="extends" />
+            <depends-on name="java.lang.Number" classification="uses" />
+          </dependencies>
+        </type>
+        <type name="net.sourceforge.pmd.AbstractPropertySource" classification="class" visibility="public" isAbstract="yes">
+          <dependencies count="16">
+            <depends-on name="java.lang.Object" classification="extends" />
+            <depends-on name="net.sourceforge.pmd.PropertySource" classification="implements" />
+            <depends-on name="java.util.List" classification="uses" />
+            <depends-on name="net.sourceforge.pmd.PropertyDescriptor" classification="uses" />
+            <depends-on name="java.util.Map" classification="uses" />
+            <depends-on name="java.util.Set" classification="uses" />
+            <depends-on name="java.util.Iterator" classification="uses" />
+            <depends-on name="java.lang.String" classification="uses" />
+            <depends-on name="java.util.Map$Entry" classification="uses" />
+            <depends-on name="java.util.ArrayList" classification="uses" />
+            <depends-on name="java.util.HashMap" classification="uses" />
+            <depends-on name="java.lang.IllegalArgumentException" classification="uses" />
+            <depends-on name="java.lang.StringBuilder" classification="uses" />
+            <depends-on name="java.util.Collection" classification="uses" />
+            <depends-on name="java.util.Collections" classification="uses" />
+            <depends-on name="net.sourceforge.pmd.util.CollectionUtil" classification="uses" />
+          </dependencies>
+        </type>
+        <type name="net.sourceforge.pmd.RuleSetNotFoundException" classification="class" visibility="public">
+          <dependencies count="2">
+            <depends-on name="java.lang.Exception" classification="extends" />
+            <depends-on name="java.lang.String" classification="uses" />
+          </dependencies>
+        </type>
+        <type name="net.sourceforge.pmd.PMDConfiguration" classification="class" visibility="public">
+          <dependencies count="21">
+            <depends-on name="net.sourceforge.pmd.AbstractConfiguration" classification="extends" />
+            <depends-on name="java.lang.String" classification="uses" />
+            <depends-on name="java.lang.ClassLoader" classification="uses" />
+            <depends-on name="net.sourceforge.pmd.lang.LanguageVersionDiscoverer" classification="uses" />
+            <depends-on name="net.sourceforge.pmd.RulePriority" classification="uses" />
+            <depends-on name="java.util.Properties" classification="uses" />
+            <depends-on name="net.sourceforge.pmd.lang.LanguageVersion" classification="uses" />
+            <depends-on name="java.util.List" classification="uses" />
+            <depends-on name="java.util.Iterator" classification="uses" />
+            <depends-on name="net.sourceforge.pmd.renderers.Renderer" classification="uses" />
+            <depends-on name="net.sourceforge.pmd.util.ClasspathClassLoader" classification="uses" />
+            <depends-on name="java.io.IOException" classification="uses" />
+            <depends-on name="java.lang.Runtime" classification="uses" />
+            <depends-on name="java.lang.Object" classification="uses" />
+            <depends-on name="java.lang.Class" classification="uses" />
+            <depends-on name="java.util.Arrays" classification="uses" />
+            <depends-on name="net.sourceforge.pmd.lang.LanguageRegistry" classification="uses" />
+            <depends-on name="net.sourceforge.pmd.lang.Language" classification="uses" />
+            <depends-on name="net.sourceforge.pmd.renderers.RendererFactory" classification="uses" />
+            <depends-on name="net.sourceforge.pmd.util.IOUtil" classification="uses" />
+            <depends-on name="java.io.Writer" classification="uses" />
+          </dependencies>
+        </type>
+        <type name="net.sourceforge.pmd.RuleSetReferenceId" classification="class" visibility="public">
+          <dependencies count="22">
+            <depends-on name="java.lang.Object" classification="extends" />
+            <depends-on name="java.lang.String" classification="uses" />
+            <depends-on name="java.io.InputStream" classification="uses" />
+            <depends-on name="net.sourceforge.pmd.RuleSetNotFoundException" classification="uses" />
+            <depends-on name="java.net.HttpURLConnection" classification="uses" />
+            <depends-on name="java.io.IOException" classification="uses" />
+            <depends-on name="java.util.List" classification="uses" />
+            <depends-on name="java.lang.ClassLoader" classification="uses" />
+            <depends-on name="java.lang.IllegalArgumentException" classification="uses" />
+            <depends-on name="java.lang.StringBuilder" classification="uses" />
+            <depends-on name="java.net.URL" classification="uses" />
+            <depends-on name="java.util.ArrayList" classification="uses" />
+            <depends-on name="org.apache.commons.lang3.StringUtils" classification="uses" />
+            <depends-on name="java.io.File" classification="uses" />
+            <depends-on name="java.lang.CharSequence" classification="uses" />
+            <depends-on name="java.lang.Class" classification="uses" />
+            <depends-on name="net.sourceforge.pmd.util.ResourceLoader" classification="uses" />
+            <depends-on name="org.apache.commons.io.IOUtils" classification="uses" />
+            <depends-on name="java.lang.Math" classification="uses" />
+            <depends-on name="java.net.URLConnection" classification="uses" />
+            <depends-on name="net.sourceforge.pmd.util.StringUtil" classification="uses" />
+            <depends-on name="java.lang.System" classification="uses" />
+          </dependencies>
+        </type>
+        <type name="net.sourceforge.pmd.PropertySource" classification="interface" visibility="public" isAbstract="yes">
+          <dependencies count="7">
+            <depends-on name="java.lang.Object" classification="extends" />
+            <depends-on name="net.sourceforge.pmd.PropertyDescriptor" classification="uses" />
+            <depends-on name="java.lang.String" classification="uses" />
+            <depends-on name="java.util.List" classification="uses" />
+            <depends-on name="java.util.Map" classification="uses" />
+            <depends-on name="java.util.Set" classification="uses" />
+            <depends-on name="java.lang.IllegalArgumentException" classification="uses" />
+          </dependencies>
+        </type>
+        <type name="net.sourceforge.pmd.RulePriority" classification="enum" visibility="public" isFinal="yes">
+          <dependencies count="5">
+            <depends-on name="java.lang.Enum" classification="extends" />
+            <depends-on name="java.lang.String" classification="uses" />
+            <depends-on name="java.lang.ArrayIndexOutOfBoundsException" classification="uses" />
+            <depends-on name="java.lang.Object" classification="uses" />
+            <depends-on name="java.lang.Class" classification="uses" />
+          </dependencies>
+        </type>
+        <type name="net.sourceforge.pmd.Report" classification="class" visibility="public">
+          <dependencies count="32">
+            <depends-on name="java.lang.Object" classification="extends" />
+            <depends-on name="java.lang.Iterable" classification="uses" />
+            <depends-on name="net.sourceforge.pmd.lang.dfa.report.ReportTree" classification="uses" />
+            <depends-on name="java.util.List" classification="uses" />
+            <depends-on name="net.sourceforge.pmd.RuleViolation" classification="uses" />
+            <depends-on name="java.util.Set" classification="uses" />
+            <depends-on name="net.sourceforge.pmd.stat.Metric" classification="uses" />
+            <depends-on name="net.sourceforge.pmd.SynchronizedReportListener" classification="uses" />
+            <depends-on name="net.sourceforge.pmd.Report$ProcessingError" classification="uses" />
+            <depends-on name="net.sourceforge.pmd.Report$RuleConfigurationError" classification="uses" />
+            <depends-on name="java.util.Map" classification="uses" />
+            <depends-on name="java.lang.Integer" classification="uses" />
+            <depends-on name="java.lang.String" classification="uses" />
+            <depends-on name="net.sourceforge.pmd.Report$SuppressedViolation" classification="uses" />
+            <depends-on name="net.sourceforge.pmd.RuleContext" classification="uses" />
+            <depends-on name="java.util.Iterator" classification="uses" />
+            <depends-on name="net.sourceforge.pmd.ReportListener" classification="uses" />
+            <depends-on name="java.util.ArrayList" classification="uses" />
+            <depends-on name="java.util.HashSet" classification="uses" />
+            <depends-on name="java.util.HashMap" classification="uses" />
+            <depends-on name="java.io.File" classification="uses" />
+            <depends-on name="java.lang.StringBuilder" classification="uses" />
+            <depends-on name="net.sourceforge.pmd.Report$ReadableDuration" classification="uses" />
+            <depends-on name="net.sourceforge.pmd.util.StringUtil" classification="uses" />
+            <depends-on name="net.sourceforge.pmd.util.NumericConstants" classification="uses" />
+            <depends-on name="net.sourceforge.pmd.Rule" classification="uses" />
+            <depends-on name="net.sourceforge.pmd.RuleViolationComparator" classification="uses" />
+            <depends-on name="java.util.Collections" classification="uses" />
+            <depends-on name="java.util.Comparator" classification="uses" />
+            <depends-on name="net.sourceforge.pmd.util.EmptyIterator" classification="uses" />
+            <depends-on name="java.lang.System" classification="uses" />
+            <depends-on name="java.util.Collection" classification="uses" />
+          </dependencies>
+        </type>
+        <type name="net.sourceforge.pmd.PMDException" classification="class" visibility="public">
+          <dependencies count="3">
+            <depends-on name="java.lang.Exception" classification="extends" />
+            <depends-on name="java.lang.String" classification="uses" />
+            <depends-on name="java.lang.Throwable" classification="uses" />
+          </dependencies>
+        </type>
+        <type name="net.sourceforge.pmd.PropertyDescriptorFields" classification="class" visibility="public">
+          <dependencies count="2">
+            <depends-on name="java.lang.Object" classification="extends" />
+            <depends-on name="java.lang.String" classification="uses" />
+          </dependencies>
+        </type>
+        <type name="net.sourceforge.pmd.Report$ReadableDuration" classification="class" visibility="public">
+          <dependencies count="4">
+            <depends-on name="java.lang.Object" classification="extends" />
+            <depends-on name="java.lang.String" classification="uses" />
+            <depends-on name="net.sourceforge.pmd.util.DateTimeUtil" classification="uses" />
+            <depends-on name="net.sourceforge.pmd.Report" classification="uses" />
+          </dependencies>
+        </type>
+        <type name="net.sourceforge.pmd.Report$SuppressedViolation" classification="class" visibility="public">
+          <dependencies count="4">
+            <depends-on name="java.lang.Object" classification="extends" />
+            <depends-on name="net.sourceforge.pmd.RuleViolation" classification="uses" />
+            <depends-on name="java.lang.String" classification="uses" />
+            <depends-on name="net.sourceforge.pmd.Report" classification="uses" />
+          </dependencies>
+        </type>
+        <type name="net.sourceforge.pmd.RuleSet" classification="class" visibility="public">
+          <dependencies count="31">
+            <depends-on name="java.lang.Object" classification="extends" />
+            <depends-on name="java.util.logging.Logger" classification="uses" />
+            <depends-on name="java.lang.String" classification="uses" />
+            <depends-on name="java.util.List" classification="uses" />
+            <depends-on name="net.sourceforge.pmd.Rule" classification="uses" />
+            <depends-on name="net.sourceforge.pmd.util.filter.Filter" classification="uses" />
+            <depends-on name="java.io.File" classification="uses" />
+            <depends-on name="java.util.Iterator" classification="uses" />
+            <depends-on name="net.sourceforge.pmd.lang.rule.RuleReference" classification="uses" />
+            <depends-on name="net.sourceforge.pmd.RuleSetReference" classification="uses" />
+            <depends-on name="java.util.Collection" classification="uses" />
+            <depends-on name="net.sourceforge.pmd.lang.Language" classification="uses" />
+            <depends-on name="net.sourceforge.pmd.RuleContext" classification="uses" />
+            <depends-on name="net.sourceforge.pmd.lang.ast.Node" classification="uses" />
+            <depends-on name="java.lang.RuntimeException" classification="uses" />
+            <depends-on name="net.sourceforge.pmd.lang.LanguageVersion" classification="uses" />
+            <depends-on name="java.util.ArrayList" classification="uses" />
+            <depends-on name="java.lang.IllegalArgumentException" classification="uses" />
+            <depends-on name="java.util.HashSet" classification="uses" />
+            <depends-on name="java.lang.StringBuilder" classification="uses" />
+            <depends-on name="net.sourceforge.pmd.util.StringUtil" classification="uses" />
+            <depends-on name="java.util.Arrays" classification="uses" />
+            <depends-on name="java.util.Set" classification="uses" />
+            <depends-on name="net.sourceforge.pmd.util.filter.Filters" classification="uses" />
+            <depends-on name="java.lang.System" classification="uses" />
+            <depends-on name="net.sourceforge.pmd.benchmark.Benchmark" classification="uses" />
+            <depends-on name="net.sourceforge.pmd.benchmark.Benchmarker" classification="uses" />
+            <depends-on name="java.util.logging.Level" classification="uses" />
+            <depends-on name="java.lang.Throwable" classification="uses" />
+            <depends-on name="net.sourceforge.pmd.util.CollectionUtil" classification="uses" />
+            <depends-on name="java.lang.Class" classification="uses" />
+          </dependencies>
+        </type>
+        <type name="net.sourceforge.pmd.RuleSetFactoryCompatibility" classification="class" visibility="public">
+          <dependencies count="17">
+            <depends-on name="java.lang.Object" classification="extends" />
+            <depends-on name="java.util.logging.Logger" classification="uses" />
+            <depends-on name="java.util.List" classification="uses" />
+            <depends-on name="net.sourceforge.pmd.RuleSetFactoryCompatibility$RuleSetFilter" classification="uses" />
+            <depends-on name="java.util.regex.Pattern" classification="uses" />
+            <depends-on name="java.lang.String" classification="uses" />
+            <depends-on name="java.io.InputStream" classification="uses" />
+            <depends-on name="java.io.Reader" classification="uses" />
+            <depends-on name="java.util.Iterator" classification="uses" />
+            <depends-on name="java.util.regex.Matcher" classification="uses" />
+            <depends-on name="java.util.LinkedList" classification="uses" />
+            <depends-on name="java.io.StringReader" classification="uses" />
+            <depends-on name="java.io.IOException" classification="uses" />
+            <depends-on name="org.apache.commons.io.IOUtils" classification="uses" />
+            <depends-on name="java.nio.charset.Charset" classification="uses" />
+            <depends-on name="java.lang.CharSequence" classification="uses" />
+            <depends-on name="java.lang.Class" classification="uses" />
+          </dependencies>
+        </type>
+        <type name="net.sourceforge.pmd.PMD$2" classification="class" visibility="default" isFinal="yes">
+          <dependencies count="7">
+            <depends-on name="java.lang.Object" classification="extends" />
+            <depends-on name="java.util.Comparator" classification="uses" />
+            <depends-on name="java.lang.String" classification="uses" />
+            <depends-on name="net.sourceforge.pmd.util.datasource.DataSource" classification="uses" />
+            <depends-on name="net.sourceforge.pmd.PMD" classification="uses" />
+            <depends-on name="net.sourceforge.pmd.PMDConfiguration" classification="uses" />
+            <depends-on name="java.util.List" classification="uses" />
+          </dependencies>
+        </type>
+        <type name="net.sourceforge.pmd.SourceCodeProcessor" classification="class" visibility="public">
+          <dependencies count="32">
+            <depends-on name="java.lang.Object" classification="extends" />
+            <depends-on name="net.sourceforge.pmd.PMDConfiguration" classification="uses" />
+            <depends-on name="java.io.InputStream" classification="uses" />
+            <depends-on name="net.sourceforge.pmd.RuleSets" classification="uses" />
+            <depends-on name="net.sourceforge.pmd.RuleContext" classification="uses" />
+            <depends-on name="java.io.UnsupportedEncodingException" classification="uses" />
+            <depends-on name="java.io.Reader" classification="uses" />
+            <depends-on name="net.sourceforge.pmd.lang.ast.ParseException" classification="uses" />
+            <depends-on name="java.lang.Exception" classification="uses" />
+            <depends-on name="net.sourceforge.pmd.lang.Parser" classification="uses" />
+            <depends-on name="net.sourceforge.pmd.lang.ast.Node" classification="uses" />
+            <depends-on name="net.sourceforge.pmd.lang.LanguageVersionHandler" classification="uses" />
+            <depends-on name="net.sourceforge.pmd.lang.LanguageVersion" classification="uses" />
+            <depends-on name="net.sourceforge.pmd.lang.Language" classification="uses" />
+            <depends-on name="net.sourceforge.pmd.lang.VisitorStarter" classification="uses" />
+            <depends-on name="java.util.List" classification="uses" />
+            <depends-on name="java.io.InputStreamReader" classification="uses" />
+            <depends-on name="net.sourceforge.pmd.PMDException" classification="uses" />
+            <depends-on name="java.lang.StringBuilder" classification="uses" />
+            <depends-on name="java.lang.Throwable" classification="uses" />
+            <depends-on name="java.lang.String" classification="uses" />
+            <depends-on name="net.sourceforge.pmd.lang.xpath.Initializer" classification="uses" />
+            <depends-on name="java.io.File" classification="uses" />
+            <depends-on name="org.apache.commons.io.IOUtils" classification="uses" />
+            <depends-on name="java.lang.System" classification="uses" />
+            <depends-on name="net.sourceforge.pmd.Report" classification="uses" />
+            <depends-on name="java.util.Map" classification="uses" />
+            <depends-on name="net.sourceforge.pmd.benchmark.Benchmark" classification="uses" />
+            <depends-on name="net.sourceforge.pmd.benchmark.Benchmarker" classification="uses" />
+            <depends-on name="java.lang.ClassLoader" classification="uses" />
+            <depends-on name="net.sourceforge.pmd.PMD" classification="uses" />
+            <depends-on name="java.util.Collections" classification="uses" />
+          </dependencies>
+        </type>
+        <type name="net.sourceforge.pmd.RuleContext" classification="class" visibility="public">
+          <dependencies count="9">
+            <depends-on name="java.lang.Object" classification="extends" />
+            <depends-on name="net.sourceforge.pmd.Report" classification="uses" />
+            <depends-on name="java.io.File" classification="uses" />
+            <depends-on name="java.lang.String" classification="uses" />
+            <depends-on name="net.sourceforge.pmd.lang.LanguageVersion" classification="uses" />
+            <depends-on name="java.util.concurrent.ConcurrentMap" classification="uses" />
+            <depends-on name="java.util.concurrent.ConcurrentHashMap" classification="uses" />
+            <depends-on name="java.lang.IllegalArgumentException" classification="uses" />
+            <depends-on name="java.util.List" classification="uses" />
+          </dependencies>
+        </type>
+        <type name="net.sourceforge.pmd.Report$RuleConfigurationError" classification="class" visibility="public">
+          <dependencies count="4">
+            <depends-on name="java.lang.Object" classification="extends" />
+            <depends-on name="net.sourceforge.pmd.Rule" classification="uses" />
+            <depends-on name="java.lang.String" classification="uses" />
+            <depends-on name="net.sourceforge.pmd.Report" classification="uses" />
+          </dependencies>
+        </type>
+        <type name="net.sourceforge.pmd.PropertyDescriptorFactory" classification="interface" visibility="public" isAbstract="yes">
+          <dependencies count="6">
+            <depends-on name="java.lang.Object" classification="extends" />
+            <depends-on name="java.lang.Class" classification="uses" />
+            <depends-on name="java.util.Map" classification="uses" />
+            <depends-on name="java.lang.String" classification="uses" />
+            <depends-on name="java.lang.Boolean" classification="uses" />
+            <depends-on name="net.sourceforge.pmd.PropertyDescriptor" classification="uses" />
+          </dependencies>
+        </type>
+        <type name="net.sourceforge.pmd.RuleSets" classification="class" visibility="public">
+          <dependencies count="15">
+            <depends-on name="java.lang.Object" classification="extends" />
+            <depends-on name="java.util.Collection" classification="uses" />
+            <depends-on name="net.sourceforge.pmd.RuleSet" classification="uses" />
+            <depends-on name="net.sourceforge.pmd.RuleChain" classification="uses" />
+            <depends-on name="java.util.Iterator" classification="uses" />
+            <depends-on name="java.util.Set" classification="uses" />
+            <depends-on name="net.sourceforge.pmd.Rule" classification="uses" />
+            <depends-on name="java.io.File" classification="uses" />
+            <depends-on name="net.sourceforge.pmd.RuleContext" classification="uses" />
+            <depends-on name="java.util.List" classification="uses" />
+            <depends-on name="net.sourceforge.pmd.lang.ast.Node" classification="uses" />
+            <depends-on name="net.sourceforge.pmd.lang.Language" classification="uses" />
+            <depends-on name="java.lang.String" classification="uses" />
+            <depends-on name="java.util.ArrayList" classification="uses" />
+            <depends-on name="java.util.HashSet" classification="uses" />
+          </dependencies>
+        </type>
+        <type name="net.sourceforge.pmd.RuleSetWriter" classification="class" visibility="public">
+          <dependencies count="48">
+            <depends-on name="java.lang.Object" classification="extends" />
+            <depends-on name="java.lang.String" classification="uses" />
+            <depends-on name="java.io.OutputStream" classification="uses" />
+            <depends-on name="org.w3c.dom.Document" classification="uses" />
+            <depends-on name="java.util.Set" classification="uses" />
+            <depends-on name="net.sourceforge.pmd.RuleSet" classification="uses" />
+            <depends-on name="java.lang.IllegalArgumentException" classification="uses" />
+            <depends-on name="javax.xml.parsers.DocumentBuilderFactory" classification="uses" />
+            <depends-on name="javax.xml.parsers.DocumentBuilder" classification="uses" />
+            <depends-on name="org.w3c.dom.Element" classification="uses" />
+            <depends-on name="javax.xml.transform.TransformerFactory" classification="uses" />
+            <depends-on name="javax.xml.transform.Transformer" classification="uses" />
+            <depends-on name="org.w3c.dom.DOMException" classification="uses" />
+            <depends-on name="javax.xml.parsers.FactoryConfigurationError" classification="uses" />
+            <depends-on name="javax.xml.parsers.ParserConfigurationException" classification="uses" />
+            <depends-on name="javax.xml.transform.TransformerException" classification="uses" />
+            <depends-on name="java.util.Iterator" classification="uses" />
+            <depends-on name="net.sourceforge.pmd.Rule" classification="uses" />
+            <depends-on name="net.sourceforge.pmd.RulePriority" classification="uses" />
+            <depends-on name="net.sourceforge.pmd.lang.Language" classification="uses" />
+            <depends-on name="net.sourceforge.pmd.lang.LanguageVersion" classification="uses" />
+            <depends-on name="java.lang.Boolean" classification="uses" />
+            <depends-on name="java.util.List" classification="uses" />
+            <depends-on name="java.util.Map" classification="uses" />
+            <depends-on name="net.sourceforge.pmd.lang.rule.RuleReference" classification="uses" />
+            <depends-on name="net.sourceforge.pmd.RuleSetReference" classification="uses" />
+            <depends-on name="net.sourceforge.pmd.PropertyDescriptor" classification="uses" />
+            <depends-on name="java.util.Map$Entry" classification="uses" />
+            <depends-on name="org.w3c.dom.Text" classification="uses" />
+            <depends-on name="org.w3c.dom.CDATASection" classification="uses" />
+            <depends-on name="java.util.HashSet" classification="uses" />
+            <depends-on name="javax.xml.transform.dom.DOMSource" classification="uses" />
+            <depends-on name="javax.xml.transform.stream.StreamResult" classification="uses" />
+            <depends-on name="java.lang.RuntimeException" classification="uses" />
+            <depends-on name="java.lang.StringBuilder" classification="uses" />
+            <depends-on name="net.sourceforge.pmd.lang.rule.ImmutableLanguage" classification="uses" />
+            <depends-on name="net.sourceforge.pmd.lang.rule.properties.PropertyDescriptorWrapper" classification="uses" />
+            <depends-on name="org.apache.commons.io.IOUtils" classification="uses" />
+            <depends-on name="org.w3c.dom.Node" classification="uses" />
+            <depends-on name="java.lang.Integer" classification="uses" />
+            <depends-on name="javax.xml.transform.Source" classification="uses" />
+            <depends-on name="javax.xml.transform.Result" classification="uses" />
+            <depends-on name="java.lang.Throwable" classification="uses" />
+            <depends-on name="java.util.Collection" classification="uses" />
+            <depends-on name="net.sourceforge.pmd.lang.rule.XPathRule" classification="uses" />
+            <depends-on name="net.sourceforge.pmd.lang.rule.properties.StringProperty" classification="uses" />
+            <depends-on name="java.lang.Class" classification="uses" />
+            <depends-on name="net.sourceforge.pmd.lang.rule.properties.factories.PropertyDescriptorUtil" classification="uses" />
+          </dependencies>
+        </type>
+        <type name="net.sourceforge.pmd.RuleSetFactory" classification="class" visibility="public">
+          <dependencies count="60">
+            <depends-on name="java.lang.Object" classification="extends" />
+            <depends-on name="java.util.logging.Logger" classification="uses" />
+            <depends-on name="java.lang.String" classification="uses" />
+            <depends-on name="java.lang.ClassLoader" classification="uses" />
+            <depends-on name="net.sourceforge.pmd.RulePriority" classification="uses" />
+            <depends-on name="net.sourceforge.pmd.RuleSetFactoryCompatibility" classification="uses" />
+            <depends-on name="java.util.Iterator" classification="uses" />
+            <depends-on name="net.sourceforge.pmd.RuleSet" classification="uses" />
+            <depends-on name="java.util.Properties" classification="uses" />
+            <depends-on name="net.sourceforge.pmd.lang.Language" classification="uses" />
+            <depends-on name="java.util.List" classification="uses" />
+            <depends-on name="java.io.IOException" classification="uses" />
+            <depends-on name="net.sourceforge.pmd.RuleSets" classification="uses" />
+            <depends-on name="net.sourceforge.pmd.RuleSetReferenceId" classification="uses" />
+            <depends-on name="net.sourceforge.pmd.Rule" classification="uses" />
+            <depends-on name="org.xml.sax.InputSource" classification="uses" />
+            <depends-on name="org.w3c.dom.Node" classification="uses" />
+            <depends-on name="java.lang.Throwable" classification="uses" />
+            <depends-on name="javax.xml.parsers.DocumentBuilder" classification="uses" />
+            <depends-on name="org.w3c.dom.Document" classification="uses" />
+            <depends-on name="org.w3c.dom.Element" classification="uses" />
+            <depends-on name="org.w3c.dom.NodeList" classification="uses" />
+            <depends-on name="java.io.InputStream" classification="uses" />
+            <depends-on name="java.lang.ClassNotFoundException" classification="uses" />
+            <depends-on name="java.lang.InstantiationException" classification="uses" />
+            <depends-on name="java.lang.IllegalAccessException" classification="uses" />
+            <depends-on name="javax.xml.parsers.ParserConfigurationException" classification="uses" />
+            <depends-on name="org.xml.sax.SAXException" classification="uses" />
+            <depends-on name="java.lang.Exception" classification="uses" />
+            <depends-on name="net.sourceforge.pmd.lang.rule.RuleReference" classification="uses" />
+            <depends-on name="net.sourceforge.pmd.RuleSetReference" classification="uses" />
+            <depends-on name="java.util.Set" classification="uses" />
+            <depends-on name="net.sourceforge.pmd.lang.LanguageVersion" classification="uses" />
+            <depends-on name="net.sourceforge.pmd.PropertyDescriptor" classification="uses" />
+            <depends-on name="java.util.Map$Entry" classification="uses" />
+            <depends-on name="net.sourceforge.pmd.PropertyDescriptorFactory" classification="uses" />
+            <depends-on name="java.util.Map" classification="uses" />
+            <depends-on name="net.sourceforge.pmd.lang.rule.properties.PropertyDescriptorWrapper" classification="uses" />
+            <depends-on name="java.lang.StringBuilder" classification="uses" />
+            <depends-on name="java.util.ArrayList" classification="uses" />
+            <depends-on name="java.lang.RuntimeException" classification="uses" />
+            <depends-on name="net.sourceforge.pmd.RuleSetNotFoundException" classification="uses" />
+            <depends-on name="java.lang.IllegalArgumentException" classification="uses" />
+            <depends-on name="java.util.HashSet" classification="uses" />
+            <depends-on name="net.sourceforge.pmd.lang.rule.MockRule" classification="uses" />
+            <depends-on name="java.util.HashMap" classification="uses" />
+            <depends-on name="java.lang.Boolean" classification="uses" />
+            <depends-on name="java.lang.Class" classification="uses" />
+            <depends-on name="net.sourceforge.pmd.lang.LanguageRegistry" classification="uses" />
+            <depends-on name="net.sourceforge.pmd.util.ResourceLoader" classification="uses" />
+            <depends-on name="java.util.Collection" classification="uses" />
+            <depends-on name="java.lang.System" classification="uses" />
+            <depends-on name="javax.xml.parsers.DocumentBuilderFactory" classification="uses" />
+            <depends-on name="java.io.Reader" classification="uses" />
+            <depends-on name="net.sourceforge.pmd.util.StringUtil" classification="uses" />
+            <depends-on name="java.lang.Enum" classification="uses" />
+            <depends-on name="java.lang.Integer" classification="uses" />
+            <depends-on name="java.util.logging.Level" classification="uses" />
+            <depends-on name="net.sourceforge.pmd.lang.rule.properties.factories.PropertyDescriptorUtil" classification="uses" />
+            <depends-on name="java.io.PrintStream" classification="uses" />
+          </dependencies>
+        </type>
+        <type name="net.sourceforge.pmd.Rule" classification="interface" visibility="public" isAbstract="yes">
+          <dependencies count="12">
+            <depends-on name="java.lang.Object" classification="extends" />
+            <depends-on name="net.sourceforge.pmd.PropertySource" classification="extends" />
+            <depends-on name="net.sourceforge.pmd.lang.rule.properties.StringProperty" classification="uses" />
+            <depends-on name="net.sourceforge.pmd.lang.Language" classification="uses" />
+            <depends-on name="net.sourceforge.pmd.lang.LanguageVersion" classification="uses" />
+            <depends-on name="java.lang.String" classification="uses" />
+            <depends-on name="java.util.List" classification="uses" />
+            <depends-on name="net.sourceforge.pmd.RulePriority" classification="uses" />
+            <depends-on name="net.sourceforge.pmd.lang.ParserOptions" classification="uses" />
+            <depends-on name="java.lang.Class" classification="uses" />
+            <depends-on name="net.sourceforge.pmd.lang.ast.Node" classification="uses" />
+            <depends-on name="net.sourceforge.pmd.RuleContext" classification="uses" />
+          </dependencies>
+        </type>
+        <type name="net.sourceforge.pmd.PropertyDescriptor" classification="interface" visibility="public" isAbstract="yes">
+          <dependencies count="7">
+            <depends-on name="java.lang.Object" classification="extends" />
+            <depends-on name="java.lang.Comparable" classification="extends" />
+            <depends-on name="java.lang.String" classification="uses" />
+            <depends-on name="java.lang.Class" classification="uses" />
+            <depends-on name="net.sourceforge.pmd.Rule" classification="uses" />
+            <depends-on name="java.util.Map" classification="uses" />
+            <depends-on name="java.lang.IllegalArgumentException" classification="uses" />
+          </dependencies>
+        </type>
+        <type name="net.sourceforge.pmd.Report$ProcessingError" classification="class" visibility="public">
+          <dependencies count="3">
+            <depends-on name="java.lang.Object" classification="extends" />
+            <depends-on name="java.lang.String" classification="uses" />
+            <depends-on name="net.sourceforge.pmd.Report" classification="uses" />
+          </dependencies>
+        </type>
+        <type name="net.sourceforge.pmd.RuleViolation" classification="interface" visibility="public" isAbstract="yes">
+          <dependencies count="3">
+            <depends-on name="java.lang.Object" classification="extends" />
+            <depends-on name="net.sourceforge.pmd.Rule" classification="uses" />
+            <depends-on name="java.lang.String" classification="uses" />
+          </dependencies>
+        </type>
+        <type name="net.sourceforge.pmd.SynchronizedReportListener" classification="class" visibility="public" isFinal="yes">
+          <dependencies count="4">
+            <depends-on name="java.lang.Object" classification="extends" />
+            <depends-on name="net.sourceforge.pmd.ReportListener" classification="implements" />
+            <depends-on name="net.sourceforge.pmd.RuleViolation" classification="uses" />
+            <depends-on name="net.sourceforge.pmd.stat.Metric" classification="uses" />
+          </dependencies>
+        </type>
+        <type name="net.sourceforge.pmd.ReportListener" classification="interface" visibility="public" isAbstract="yes">
+          <dependencies count="3">
+            <depends-on name="java.lang.Object" classification="extends" />
+            <depends-on name="net.sourceforge.pmd.RuleViolation" classification="uses" />
+            <depends-on name="net.sourceforge.pmd.stat.Metric" classification="uses" />
+          </dependencies>
+        </type>
+        <type name="net.sourceforge.pmd.RuleChain" classification="class" visibility="public">
+          <dependencies count="20">
+            <depends-on name="java.lang.Object" classification="extends" />
+            <depends-on name="java.util.Map" classification="uses" />
+            <depends-on name="net.sourceforge.pmd.lang.Language" classification="uses" />
+            <depends-on name="net.sourceforge.pmd.lang.rule.RuleChainVisitor" classification="uses" />
+            <depends-on name="net.sourceforge.pmd.RuleSet" classification="uses" />
+            <depends-on name="net.sourceforge.pmd.Rule" classification="uses" />
+            <depends-on name="java.util.Iterator" classification="uses" />
+            <depends-on name="java.util.List" classification="uses" />
+            <depends-on name="net.sourceforge.pmd.lang.ast.Node" classification="uses" />
+            <depends-on name="net.sourceforge.pmd.RuleContext" classification="uses" />
+            <depends-on name="java.lang.InstantiationException" classification="uses" />
+            <depends-on name="java.lang.IllegalAccessException" classification="uses" />
+            <depends-on name="java.util.HashMap" classification="uses" />
+            <depends-on name="java.lang.IllegalStateException" classification="uses" />
+            <depends-on name="java.lang.StringBuilder" classification="uses" />
+            <depends-on name="java.lang.IllegalArgumentException" classification="uses" />
+            <depends-on name="java.util.Collection" classification="uses" />
+            <depends-on name="java.lang.Class" classification="uses" />
+            <depends-on name="java.lang.String" classification="uses" />
+            <depends-on name="java.lang.Throwable" classification="uses" />
+          </dependencies>
+        </type>
+        <type name="net.sourceforge.pmd.AbstractConfiguration" classification="class" visibility="public" isAbstract="yes">
+          <dependencies count="3">
+            <depends-on name="java.lang.Object" classification="extends" />
+            <depends-on name="java.lang.String" classification="uses" />
+            <depends-on name="java.lang.System" classification="uses" />
+          </dependencies>
+        </type>
+        <type name="net.sourceforge.pmd.PMD$1" classification="class" visibility="default" isFinal="yes">
+          <dependencies count="7">
+            <depends-on name="java.lang.Object" classification="extends" />
+            <depends-on name="net.sourceforge.pmd.ReportListener" classification="implements" />
+            <depends-on name="java.util.concurrent.atomic.AtomicInteger" classification="uses" />
+            <depends-on name="net.sourceforge.pmd.RuleViolation" classification="uses" />
+            <depends-on name="net.sourceforge.pmd.stat.Metric" classification="uses" />
+            <depends-on name="net.sourceforge.pmd.PMD" classification="uses" />
+            <depends-on name="net.sourceforge.pmd.PMDConfiguration" classification="uses" />
+          </dependencies>
+        </type>
+        <type name="net.sourceforge.pmd.RuleSetReference" classification="class" visibility="public">
+          <dependencies count="4">
+            <depends-on name="java.lang.Object" classification="extends" />
+            <depends-on name="java.lang.String" classification="uses" />
+            <depends-on name="java.util.Set" classification="uses" />
+            <depends-on name="java.util.LinkedHashSet" classification="uses" />
+          </dependencies>
+        </type>
+        <type name="net.sourceforge.pmd.PMD" classification="class" visibility="public">
+          <dependencies count="77">
+            <depends-on name="java.lang.Object" classification="extends" />
+            <depends-on name="java.util.logging.Logger" classification="uses" />
+            <depends-on name="java.lang.String" classification="uses" />
+            <depends-on name="net.sourceforge.pmd.PMDConfiguration" classification="uses" />
+            <depends-on name="net.sourceforge.pmd.SourceCodeProcessor" classification="uses" />
+            <depends-on name="java.util.List" classification="uses" />
+            <depends-on name="net.sourceforge.pmd.util.datasource.DataSource" classification="uses" />
+            <depends-on name="java.sql.SQLException" classification="uses" />
+            <depends-on name="net.sourceforge.pmd.util.database.SourceObject" classification="uses" />
+            <depends-on name="java.util.Iterator" classification="uses" />
+            <depends-on name="net.sourceforge.pmd.util.database.DBURI" classification="uses" />
+            <depends-on name="net.sourceforge.pmd.util.database.DBMSMetadata" classification="uses" />
+            <depends-on name="java.net.URISyntaxException" classification="uses" />
+            <depends-on name="java.lang.ClassNotFoundException" classification="uses" />
+            <depends-on name="java.lang.Exception" classification="uses" />
+            <depends-on name="net.sourceforge.pmd.lang.LanguageVersion" classification="uses" />
+            <depends-on name="net.sourceforge.pmd.lang.Parser" classification="uses" />
+            <depends-on name="net.sourceforge.pmd.lang.LanguageVersionHandler" classification="uses" />
+            <depends-on name="net.sourceforge.pmd.lang.ParserOptions" classification="uses" />
+            <depends-on name="net.sourceforge.pmd.RuleSets" classification="uses" />
+            <depends-on name="net.sourceforge.pmd.RuleContext" classification="uses" />
+            <depends-on name="net.sourceforge.pmd.Report" classification="uses" />
+            <depends-on name="net.sourceforge.pmd.Rule" classification="uses" />
+            <depends-on name="java.util.Set" classification="uses" />
+            <depends-on name="net.sourceforge.pmd.renderers.Renderer" classification="uses" />
+            <depends-on name="java.util.concurrent.atomic.AtomicInteger" classification="uses" />
+            <depends-on name="net.sourceforge.pmd.RuleSetFactory" classification="uses" />
+            <depends-on name="java.io.File" classification="uses" />
+            <depends-on name="java.util.Collection" classification="uses" />
+            <depends-on name="net.sourceforge.pmd.PMD$ProgressMonitor" classification="uses" />
+            <depends-on name="net.sourceforge.pmd.lang.Language" classification="uses" />
+            <depends-on name="net.sourceforge.pmd.PMDException" classification="uses" />
+            <depends-on name="java.io.IOException" classification="uses" />
+            <depends-on name="net.sourceforge.pmd.lang.LanguageFilenameFilter" classification="uses" />
+            <depends-on name="net.sourceforge.pmd.lang.LanguageVersionDiscoverer" classification="uses" />
+            <depends-on name="net.sourceforge.pmd.benchmark.TextReport" classification="uses" />
+            <depends-on name="net.sourceforge.pmd.cli.PMDParameters" classification="uses" />
+            <depends-on name="java.util.logging.Level" classification="uses" />
+            <depends-on name="java.util.logging.Handler" classification="uses" />
+            <depends-on name="net.sourceforge.pmd.util.log.ScopedLogHandlersManager" classification="uses" />
+            <depends-on name="java.util.Properties" classification="uses" />
+            <depends-on name="java.io.InputStream" classification="uses" />
+            <depends-on name="java.util.ArrayList" classification="uses" />
+            <depends-on name="net.sourceforge.pmd.util.datasource.ReaderDataSource" classification="uses" />
+            <depends-on name="java.lang.StringBuilder" classification="uses" />
+            <depends-on name="net.sourceforge.pmd.Report$RuleConfigurationError" classification="uses" />
+            <depends-on name="java.util.HashSet" classification="uses" />
+            <depends-on name="net.sourceforge.pmd.PMD$1" classification="uses" />
+            <depends-on name="net.sourceforge.pmd.util.ClasspathClassLoader" classification="uses" />
+            <depends-on name="net.sourceforge.pmd.processor.MultiThreadProcessor" classification="uses" />
+            <depends-on name="net.sourceforge.pmd.processor.MonoThreadProcessor" classification="uses" />
+            <depends-on name="net.sourceforge.pmd.PMD$2" classification="uses" />
+            <depends-on name="java.lang.RuntimeException" classification="uses" />
+            <depends-on name="net.sourceforge.pmd.util.log.ConsoleLogHandler" classification="uses" />
+            <depends-on name="java.lang.Throwable" classification="uses" />
+            <depends-on name="java.lang.Integer" classification="uses" />
+            <depends-on name="java.io.Reader" classification="uses" />
+            <depends-on name="net.sourceforge.pmd.RulesetsFactoryUtils" classification="uses" />
+            <depends-on name="java.lang.System" classification="uses" />
+            <depends-on name="java.util.Collections" classification="uses" />
+            <depends-on name="net.sourceforge.pmd.util.IOUtil" classification="uses" />
+            <depends-on name="java.io.Writer" classification="uses" />
+            <depends-on name="net.sourceforge.pmd.benchmark.Benchmark" classification="uses" />
+            <depends-on name="net.sourceforge.pmd.benchmark.Benchmarker" classification="uses" />
+            <depends-on name="net.sourceforge.pmd.ReportListener" classification="uses" />
+            <depends-on name="java.lang.ClassLoader" classification="uses" />
+            <depends-on name="net.sourceforge.pmd.cli.PMDCommandLineInterface" classification="uses" />
+            <depends-on name="java.util.Comparator" classification="uses" />
+            <depends-on name="net.sourceforge.pmd.util.FileUtil" classification="uses" />
+            <depends-on name="java.io.FilenameFilter" classification="uses" />
+            <depends-on name="org.apache.commons.io.FileUtils" classification="uses" />
+            <depends-on name="org.apache.commons.lang3.StringUtils" classification="uses" />
+            <depends-on name="net.sourceforge.pmd.RuleSet" classification="uses" />
+            <depends-on name="java.util.Map" classification="uses" />
+            <depends-on name="java.io.PrintStream" classification="uses" />
+            <depends-on name="java.lang.Class" classification="uses" />
+            <depends-on name="org.apache.commons.io.IOUtils" classification="uses" />
+          </dependencies>
+        </type>
+        <type name="net.sourceforge.pmd.PMD$ProgressMonitor" classification="interface" visibility="public" isAbstract="yes">
+          <dependencies count="2">
+            <depends-on name="java.lang.Object" classification="extends" />
+            <depends-on name="net.sourceforge.pmd.PMD" classification="uses" />
+          </dependencies>
+        </type>
+      </namespace>
+    </container>
+  </context>
+</ODEM>

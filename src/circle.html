@@ -2,30 +2,60 @@
 <html>
 <head>
 	<title>Circle</title>
-	<script src="http://d3js.org/d3.v3.min.js"></script>
+	<script type='text/javascript' src="d3/d3.js"></script>
+	<script type='text/javascript' src="d3/d3.min.js"></script>
 </head>
 <body>
 	<script>
-		var canvas_height = 500;
-		var canvas_width = 500;
-		var test_values = [32, 57, 293];
+
+		var canvas_height = 1000;
+		var canvas_width = 1000;
+		var test_values = [5, 17, 32, 57, 66, 78, 82, 85, 103, 293];
 
 		var canvas = d3.select("body")
 			.append("svg")
-			.attr('width', '100%')
-			.attr('height', '100%')
+			.attr('width', canvas_width)
+			.attr('height', canvas_height)
 			.append("g");
 
-		var circle = canvas.selectAll("circle")
-		    .data(test_values)
-		    .enter()
-				.append("circle")
-				.attr("fill", "steelblue")
-				.attr("cy", 60)
-				.attr("cx", function(d, i) { return i * 100 + 30; })
-				.attr("r", function(d) { return Math.sqrt(d); });
+		loadXML("pmd_model.xml");
 
-		canvas.append("g");
+		//Specify the D3.xml file and the callback.
+
+		//Functions
+		function loadXML(path)
+		{
+			//Specify the xml file and the callbackwith D3.
+			d3.xml(path, xmlCallback);
+		}
+
+		function xmlCallback(error, data)
+		{
+			if(error) 
+			{
+				throw error
+			}
+			else
+			{
+				data = [].map.call(data.querySelectorAll("type"), function(type) {
+					return {
+						className: type.getAttribute("name"),
+					};
+				});
+
+				canvas.selectAll("circle")
+					.data(data)
+					.enter()
+						.append("circle")
+						.attr("fill", "steelblue")
+						.attr("cy", function(d) { return (Math.random() * 250); })
+						.attr("cx", function(d, i) { return (Math.random() * 250); })
+						.attr("r", 7.6);
+
+				canvas.append("g");
+			}
+		}
+
 	</script>
 </body>
 </html>
