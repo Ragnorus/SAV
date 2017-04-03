@@ -39,7 +39,16 @@
 			{
 				data = [].map.call(data.querySelectorAll("type"), function(type) {
 					return {
-						className: type.getAttribute("name"),
+						FullName: type.getAttribute("name"),
+						Name: type.getAttribute("name").split(".")[type.getAttribute("name").split(".").length - 1],
+						Type: type.getAttribute('classification'),
+						Visibility: type.getAttribute('Visibility'),
+						Dependencies: [].map.call(type.querySelectorAll('dependencies'), function(dependency) {
+							return {
+								FullName: dependency.getAttribute("name"),
+								Type: dependency.getAttribute('classification')
+							};
+						})
 					};
 				});
 
