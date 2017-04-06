@@ -16,9 +16,9 @@
 			
 		var group = canvas.append("g").attr("transform", "translate(100, 100)");
 
-		//loadXML("pmd_model.xml");
+		loadXML("pmd_model.xml");
 		//loadXML("hadoop_yarn.xml");
-		loadXML("all-of-pmd.xml");
+		//loadXML("all-of-pmd.xml");
 
 		//Specify the D3.xml file and the callback.
 
@@ -121,9 +121,9 @@
 										.append("path")
 										.datum(lineData)
 										.attr("d", line)
-										.attr("fill", function(d){
+										.attr("stroke", function(d){
 											if(dependency.Type == "uses"){
-												return "#0E0E0F"; //Black
+												return "black";
 											}
 											else if(dependency.Type == "extends"){
 												return "#2DAF47"; //Dark Lime Green
@@ -135,7 +135,6 @@
 												return "red";
 											}
 										})
-										.attr("stroke", "#4D4D4D")
 										.attr("stroke-width", 0.8);
 						}
 					})
