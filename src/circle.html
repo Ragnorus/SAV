@@ -10,15 +10,15 @@
 
 		var canvas_height = 1000;
 		var canvas_width = 1000;
-		var test_values = [5, 17, 32, 57, 66, 78, 82, 85, 103, 293];
-
 		var canvas = d3.select("body").append("svg")
 			.attr('width', canvas_width)
 			.attr('height', canvas_height)
 			
 		var group = canvas.append("g").attr("transform", "translate(100, 100)");
 
-		loadXML("pmd_model.xml");
+		//loadXML("pmd_model.xml");
+		//loadXML("hadoop_yarn.xml");
+		loadXML("all-of-pmd.xml");
 
 		//Specify the D3.xml file and the callback.
 
@@ -52,81 +52,91 @@
 					};
 				});
 
-				group.selectAll("circle")
+				var circles = group.selectAll("circle")
 					.data(data)
 					.enter()
 						.append("circle")
 						.attr("stroke", "black")
+						.attr("stroke-width", 0.5)
 						.attr("fill", function(d){
 							if(d.Type = "class"){
 								return "green";
 							}
-							else{
+							else if(d.type = "interface"){
 								return "steelblue";
-							}				
+							}
+							else{
+								return "#797979"; //Grey
+							}
 						})
 						.attr("cy", function(d, i) { return (Math.random() * 150); })
 						.attr("cx", function(d, i) { return (Math.random() * 150); })
 						//.attr("transform", function(d){return "translate("+d.x+",80)"})
-						.attr("r", 8)
+						.attr("r", 3.5);
 							//.append("text")
 			        			//.attr("dx", function(d){return -20})
 			        			//.text(function(d){return d.Name})
-
+			     data = [];
 				//Create the lines to connect the circles
-				var circles = group.selectAll("circle");
+				//var circles = group.selectAll("circle");
 				//Go through each circle and verify if they need paths drawn,
 				circles.each(function(d,i){
 					//Get current circle object
 					var currentCircle = circles._groups[0][i];
 
 					d.Dependencies.forEach(function(dependency){
-						if(dependency.Type == "uses")
-						{
-							//Get the circle that represents this dependency
-							var c = circles.filter(function(item){ return item.FullName == dependency.FullName; })
-							var depCircle = c._groups[0][0];
 
-							//Verify that we got the circle if it exists.
-							if(depCircle){
-								//Now draw a path line between both circles. Reference: https://github.com/d3/d3-path
-								//Start coordinates
-								var x1 = parseInt(currentCircle.getAttribute("cx"));
-								var y1 = parseInt(currentCircle.getAttribute("cy"));
+						//Get the circle that represents this dependency
+						var c = circles.filter(function(item){ return item.FullName == dependency.FullName; })
+						var depCircle = c._groups[0][0];
 
-								//End coordinates
-								var x2 = parseInt(depCircle.getAttribute("cx"));
-								var y2 = parseInt(depCircle.getAttribute("cy"));
+						//Verify that we got the circle if it exists.
+						if(depCircle){
+							//Now draw a path line between both circles. Reference: https://github.com/d3/d3-path
+							//Start coordinates
+							var x1 = parseInt(currentCircle.getAttribute("cx"));
+							var y1 = parseInt(currentCircle.getAttribute("cy"));
 
-								//midpoint
-								var m1 = (x1 + x2)/2;
-								var m2 = (y1 + y2)/2;
+							//End coordinates
+							var x2 = parseInt(depCircle.getAttribute("cx"));
+							var y2 = parseInt(depCircle.getAttribute("cy"));
 
-								var lineData = [ 
-											{ x: x1, y: y1},
-											{ x: m1, y: m2},
-											{ x: x2, y: y2}
-								];
+							//midpoint
+							var m1 = (x1 + x2)/2;
+							var m2 = (y1 + y2)/2;
 
-								var line = d3.line()
-									.x(function(d) { return d.x; })
-									.y(function(d) { return d.y; });
+							var lineData = [ 
+										{ x: x1, y: y1},
+										{ x: m1, y: m2},
+										{ x: x2, y: y2}
+							];
 
-								group.selectAll("path")
-										.data(lineData)
-										.enter()
-											.append("path")
-											.datum(lineData)
-											.attr("d", line)
-											.attr("fill", "none")
-											.attr("stroke", "#000")
-											.attr("stroke-width", 1);
-							}
-							else{
-								//We don't have an actual circle for it...which is weird.
-								console.log("ERROR: Unable to retrieve a depedency circle SVG.")
-							}
+							var line = d3.line()
+								.x(function(d) { return d.x; })
+								.y(function(d) { return d.y; });
 
+							group.selectAll("path")
+									.data(lineData)
+									.enter()
+										.append("path")
+										.datum(lineData)
+										.attr("d", line)
+										.attr("fill", function(d){
+											if(dependency.Type == "uses"){
+												return "#0E0E0F"; //Black
+											}
+											else if(dependency.Type == "extends"){
+												return "#2DAF47"; //Dark Lime Green
+											}
+											else if(dependency.Type == "implements"){
+												return "#0738FF"; //Royal Blue
+											}
+											else{
+												return "red";
+											}
+										})
+										.attr("stroke", "#4D4D4D")
+										.attr("stroke-width", 0.8);
 						}
 					})
 				})
