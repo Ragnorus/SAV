@@ -56,16 +56,14 @@
 				});
 
 				//Print out data
-				parsedData.forEach(function(node){
+				/*parsedData.forEach(function(node){
 					console.log("name:" + node.FullName + " | type:" + node.Type);
 					console.log("Dependencies: ");
 					node.Dependencies.forEach(function(dep){
 							console.log("-- name:" + dep.FullName + " | type:" + dep.Type);
 					});
 				});
-
-				//Cleanup the data we parsed.
-			    data = [];
+					*/
 
 				var circles = nodeGroup.selectAll("circle")
 					.data(parsedData)
@@ -78,7 +76,7 @@
 							if(d.Type = "class"){
 								return "green";
 							}
-							else if(d.type = "interface"){
+							else if(d.Type = "interface"){
 								return "steelblue";
 							}
 							else{
@@ -138,8 +136,25 @@
 					}
 				})
 			}
-		}
 
+			canvas.select(".nodes").remove();
+			nodeGroup = canvas.append("g").attr("class", "nodes");
+			circles.each(function(circle){
+				var c = circles.filter(function(item){ return item.FullName == circle.FullName; })
+				var domElement = c._groups[0][0];				
+				nodeGroup.node().append(domElement);
+			});
+
+			/*d3.force
+				.dependencies(linkGroup)
+				.nodes(nodeGroup)
+				.on("tick", tick)
+				.start();
+
+			function tick(){
+				
+			}*/				
+		}
 	</script>
 </body>
 </html>
