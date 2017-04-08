@@ -11,17 +11,17 @@
   <context name="PMD Workset">
     <container name="C:/Users/Michael/Documents/Capstone/Asats/pmd-bin-5.5.4/pmd-bin-5.5.4/lib/pmd-xml-5.5.4.jar" classification="jar">
       <namespace name="net.sourceforge.pmd.lang.xml">
-        <type name="net.sourceforge.pmd.lang.xml.XmlHandler$1" classification="class" visibility="default">
+        <type name="net.sourceforge.pmd.lang.xml.XmlLanguageModule" classification="class" visibility="default">
           <dependencies count="6">
-            <depends-on name="java.lang.Object" classification="extends" />
-            <depends-on name="net.sourceforge.pmd.lang.XPathHandler" classification="implements" />
+            <depends-on name="net.sourceforge.pmd.lang.xml.AbstractXmlLanguageModule" classification="extends" />
+            <depends-on name="net.sourceforge.pmd.lang.xml.XPathHandler" classification="implements" />
             <depends-on name="net.sourceforge.pmd.lang.xml.XmlHandler" classification="uses" />
             <depends-on name="net.sf.saxon.sxpath.IndependentContext" classification="uses" />
             <depends-on name="org.jaxen.Navigator" classification="uses" />
             <depends-on name="net.sourceforge.pmd.lang.ast.xpath.DocumentNavigator" classification="uses" />
           </dependencies>
         </type>
-        <type name="net.sourceforge.pmd.lang.xml.XmlLanguageModule" classification="class" visibility="public">
+        <type name="net.sourceforge.pmd.lang.xml.AbstractXmlLanguageModule" classification="class" visibility="public">
           <dependencies count="6">
             <depends-on name="net.sourceforge.pmd.lang.BaseLanguageModule" classification="extends" />
             <depends-on name="java.lang.String" classification="uses" />
@@ -58,10 +58,8 @@
             <depends-on name="java.io.Writer" classification="uses" />
             <depends-on name="java.lang.String" classification="uses" />
             <depends-on name="net.sourceforge.pmd.lang.VisitorStarter" classification="uses" />
-            <depends-on name="net.sourceforge.pmd.lang.xml.XmlHandler$1" classification="uses" />
             <depends-on name="net.sourceforge.pmd.lang.xml.XmlParserOptions" classification="uses" />
             <depends-on name="net.sourceforge.pmd.lang.xml.XmlParser" classification="uses" />
-            <depends-on name="net.sourceforge.pmd.lang.xml.XmlHandler$2" classification="uses" />
             <depends-on name="net.sourceforge.pmd.lang.xml.rule.XmlRuleViolationFactory" classification="uses" />
           </dependencies>
         </type>
@@ -75,12 +73,12 @@
             <depends-on name="java.lang.Boolean" classification="uses" />
             <depends-on name="net.sourceforge.pmd.lang.xml.XmlParserOptions$1" classification="uses" />
             <depends-on name="net.sourceforge.pmd.PropertyDescriptor" classification="uses" />
-            <depends-on name="java.lang.Class" classification="uses" />
+            <depends-on name="net.sourceforge.pmd.lang.xml.IXmlParserOptions" classification="implements" />
             <depends-on name="java.lang.String" classification="uses" />
             <depends-on name="net.sourceforge.pmd.util.StringUtil" classification="uses" />
           </dependencies>
         </type>
-        <type name="net.sourceforge.pmd.lang.xml.XmlParserOptions$1" classification="class" visibility="default" isFinal="yes">
+        <type name="net.sourceforge.pmd.lang.xml.IXmlParserOptions" classification="interface" visibility="default" isFinal="yes">
           <dependencies count="9">
             <depends-on name="java.lang.Object" classification="extends" />
             <depends-on name="org.xml.sax.EntityResolver" classification="uses" />
@@ -93,11 +91,11 @@
             <depends-on name="java.io.InputStream" classification="uses" />
           </dependencies>
         </type>
-        <type name="net.sourceforge.pmd.lang.xml.XmlHandler$2" classification="class" visibility="default">
+        <type name="net.sourceforge.pmd.lang.xml.Singleton" classification="class" visibility="default">
           <dependencies count="8">
-            <depends-on name="java.lang.Object" classification="extends" />
+            <depends-on name="net.sourceforge.pmd.lang.xml.XmlParserOptions" classification="uses" />
             <depends-on name="net.sourceforge.pmd.lang.VisitorStarter" classification="implements" />
-            <depends-on name="java.io.Writer" classification="uses" />
+            <depends-on name="net.sourceforge.pmd.lang.xml.XmlHandler" classification="uses" />
             <depends-on name="java.lang.String" classification="uses" />
             <depends-on name="net.sourceforge.pmd.lang.xml.XmlHandler" classification="uses" />
             <depends-on name="net.sourceforge.pmd.lang.ast.Node" classification="uses" />
@@ -105,6 +103,11 @@
             <depends-on name="net.sourceforge.pmd.lang.xml.ast.XmlNode" classification="uses" />
           </dependencies>
         </type>
+        <type name="net.sourceforge.pmd.lang.xml.XPathHandler" classification="class" visibility="default">
+          <dependencies count="8">
+            <depends-on name="net.sourceforge.pmd.lang.xml.Foo" classification="uses" />
+          </dependencies>
+        </type>        
       </namespace>
     </container>
   </context>

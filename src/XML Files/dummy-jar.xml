@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE ODEM PUBLIC "-//PFSW//DTD ODEM 1.1" "http://pfsw.org/ODEM/schema/dtd/odem-1.1.dtd">
+
+<ODEM version="1">
+  <header>
+    <created-by>
+      <exporter version="1.1.1">org.pf.tools.cda.ext.export.xml.XmlFileODEMExporter</exporter>
+      <provider>Manfred Duchrow Consulting &amp; Software</provider>
+    </created-by>
+  </header>
+  <context name="PMD Workset">
+    <container name="C:/Users/Michael/Documents/Capstone/Asats/pmd-bin-5.5.4/pmd-bin-5.5.4/lib/pmd-cs-5.5.4.jar" classification="jar">
+      <namespace name="net.sourceforge.pmd.cpd">
+        <type name="net.sourceforge.pmd.cpd.CsLanguage" classification="class" visibility="public">
+          <dependencies count="6">
+            <depends-on name="net.sourceforge.pmd.cpd.AbstractLanguage" classification="extends" />
+            <depends-on name="java.util.Properties" classification="uses" />
+            <depends-on name="net.sourceforge.pmd.cpd.CsTokenizer" classification="uses" />
+            <depends-on name="java.lang.String" classification="uses" />
+            <depends-on name="java.lang.System" classification="uses" />
+            <depends-on name="net.sourceforge.pmd.cpd.ITokenizer" classification="implements" />
+          </dependencies>
+        </type>
+        <type name="net.sourceforge.pmd.cpd.ITokenizer" classification="interface" visibility="default">
+          <dependencies count="12">
+            <depends-on name="java.lang.Object" classification="extends" />
+            <depends-on name="java.io.Closeable" classification="uses" />
+            <depends-on name="java.io.PushbackReader" classification="uses" />
+            <depends-on name="java.lang.String" classification="uses" />
+            <depends-on name="net.sourceforge.pmd.cpd.CsTokenizer$Token" classification="uses" />
+            <depends-on name="java.lang.StringBuilder" classification="uses" />
+            <depends-on name="java.io.IOException" classification="uses" />
+            <depends-on name="java.io.BufferedReader" classification="uses" />
+            <depends-on name="java.io.CharArrayReader" classification="uses" />
+            <depends-on name="java.io.Reader" classification="uses" />
+            <depends-on name="net.sourceforge.pmd.cpd.CsTokenizer" classification="uses" />
+            <depends-on name="java.lang.Character" classification="uses" />
+          </dependencies>
+        </type>
+        <type name="net.sourceforge.pmd.cpd.Manager" classification="class" visibility="default">
+          <dependencies count="3">
+            <depends-on name="net.sourceforge.pmd.lang.cs.AbstractManager" classification="extends" />
+            <depends-on name="java.lang.String" classification="uses" />
+            <depends-on name="net.sourceforge.pmd.cpd.CsTokenizer" classification="uses" />
+          </dependencies>
+        </type>
+        <type name="net.sourceforge.pmd.cpd.CsTokenizer" classification="class" visibility="public">
+          <dependencies count="14">
+            <depends-on name="java.lang.Object" classification="extends" />
+            <depends-on name="net.sourceforge.pmd.cpd.Tokenizer" classification="implements" />
+            <depends-on name="java.util.Properties" classification="uses" />
+            <depends-on name="net.sourceforge.pmd.cpd.SourceCode" classification="uses" />
+            <depends-on name="net.sourceforge.pmd.cpd.Tokens" classification="uses" />
+            <depends-on name="java.lang.String" classification="uses" />
+            <depends-on name="net.sourceforge.pmd.cpd.CsTokenizer$Token" classification="uses" />
+            <depends-on name="net.sourceforge.pmd.cpd.CsTokenizer$Tokenizer" classification="uses" />
+            <depends-on name="net.sourceforge.pmd.cpd.TokenEntry" classification="uses" />
+            <depends-on name="net.sourceforge.pmd.cpd.ITokenizer" classification="implements" />
+        </type>
+      </namespace>
+      <namespace name="net.sourceforge.pmd.lang.cs">
+        <type name="net.sourceforge.pmd.lang.cs.AbstractManager" classification="class" visibility="public">
+          <dependencies count="4">
+            <depends-on name="net.sourceforge.pmd.lang.BaseLanguageModule" classification="extends" />
+            <depends-on name="java.lang.String" classification="uses" />
+            <depends-on name="java.lang.Class" classification="uses" />
+            <depends-on name="net.sourceforge.pmd.lang.LanguageVersionHandler" classification="uses" />
+          </dependencies>
+        </type>
+      </namespace>
+    </container>
+  </context>
+</ODEM>

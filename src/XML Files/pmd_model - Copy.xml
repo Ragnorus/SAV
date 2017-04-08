@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE ODEM PUBLIC "-//PFSW//DTD ODEM 1.1" "http://pfsw.org/ODEM/schema/dtd/odem-1.1.dtd">
+
+<ODEM version="1">
+  <header>
+    <created-by>
+      <exporter version="1.1.1">org.pf.tools.cda.ext.export.xml.XmlFileODEMExporter</exporter>
+      <provider>Manfred Duchrow Consulting &amp; Software</provider>
+    </created-by>
+  </header>
+  <context name="PMD Workset">
+    <container name="C:/Users/Michael/Documents/Capstone/Asats/pmd-bin-5.5.4/pmd-bin-5.5.4/lib/pmd-xml-5.5.4.jar" classification="jar">
+      <namespace name="net.sourceforge.pmd.lang.xml">
+        <type name="net.sourceforge.pmd.lang.xml.XmlHandler$1" classification="class" visibility="default">
+          <dependencies count="6">
+            <depends-on name="java.lang.Object" classification="extends" />
+            <depends-on name="net.sourceforge.pmd.lang.XPathHandler" classification="implements" />
+            <depends-on name="net.sourceforge.pmd.lang.xml.XmlHandler" classification="uses" />
+            <depends-on name="net.sf.saxon.sxpath.IndependentContext" classification="uses" />
+            <depends-on name="org.jaxen.Navigator" classification="uses" />
+            <depends-on name="net.sourceforge.pmd.lang.ast.xpath.DocumentNavigator" classification="uses" />
+          </dependencies>
+        </type>
+        <type name="net.sourceforge.pmd.lang.xml.XmlLanguageModule" classification="class" visibility="public">
+          <dependencies count="6">
+            <depends-on name="net.sourceforge.pmd.lang.BaseLanguageModule" classification="extends" />
+            <depends-on name="java.lang.String" classification="uses" />
+            <depends-on name="net.sourceforge.pmd.lang.xml.rule.XmlRuleChainVisitor" classification="uses" />
+            <depends-on name="net.sourceforge.pmd.lang.xml.XmlHandler" classification="uses" />
+            <depends-on name="java.lang.Class" classification="uses" />
+            <depends-on name="net.sourceforge.pmd.lang.LanguageVersionHandler" classification="uses" />
+          </dependencies>
+        </type>
+        <type name="net.sourceforge.pmd.lang.xml.XmlParser" classification="class" visibility="public">
+          <dependencies count="13">
+            <depends-on name="net.sourceforge.pmd.lang.AbstractParser" classification="extends" />
+            <depends-on name="net.sourceforge.pmd.lang.ParserOptions" classification="uses" />
+            <depends-on name="java.io.Reader" classification="uses" />
+            <depends-on name="net.sourceforge.pmd.lang.TokenManager" classification="uses" />
+            <depends-on name="java.lang.String" classification="uses" />
+            <depends-on name="net.sourceforge.pmd.lang.ast.Node" classification="uses" />
+            <depends-on name="java.util.Map" classification="uses" />
+            <depends-on name="java.lang.Integer" classification="uses" />
+            <depends-on name="net.sourceforge.pmd.lang.xml.ast.XmlParser" classification="uses" />
+            <depends-on name="net.sourceforge.pmd.lang.xml.XmlParserOptions" classification="uses" />
+            <depends-on name="java.util.HashMap" classification="uses" />
+            <depends-on name="net.sourceforge.pmd.lang.ast.ParseException" classification="uses" />
+            <depends-on name="net.sourceforge.pmd.lang.xml.ast.XmlNode" classification="uses" />
+          </dependencies>
+        </type>
+        <type name="net.sourceforge.pmd.lang.xml.XmlHandler" classification="class" visibility="public">
+          <dependencies count="13">
+            <depends-on name="net.sourceforge.pmd.lang.AbstractLanguageVersionHandler" classification="extends" />
+            <depends-on name="net.sourceforge.pmd.lang.XPathHandler" classification="uses" />
+            <depends-on name="net.sourceforge.pmd.lang.rule.RuleViolationFactory" classification="uses" />
+            <depends-on name="net.sourceforge.pmd.lang.ParserOptions" classification="uses" />
+            <depends-on name="net.sourceforge.pmd.lang.Parser" classification="uses" />
+            <depends-on name="java.io.Writer" classification="uses" />
+            <depends-on name="java.lang.String" classification="uses" />
+            <depends-on name="net.sourceforge.pmd.lang.VisitorStarter" classification="uses" />
+            <depends-on name="net.sourceforge.pmd.lang.xml.XmlHandler$1" classification="uses" />
+            <depends-on name="net.sourceforge.pmd.lang.xml.XmlParserOptions" classification="uses" />
+            <depends-on name="net.sourceforge.pmd.lang.xml.XmlParser" classification="uses" />
+            <depends-on name="net.sourceforge.pmd.lang.xml.XmlHandler$2" classification="uses" />
+            <depends-on name="net.sourceforge.pmd.lang.xml.rule.XmlRuleViolationFactory" classification="uses" />
+          </dependencies>
+        </type>
+        <type name="net.sourceforge.pmd.lang.xml.XmlParserOptions" classification="class" visibility="public">
+          <dependencies count="11">
+            <depends-on name="net.sourceforge.pmd.lang.ParserOptions" classification="extends" />
+            <depends-on name="net.sourceforge.pmd.lang.rule.properties.BooleanProperty" classification="uses" />
+            <depends-on name="org.xml.sax.EntityResolver" classification="uses" />
+            <depends-on name="net.sourceforge.pmd.Rule" classification="uses" />
+            <depends-on name="java.lang.Object" classification="uses" />
+            <depends-on name="java.lang.Boolean" classification="uses" />
+            <depends-on name="net.sourceforge.pmd.lang.xml.XmlParserOptions$1" classification="uses" />
+            <depends-on name="net.sourceforge.pmd.PropertyDescriptor" classification="uses" />
+            <depends-on name="java.lang.Class" classification="uses" />
+            <depends-on name="java.lang.String" classification="uses" />
+            <depends-on name="net.sourceforge.pmd.util.StringUtil" classification="uses" />
+          </dependencies>
+        </type>
+        <type name="net.sourceforge.pmd.lang.xml.XmlParserOptions$1" classification="class" visibility="default" isFinal="yes">
+          <dependencies count="9">
+            <depends-on name="java.lang.Object" classification="extends" />
+            <depends-on name="org.xml.sax.EntityResolver" classification="uses" />
+            <depends-on name="java.lang.String" classification="uses" />
+            <depends-on name="org.xml.sax.InputSource" classification="uses" />
+            <depends-on name="java.io.ByteArrayInputStream" classification="uses" />
+            <depends-on name="org.xml.sax.SAXException" classification="uses" />
+            <depends-on name="java.io.IOException" classification="uses" />
+            <depends-on name="net.sourceforge.pmd.lang.xml.XmlParserOptions" classification="uses" />
+            <depends-on name="java.io.InputStream" classification="uses" />
+          </dependencies>
+        </type>
+        <type name="net.sourceforge.pmd.lang.xml.XmlHandler$2" classification="class" visibility="default">
+          <dependencies count="8">
+            <depends-on name="java.lang.Object" classification="extends" />
+            <depends-on name="net.sourceforge.pmd.lang.VisitorStarter" classification="implements" />
+            <depends-on name="java.io.Writer" classification="uses" />
+            <depends-on name="java.lang.String" classification="uses" />
+            <depends-on name="net.sourceforge.pmd.lang.xml.XmlHandler" classification="uses" />
+            <depends-on name="net.sourceforge.pmd.lang.ast.Node" classification="uses" />
+            <depends-on name="net.sourceforge.pmd.lang.xml.ast.DumpFacade" classification="uses" />
+            <depends-on name="net.sourceforge.pmd.lang.xml.ast.XmlNode" classification="uses" />
+          </dependencies>
+        </type>
+      </namespace>
+    </container>
+  </context>
+</ODEM>

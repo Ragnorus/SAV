@@ -10,15 +10,17 @@
 
 		var canvas_height = 1000;
 		var canvas_width = 1000;
+		var parsedData = null;
 		var canvas = d3.select("body").append("svg")
 			.attr('width', canvas_width)
 			.attr('height', canvas_height)
 			
-		var group = canvas.append("g").attr("transform", "translate(100, 100)");
+		var nodeGroup = canvas.append("g").attr("class", "nodes");//.attr("transform", "translate(100, 100)");
+		var linkGroup = canvas.append("g").attr("class", "links");
 
 		loadXML("pmd_model.xml");
 		//loadXML("hadoop_yarn.xml");
-		//loadXML("all-of-pmd.xml");
+		//loadXML("dummy-jar.xml");
 
 		//Specify the D3.xml file and the callback.
 
@@ -37,28 +39,42 @@
 			}
 			else
 			{
-				data = [].map.call(data.querySelectorAll("type"), function(type) {
+				parsedData = [].map.call(data.querySelectorAll("type"), function(type) {
 					return {
 						FullName: type.getAttribute("name"),
-						Name: type.getAttribute("name").split(".")[type.getAttribute("name").split(".").length - 1],
+						//Name: type.getAttribute("name").split(".")[type.getAttribute("name").split(".").length - 1],
 						Type: type.getAttribute('classification'),
 						Visibility: type.getAttribute('visibility'),
 						Dependencies: [].map.call(type.querySelectorAll('depends-on'), function(dependency) {
 							return {
 								FullName: dependency.getAttribute("name"),
+								//Name: dependency.getAttribute("name").split(".")[type.getAttribute("name").split(".").length - 1],
 								Type: dependency.getAttribute('classification')
 							};
 						})
 					};
 				});
 
-				var circles = group.selectAll("circle")
-					.data(data)
+				//Print out data
+				parsedData.forEach(function(node){
+					console.log("name:" + node.FullName + " | type:" + node.Type);
+					console.log("Dependencies: ");
+					node.Dependencies.forEach(function(dep){
+							console.log("-- name:" + dep.FullName + " | type:" + dep.Type);
+					});
+				});
+
+				//Cleanup the data we parsed.
+			    data = [];
+
+				var circles = nodeGroup.selectAll("circle")
+					.data(parsedData)
 					.enter()
 						.append("circle")
 						.attr("stroke", "black")
 						.attr("stroke-width", 0.5)
 						.attr("fill", function(d){
+							
 							if(d.Type = "class"){
 								return "green";
 							}
@@ -71,21 +87,17 @@
 						})
 						.attr("cy", function(d, i) { return (Math.random() * 150); })
 						.attr("cx", function(d, i) { return (Math.random() * 150); })
-						//.attr("transform", function(d){return "translate("+d.x+",80)"})
 						.attr("r", 3.5);
-							//.append("text")
-			        			//.attr("dx", function(d){return -20})
-			        			//.text(function(d){return d.Name})
-			     data = [];
+
 				//Create the lines to connect the circles
-				//var circles = group.selectAll("circle");
 				//Go through each circle and verify if they need paths drawn,
 				circles.each(function(d,i){
 					//Get current circle object
 					var currentCircle = circles._groups[0][i];
 
-					d.Dependencies.forEach(function(dependency){
-
+					//d.Dependencies.forEach(function(dependency){
+					for(var j = 0, len = d.Dependencies.length; j < len; j++){
+						var dependency = d.Dependencies[j];
 						//Get the circle that represents this dependency
 						var c = circles.filter(function(item){ return item.FullName == dependency.FullName; })
 						var depCircle = c._groups[0][0];
@@ -101,26 +113,12 @@
 							var x2 = parseInt(depCircle.getAttribute("cx"));
 							var y2 = parseInt(depCircle.getAttribute("cy"));
 
-							//midpoint
-							var m1 = (x1 + x2)/2;
-							var m2 = (y1 + y2)/2;
-
-							var lineData = [ 
-										{ x: x1, y: y1},
-										{ x: m1, y: m2},
-										{ x: x2, y: y2}
-							];
-
-							var line = d3.line()
-								.x(function(d) { return d.x; })
-								.y(function(d) { return d.y; });
-
-							group.selectAll("path")
-									.data(lineData)
-									.enter()
-										.append("path")
-										.datum(lineData)
-										.attr("d", line)
+							//Append the new <line> in the <g class="links"> group>
+							linkGroup.append("line")
+										.attr("x1", x1)
+										.attr("y1", y1)
+										.attr("x2", x2)
+										.attr("y2", y2)
 										.attr("stroke", function(d){
 											if(dependency.Type == "uses"){
 												return "black";
@@ -137,7 +135,7 @@
 										})
 										.attr("stroke-width", 0.8);
 						}
-					})
+					}
 				})
 			}
 		}
