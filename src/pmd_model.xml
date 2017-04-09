@@ -14,7 +14,7 @@
         <type name="net.sourceforge.pmd.lang.xml.XmlLanguageModule" classification="class" visibility="default">
           <dependencies count="6">
             <depends-on name="net.sourceforge.pmd.lang.xml.AbstractXmlLanguageModule" classification="extends" />
-            <depends-on name="net.sourceforge.pmd.lang.xml.XPathHandler" classification="implements" />
+            <depends-on name="net.sourceforge.pmd.lang.xml.XPathHandler" classification="uses" />
             <depends-on name="net.sourceforge.pmd.lang.xml.XmlHandler" classification="uses" />
             <depends-on name="net.sf.saxon.sxpath.IndependentContext" classification="uses" />
             <depends-on name="org.jaxen.Navigator" classification="uses" />
@@ -87,7 +87,6 @@
             <depends-on name="java.io.ByteArrayInputStream" classification="uses" />
             <depends-on name="org.xml.sax.SAXException" classification="uses" />
             <depends-on name="java.io.IOException" classification="uses" />
-            <depends-on name="net.sourceforge.pmd.lang.xml.XmlParserOptions" classification="uses" />
             <depends-on name="java.io.InputStream" classification="uses" />
           </dependencies>
         </type>
