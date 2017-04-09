@@ -6,19 +6,17 @@
 </head>
 <body>
 	<script>
-
-		var canvas_height = 1000;
-		var canvas_width = 1000;
 		var parsedData = null;
 		var canvas = d3.select("body").append("svg")
-			.attr('width', canvas_width)
-			.attr('height', canvas_height)
+			.attr("width", "100%")
+			.attr("height", "100%")
+			.attr("margin", "0px")
 			
-		var nodeGroup = canvas.append("g").attr("class", "nodes");//.attr("transform", "translate(100, 100)");
+		var nodeGroup = canvas.append("g").attr("class", "nodes");
 		var linkGroup = canvas.append("g").attr("class", "links");
 
-		loadXML("pmd_model.xml");
-		//loadXML("hadoop_yarn.xml");
+		//loadXML("pmd_model.xml");
+		loadXML("./XML Files/hadoop_yarn.xml");
 		//loadXML("dummy-jar.xml");
 
 		//Specify the D3.xml file and the callback.
