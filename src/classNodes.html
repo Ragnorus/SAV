@@ -1,7 +1,6 @@
 <!doctype html>
 <html>
 <head>
-	<title>Circle</title>
 	<script type='text/javascript' src="d3/d3.js"></script>
 	<script type='text/javascript' src="d3/d3.min.js"></script>
 </head>
@@ -85,7 +84,7 @@
 						})
 						.attr("cy", function(d, i) { return (Math.random() * 150); })
 						.attr("cx", function(d, i) { return (Math.random() * 150); })
-						.attr("r", 3.5);
+						.attr("r", 5);
 
 				//Create the lines to connect the circles
 				//Go through each circle and verify if they need paths drawn,
@@ -102,7 +101,6 @@
 
 						//Verify that we got the circle if it exists.
 						if(depCircle){
-							//Now draw a path line between both circles. Reference: https://github.com/d3/d3-path
 							//Start coordinates
 							var x1 = parseInt(currentCircle.getAttribute("cx"));
 							var y1 = parseInt(currentCircle.getAttribute("cy"));
@@ -142,18 +140,20 @@
 			circles.each(function(circle){
 				var c = circles.filter(function(item){ return item.FullName == circle.FullName; })
 				var domElement = c._groups[0][0];				
-				nodeGroup.node().append(domElement);
-			});
-
-			/*d3.force
-				.dependencies(linkGroup)
-				.nodes(nodeGroup)
-				.on("tick", tick)
-				.start();
-
-			function tick(){
-				
-			}*/				
+				var node = nodeGroup.append("g").attr("class", "node"); 
+				//Add the circle element.
+				node.node().append(domElement);
+				//Add the text element
+				node.append("text")
+					.attr("font-family", "sans-serif")
+					.attr("font-size", "5px")
+					.attr("x", domElement.getAttribute("cx"))
+					.attr("y", domElement.getAttribute("cy"))
+					.attr("dy", "-6px")
+					//.attr("dx", "-20px")
+      				.attr("text-anchor", "left")
+      				.text(circle.FullName.split(".")[circle.FullName.split(".").length - 1]); //The class name
+			});		
 		}
 	</script>
 </body>
