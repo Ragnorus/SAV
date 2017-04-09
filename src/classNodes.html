@@ -84,7 +84,7 @@
 						})
 						.attr("cy", function(d, i) { return (Math.random() * 150); })
 						.attr("cx", function(d, i) { return (Math.random() * 150); })
-						.attr("r", 5);
+						.attr("r", 3);
 
 				//Create the lines to connect the circles
 				//Go through each circle and verify if they need paths drawn,
@@ -149,8 +149,8 @@
 					.attr("font-size", "5px")
 					.attr("x", domElement.getAttribute("cx"))
 					.attr("y", domElement.getAttribute("cy"))
-					.attr("dy", "-6px")
-					//.attr("dx", "-20px")
+					.attr("dy", "-2px")
+					.attr("dx", "5px")
       				.attr("text-anchor", "left")
       				.text(circle.FullName.split(".")[circle.FullName.split(".").length - 1]); //The class name
 			});		
