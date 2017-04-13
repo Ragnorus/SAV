@@ -1,0 +1,162 @@
+<!doctype html>
+<html>
+<head>
+	<script type="text/javascript" src="d3/d3.js"></script>
+	<script type="text/javascript" src="d3/d3.min.js"></script>
+	<script type="text/javascript" src="datamanager.js"></script>
+</head>
+<body>
+	<script>	
+		XMLToJSON("foo");
+
+		/*var parsedData = null;
+		var canvas = d3.select("body").append("svg")
+			.attr("width", "100%")
+			.attr("height", "100%")
+			.attr("margin", "0px")
+			
+		var nodeGroup = canvas.append("g").attr("class", "nodes");
+		var linkGroup = canvas.append("g").attr("class", "links");
+
+		//loadXML("pmd_model.xml");
+		loadXML("./XML Files/hadoop_yarn.xml");
+		//loadXML("dummy-jar.xml");
+
+		//Specify the D3.xml file and the callback.
+
+		//Functions
+		function loadXML(path)
+		{
+			//Specify the xml file and the callbackwith D3.
+			d3.xml(path, xmlCallback);
+		}
+
+		function xmlCallback(error, data)
+		{
+			if(error) 
+			{
+				throw error
+			}
+			else
+			{
+				parsedData = [].map.call(data.querySelectorAll("container"), function(type) {
+					return {
+						Name: type.getAttribute("name").split("/")[type.getAttribute("name").split(".").length - 1],
+						Type: type.getAttribute('classification'),
+						Visibility: type.getAttribute('visibility'),
+						Dependencies: [].map.call(type.querySelectorAll('depends-on'), function(dependency) {
+							return {
+								Name: dependency.getAttribute("name"),
+								Type: dependency.getAttribute('classification')
+							};
+						})
+					};
+				});
+
+				//Print out data
+				parsedData.forEach(function(node){
+					console.log("name:" + node.Name + " | type:" + node.Type);
+					console.log("Dependencies: ");
+					node.Dependencies.forEach(function(dep){
+							console.log("-- name:" + dep.Name + " | type:" + dep.Type);
+					});
+				});
+					
+
+				var circles = nodeGroup.selectAll("circle")
+					.data(parsedData)
+					.enter()
+						.append("circle")
+						.attr("stroke", "black")
+						.attr("stroke-width", 0.5)
+						.attr("fill", function(d){
+							
+							if(d.Type = "class"){
+								return "green";
+							}
+							else if(d.Type = "interface"){
+								return "steelblue";
+							}
+							else{
+								return "#797979"; //Grey
+							}
+						})
+						.attr("cy", function(d, i) { return (Math.random() * 150); })
+						.attr("cx", function(d, i) { return (Math.random() * 150); })
+						.attr("r", 3);
+
+				//Create the lines to connect the circles
+				//Go through each circle and verify if they need paths drawn,
+				circles.each(function(d,i){
+					//Get current circle object
+					var currentCircle = circles._groups[0][i];
+
+					//d.Dependencies.forEach(function(dependency){
+					for(var j = 0, len = d.Dependencies.length; j < len; j++){
+						var dependency = d.Dependencies[j];
+						//Get the circle that represents this dependency
+						var c = circles.filter(function(item){ return item.FullName == dependency.FullName; })
+						var depCircle = c._groups[0][0];
+
+						//Verify that we got the circle if it exists.
+						if(depCircle){
+							//Start coordinates
+							var x1 = parseInt(currentCircle.getAttribute("cx"));
+							var y1 = parseInt(currentCircle.getAttribute("cy"));
+
+							//End coordinates
+							var x2 = parseInt(depCircle.getAttribute("cx"));
+							var y2 = parseInt(depCircle.getAttribute("cy"));
+
+							//Append the new <line> in the <g class="links"> group>
+							linkGroup.append("line")
+										.attr("x1", x1)
+										.attr("y1", y1)
+										.attr("x2", x2)
+										.attr("y2", y2)
+										.attr("stroke", function(d){
+											if(dependency.Type == "uses"){
+												return "#676d67"; //Dark gray
+											}
+											else if(dependency.Type == "extends"){
+												return "#2DAF47"; //Dark Lime Green
+											}
+											else if(dependency.Type == "implements"){
+												return "#0738FF"; //Royal Blue
+											}
+											else{
+												return "red";
+											}
+										})
+										.attr("stroke-width", 0.8);
+						}
+					}
+				})
+			}
+
+			canvas.select(".nodes").remove();
+			nodeGroup = canvas.append("g").attr("class", "nodes");
+			circles.each(function(circle){
+				var c = circles.filter(function(item){ return item.FullName == circle.FullName; })
+				var domElement = c._groups[0][0];				
+				var node = nodeGroup.append("g").attr("class", "node"); 
+				//Add the circle element.
+				node.node().append(domElement);
+				//Add the text element
+				node.append("text")
+						.attr("font-family", "sans-serif")
+						.attr("font-size", "3px")
+						.attr("font-weight", "bold")
+						.attr("x", domElement.getAttribute("cx"))
+						.attr("y", domElement.getAttribute("cy"))
+						.attr("dy", "-2px")
+						.attr("dx", "3px")
+	      				.attr("text-anchor", "left")
+	      				.text(circle.FullName.split(".")[circle.FullName.split(".").length - 1]); //The class name
+			});		
+		}*/
+	</script>
+</body>
+</html>
+
+
