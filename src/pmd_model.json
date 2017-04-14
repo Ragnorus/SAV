@@ -9,15 +9,21 @@
             {"id": "net.sourceforge.pmd.lang.xml.XmlParser", "type": "class"},
             {"id": "net.sourceforge.pmd.lang.xml.XmlHandler", "type": "class"},
             {"id": "net.sourceforge.pmd.lang.xml.XmlParserOptions", "type": "class"},
-            {"id": "net.sourceforge.pmd.lang.xml.IXmlParserOptions", "type": "class"},
+            {"id": "net.sourceforge.pmd.lang.xml.IXmlParserOptions", "type": "interface"},
             {"id": "net.sourceforge.pmd.lang.xml.Singleton", "type": "class"},
-            {"id": "net.sourceforge.pmd.lang.xml.XPathHandler", "type": "class"},
+            {"id": "net.sourceforge.pmd.lang.xml.XPathHandler", "type": "class"}
           ],
           "links": [
             {"source": "net.sourceforge.pmd.lang.xml.XmlLanguageModule", "target": "net.sourceforge.pmd.lang.xml.AbstractXmlLanguageModule", "type": "extends"},
             {"source": "net.sourceforge.pmd.lang.xml.XmlLanguageModule", "target": "net.sourceforge.pmd.lang.xml.XPathHandler", "type": "uses"},
             {"source": "net.sourceforge.pmd.lang.xml.XmlLanguageModule", "target": "net.sourceforge.pmd.lang.xml.XmlHandler", "type": "uses"},
             {"source": "net.sourceforge.pmd.lang.xml.AbstractXmlLanguageModule", "target": "net.sourceforge.pmd.lang.xml.XmlHandler", "type": "uses"},
+            {"source": "net.sourceforge.pmd.lang.xml.XmlParser", "target": "net.sourceforge.pmd.lang.xml.XmlParserOptions", "type": "uses"},
+            {"source": "net.sourceforge.pmd.lang.xml.XmlHandler", "target": "net.sourceforge.pmd.lang.xml.XmlParserOptions", "type": "uses"},
+            {"source": "net.sourceforge.pmd.lang.xml.XmlHandler", "target": "net.sourceforge.pmd.lang.xml.XmlParser", "type": "uses"},
+            {"source": "net.sourceforge.pmd.lang.xml.XmlParserOptions", "target": "net.sourceforge.pmd.lang.xml.IXmlParserOptions", "type": "implements"},
+            {"source": "net.sourceforge.pmd.lang.xml.Singleton", "target": "net.sourceforge.pmd.lang.xml.XmlParserOptions", "type": "uses"},
+            {"source": "net.sourceforge.pmd.lang.xml.Singleton", "target": "net.sourceforge.pmd.lang.xml.XmlHandler", "type": "uses"}
           ]
     }
 }
