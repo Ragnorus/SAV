@@ -1,0 +1,164 @@
+<!doctype html>
+<html>
+<head>
+	<script src="https://d3js.org/d3.v3.min.js"></script>
+</head>
+<body>
+	<script>	
+		//Class Definitions
+		class Package{
+			constructor(Name, NumOfPackageDep, Dependencies){
+				this.Name = Name;
+				this.NumOfPackageDep = NumOfPackageDep;
+				this.Dependencies = Dependencies;
+			}
+
+		}
+
+		var Links = [];
+		var Packages = [];
+		var canvas_width = 960;
+		var canvas_height = 500;
+		var force;
+
+		var canvas = d3.select("body").append("svg")
+			.attr("width", canvas_width)
+			.attr("height", canvas_height)
+			.attr("margin", "0px");
+			
+		var nodeGroup = canvas.append("g").attr("class", "nodes");
+		var linkGroup = canvas.append("g").attr("class", "links");
+
+		loadXML("./XML Files/hadoop_yarn.xml");
+
+		//Specify the D3.xml file and the callback.
+
+		//Functions
+		function loadXML(path)
+		{
+			//Specify the xml file and the callbackwith D3.
+			d3.xml(path, xmlCallback);
+		}
+
+		function CreateJSON(data)
+		{
+			//Create JSON structure.
+			var packages = data.querySelectorAll("namespace");
+			for(var k = 0; k < packages.length; k++)
+			{
+				var package = packages[k];
+				var classes = package.querySelectorAll("type");
+
+				//Add the new package.
+				Packages.push({name: package.getAttribute("name"), size: classes.length});
+        var sourceIndex = Packages.length - 1;
+				for(var j = 0; j < classes.length; j++)
+				{
+					var c = classes[j];
+					if(c.children.length > 0)
+					{
+						var cDependencies = c.children[0].children;
+						for(var i = 0; i < cDependencies.length; i++)
+							{
+								var arr = cDependencies[i].getAttribute("name").split('.');
+								//remove the class name from the FullName string.
+								arr.pop(); 
+								var namespaceStr = arr.join('.').toString();
+								var newLink = {source: package.getAttribute("name"), target: namespaceStr};
+
+								if(Links.indexOf(newLink) < 0)
+								{
+									Links.push(newLink);
+								}
+							}			
+					}			
+				}
+			}
+		}
+
+		function xmlCallback(error, data)
+		{
+			if(error) 
+			{
+				throw error
+			}
+			else
+			{
+				//Create the JSON objects using the CDA generated XML.
+				//CreateJSON(data);
+
+				/*Packages = [
+					{ name: 0, size: 3 },
+					{ name: 1, size: 9 },
+          { name: 2, size: 9 }
+				];
+
+				Links = [
+					{ source: 0, target: 1 },
+          { source: 2, target: 1 }
+				];*/
+
+        var Packages = [
+          {"id": "Alice"},
+          {"id": "Bob"},
+          {"id": "Carol"},
+          {"id": "Alice"},
+          {"id": "Bob"},
+          {"id": "Carol"},
+          {"id": "Alice"},
+          {"id": "Bob"},
+          {"id": "Carol"},
+          {"id": "Alice"},
+          {"id": "Bob"},
+          {"id": "Carol"}          
+        ];
+
+        var Links = [
+          {"source": 0, "target": 1}, // Alice → Bob
+          {"source": 1, "target": 10} // Bob → Carol
+        ];      
+
+				//Create the D3 Force Object.
+				var force = d3.layout.force()
+  				.nodes(Packages)
+  				.links(Links)
+  				.size([canvas_width, canvas_height])
+  				.linkDistance(60)
+  				.charge(-300)
+  				.on("tick", tick)
+
+				var links = canvas.append("g").selectAll("line")
+				    .data(Links)
+				    .enter().append("line")
+              .attr("stroke", "#000")
+              .attr("stroke-width", "1.5px")
+						  .attr("class", "link");
+
+				var nodes = canvas.selectAll("circle")
+					.data(Packages)
+					.enter()
+						.append("circle")
+						.attr("stroke", "black")
+						.attr("stroke-width", 0.5)
+						.attr("fill", "green")
+						.attr("r", 5)
+						.attr("class", "node");
+
+				function tick() {
+				    nodes.attr("cx", function(d) { return d.x; })
+				        .attr("cy", function(d) { return d.y; });
+
+				    links.attr("x1", function(d) { return d.source.x; })
+				        .attr("y1", function(d) { return d.source.y; })
+				        .attr("x2", function(d) { return d.target.x; })
+				        .attr("y2", function(d) { return d.target.y; });
+				}				    
+						
+				force.start();
+			}
+		}		
+	</script>
+</body>
+</html>
+
+

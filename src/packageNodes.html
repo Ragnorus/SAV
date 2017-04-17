@@ -1,26 +1,35 @@
 <!doctype html>
 <html>
 <head>
-	<script type="text/javascript" src="d3/d3.js"></script>
-	<script type="text/javascript" src="d3/d3.min.js"></script>
-	<script type="text/javascript" src="datamanager.js"></script>
+	<script src="https://d3js.org/d3.v4.min.js"></script>
 </head>
 <body>
 	<script>	
-		XMLToJSON("foo");
+		//Class Definitions
+		class Package{
+			constructor(Name, NumOfPackageDep, Dependencies){
+				this.Name = Name;
+				this.NumOfPackageDep = NumOfPackageDep;
+				this.Dependencies = Dependencies;
+			}
 
-		/*var parsedData = null;
+		}
+
+		var Links = [];
+		var Packages = [];
+		var canvas_width = 960;
+		var canvas_height = 500;
+		var force;
+
 		var canvas = d3.select("body").append("svg")
-			.attr("width", "100%")
-			.attr("height", "100%")
-			.attr("margin", "0px")
+			.attr("width", canvas_width)
+			.attr("height", canvas_height)
+			.attr("margin", "0px");
 			
 		var nodeGroup = canvas.append("g").attr("class", "nodes");
 		var linkGroup = canvas.append("g").attr("class", "links");
 
-		//loadXML("pmd_model.xml");
 		loadXML("./XML Files/hadoop_yarn.xml");
-		//loadXML("dummy-jar.xml");
 
 		//Specify the D3.xml file and the callback.
 
@@ -31,6 +40,52 @@
 			d3.xml(path, xmlCallback);
 		}
 
+		function CreateJSON(data)
+		{
+			//Create JSON structure.
+			var packages = data.querySelectorAll("namespace");
+			for(var k = 0; k < packages.length; k++)
+			{
+				var package = packages[k];
+				var classes = package.querySelectorAll("type");
+
+				//Add the new package.
+				Packages.push({"id": package.getAttribute("name"), "size": classes.length});
+				for(var j = 0; j < classes.length; j++)
+				{
+					var c = classes[j];
+					if(c.children.length > 0)
+					{
+						var cDependencies = c.children[0].children;
+						for(var i = 0; i < cDependencies.length; i++)
+							{
+								var arr = cDependencies[i].getAttribute("name").split('.');
+								//remove the class name from the FullName string.
+								arr.pop(); 
+								var namespaceStr = arr.join('.').toString();
+								var newLink = {"source": package.getAttribute("name"), "target": namespaceStr};
+								if(findPackage(Packages, namespaceStr))
+								{
+									Packages.push({"id": namespaceStr, "size": 10});
+								}
+
+								if(Links.indexOf(newLink) < 0)
+								{
+									Links.push(newLink);
+								}
+							}			
+					}			
+				}
+			}
+		}
+
+		function findPackage(collection, namespace)
+		{
+			return collection.filter(function(data){
+				return namespace.id == namespace;
+			})
+		}
+
 		function xmlCallback(error, data)
 		{
 			if(error) 
@@ -39,122 +94,61 @@
 			}
 			else
 			{
-				parsedData = [].map.call(data.querySelectorAll("container"), function(type) {
-					return {
-						Name: type.getAttribute("name").split("/")[type.getAttribute("name").split(".").length - 1],
-						Type: type.getAttribute('classification'),
-						Visibility: type.getAttribute('visibility'),
-						Dependencies: [].map.call(type.querySelectorAll('depends-on'), function(dependency) {
-							return {
-								Name: dependency.getAttribute("name"),
-								Type: dependency.getAttribute('classification')
-							};
-						})
-					};
-				});
+				//Create the JSON objects using the CDA generated XML.
+				CreateJSON(data);
 
-				//Print out data
-				parsedData.forEach(function(node){
-					console.log("name:" + node.Name + " | type:" + node.Type);
-					console.log("Dependencies: ");
-					node.Dependencies.forEach(function(dep){
-							console.log("-- name:" + dep.Name + " | type:" + dep.Type);
-					});
-				});
-					
+				console.log(Packages.length);
+				console.log(Links.length);
 
-				var circles = nodeGroup.selectAll("circle")
-					.data(parsedData)
+		        /*Packages = [
+		          {"id": "org.apache.hadoop.yarn.client.api", "size": 2},
+		          {"id": "org.apache.hadoop.yarn.client.api.Bob", "size": 3},
+		          {"id": "org.apache.hadoop.yarn.client.api.Carol", "size": 6}    
+		        ];
+
+		        Links = [
+		          {"source": "org.apache.hadoop.yarn.client.api", "target": "org.apache.hadoop.yarn.client.api.Bob"},
+		          {"source": "org.apache.hadoop.yarn.client.api.Carol", "target": "org.apache.hadoop.yarn.client.api.Bob"}
+		        ];*/ 
+
+				//Create the D3 Force Object.
+				var simulation = d3.forceSimulation()
+				    .force("link", d3.forceLink().id(function(d) { return d.id; }))
+				    .force("charge", d3.forceManyBody())
+				    .force("center", d3.forceCenter(canvas_width / 2, canvas_height / 2))
+				    .nodes(Packages)
+				    .on("tick", tick)
+				    .force("link")
+				    	.links(Links);
+
+				var links = canvas.append("g").selectAll("line")
+				    .data(Links)
+				    .enter().append("line")
+              			.attr("stroke", "#000")
+              			.attr("stroke-width", "1.5px")
+						.attr("class", "link");
+
+				var nodes = canvas.selectAll("circle")
+					.data(Packages)
 					.enter()
 						.append("circle")
 						.attr("stroke", "black")
 						.attr("stroke-width", 0.5)
-						.attr("fill", function(d){
-							
-							if(d.Type = "class"){
-								return "green";
-							}
-							else if(d.Type = "interface"){
-								return "steelblue";
-							}
-							else{
-								return "#797979"; //Grey
-							}
-						})
-						.attr("cy", function(d, i) { return (Math.random() * 150); })
-						.attr("cx", function(d, i) { return (Math.random() * 150); })
-						.attr("r", 3);
+						.attr("fill", "green")
+						.attr("r", 5)
+						.attr("class", "node");
 
-				//Create the lines to connect the circles
-				//Go through each circle and verify if they need paths drawn,
-				circles.each(function(d,i){
-					//Get current circle object
-					var currentCircle = circles._groups[0][i];
+				function tick() {
+				    nodes.attr("cx", function(d) { return d.x; })
+				        .attr("cy", function(d) { return d.y; });
 
-					//d.Dependencies.forEach(function(dependency){
-					for(var j = 0, len = d.Dependencies.length; j < len; j++){
-						var dependency = d.Dependencies[j];
-						//Get the circle that represents this dependency
-						var c = circles.filter(function(item){ return item.FullName == dependency.FullName; })
-						var depCircle = c._groups[0][0];
-
-						//Verify that we got the circle if it exists.
-						if(depCircle){
-							//Start coordinates
-							var x1 = parseInt(currentCircle.getAttribute("cx"));
-							var y1 = parseInt(currentCircle.getAttribute("cy"));
-
-							//End coordinates
-							var x2 = parseInt(depCircle.getAttribute("cx"));
-							var y2 = parseInt(depCircle.getAttribute("cy"));
-
-							//Append the new <line> in the <g class="links"> group>
-							linkGroup.append("line")
-										.attr("x1", x1)
-										.attr("y1", y1)
-										.attr("x2", x2)
-										.attr("y2", y2)
-										.attr("stroke", function(d){
-											if(dependency.Type == "uses"){
-												return "#676d67"; //Dark gray
-											}
-											else if(dependency.Type == "extends"){
-												return "#2DAF47"; //Dark Lime Green
-											}
-											else if(dependency.Type == "implements"){
-												return "#0738FF"; //Royal Blue
-											}
-											else{
-												return "red";
-											}
-										})
-										.attr("stroke-width", 0.8);
-						}
-					}
-				})
+				    links.attr("x1", function(d) { return d.source.x; })
+				        .attr("y1", function(d) { return d.source.y; })
+				        .attr("x2", function(d) { return d.target.x; })
+				        .attr("y2", function(d) { return d.target.y; });
+				}				    
 			}
-
-			canvas.select(".nodes").remove();
-			nodeGroup = canvas.append("g").attr("class", "nodes");
-			circles.each(function(circle){
-				var c = circles.filter(function(item){ return item.FullName == circle.FullName; })
-				var domElement = c._groups[0][0];				
-				var node = nodeGroup.append("g").attr("class", "node"); 
-				//Add the circle element.
-				node.node().append(domElement);
-				//Add the text element
-				node.append("text")
-						.attr("font-family", "sans-serif")
-						.attr("font-size", "3px")
-						.attr("font-weight", "bold")
-						.attr("x", domElement.getAttribute("cx"))
-						.attr("y", domElement.getAttribute("cy"))
-						.attr("dy", "-2px")
-						.attr("dx", "3px")
-	      				.attr("text-anchor", "left")
-	      				.text(circle.FullName.split(".")[circle.FullName.split(".").length - 1]); //The class name
-			});		
-		}*/
+		}		
 	</script>
 </body>
 </html>
