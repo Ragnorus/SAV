@@ -64,7 +64,8 @@
 								arr.pop(); 
 								var namespaceStr = arr.join('.').toString();
 								var newLink = {"source": package.getAttribute("name"), "target": namespaceStr};
-								if(findPackage(Packages, namespaceStr))
+								var found = findPackage(Packages, namespaceStr)
+								if(found.length == 0)
 								{
 									Packages.push({"id": namespaceStr, "size": 10});
 								}
@@ -82,7 +83,7 @@
 		function findPackage(collection, namespace)
 		{
 			return collection.filter(function(data){
-				return namespace.id == namespace;
+				return data.id == namespace;
 			})
 		}
 
@@ -114,8 +115,9 @@
 				//Create the D3 Force Object.
 				var simulation = d3.forceSimulation()
 				    .force("link", d3.forceLink().id(function(d) { return d.id; }))
-				    .force("charge", d3.forceManyBody())
+				    .force("charge", d3.forceManyBody().distanceMax(20).distanceMax(55))
 				    .force("center", d3.forceCenter(canvas_width / 2, canvas_height / 2))
+				    .force("collide", d3.forceCollide().radius(function(d) { return d.r + 15; }).iterations(2))
 				    .nodes(Packages)
 				    .on("tick", tick)
 				    .force("link")
@@ -133,9 +135,9 @@
 					.enter()
 						.append("circle")
 						.attr("stroke", "black")
-						.attr("stroke-width", 0.5)
+						.attr("stroke-width", 0.2)
 						.attr("fill", "green")
-						.attr("r", 5)
+						.attr("r", 8)
 						.attr("class", "node");
 
 				function tick() {
