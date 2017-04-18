@@ -16,10 +16,15 @@
 		}
 
 		var Links = [];
+		var classSizes = [];
 		var Packages = [];
 		var canvas_width = 960;
 		var canvas_height = 500;
 		var force;
+
+		var canvasScale = d3.scaleLinear()
+			.domain([0, canvas_width])
+			.range([0, canvas_height]);
 
 		var canvas = d3.select("body").append("svg")
 			.attr("width", canvas_width)
@@ -50,7 +55,18 @@
 				var classes = package.querySelectorAll("type");
 
 				//Add the new package.
-				Packages.push({"id": package.getAttribute("name"), "size": classes.length});
+				var findSource = findPackage(Packages, package.getAttribute("name"))
+				if(findSource.length > 0)
+				{
+					//This means we already have an entry with this Package name.
+					//This can happen when a package entry is added as part of another packages dependency definition below.
+					//Update accordingly.
+					Packages[Packages.indexOf(findSource[0])].size = classes.length;
+				}
+				else{
+					//This means the package name is still not defined in the Packages node collection. So add the new entry.
+					Packages.push({"id": package.getAttribute("name"), "size": classes.length});
+				}
 				for(var j = 0; j < classes.length; j++)
 				{
 					var c = classes[j];
@@ -67,7 +83,7 @@
 								var found = findPackage(Packages, namespaceStr)
 								if(found.length == 0)
 								{
-									Packages.push({"id": namespaceStr, "size": 10});
+									Packages.push({"id": namespaceStr, "size": -1});
 								}
 
 								if(Links.indexOf(newLink) < 0)
@@ -98,8 +114,8 @@
 				//Create the JSON objects using the CDA generated XML.
 				CreateJSON(data);
 
-				console.log(Packages.length);
-				console.log(Links.length);
+				console.log("Packages: " + Packages.length);
+				console.log("Dependencies: " + Links.length);
 
 		        /*Packages = [
 		          {"id": "org.apache.hadoop.yarn.client.api", "size": 2},
@@ -115,9 +131,9 @@
 				//Create the D3 Force Object.
 				var simulation = d3.forceSimulation()
 				    .force("link", d3.forceLink().id(function(d) { return d.id; }))
-				    .force("charge", d3.forceManyBody().distanceMax(20).distanceMax(55))
+				    .force("charge", d3.forceManyBody().distanceMin(50).distanceMax(90).strength(-600))
 				    .force("center", d3.forceCenter(canvas_width / 2, canvas_height / 2))
-				    .force("collide", d3.forceCollide().radius(function(d) { return d.r + 15; }).iterations(2))
+				    .force("collide", d3.forceCollide().radius(function(d) { return d.r + 200; }).iterations(9))
 				    .nodes(Packages)
 				    .on("tick", tick)
 				    .force("link")
@@ -136,7 +152,7 @@
 						.append("circle")
 						.attr("stroke", "black")
 						.attr("stroke-width", 0.2)
-						.attr("fill", "green")
+						.attr("fill", "#78b567")
 						.attr("r", 8)
 						.attr("class", "node");
 
