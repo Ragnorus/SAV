@@ -1,20 +1,13 @@
 <!doctype html>
 <html>
+<title> Link-Node Package View </title>
 <head>
 	<script src="https://d3js.org/d3.v4.min.js"></script>
 </head>
 <body>
-	<script>	
-		//Class Definitions
-		class Package{
-			constructor(Name, NumOfPackageDep, Dependencies){
-				this.Name = Name;
-				this.NumOfPackageDep = NumOfPackageDep;
-				this.Dependencies = Dependencies;
-			}
+	<script>
 
-		}
-
+		//Fields
 		var Links = [];
 		var classSizes = [];
 		var Packages = [];
@@ -30,9 +23,9 @@
 		var nodeGroup = canvas.append("g").attr("class", "nodes");
 		var linkGroup = canvas.append("g").attr("class", "links");
 
+		//Load XML file.
+		//Note/TODO: In the future the user or a different script would provide the path to the generated CDA xml file.
 		loadXML("./XML Files/hadoop_yarn.xml");
-
-		//Specify the D3.xml file and the callback.
 
 		//Functions
 		function loadXML(path)
@@ -41,6 +34,7 @@
 			d3.xml(path, xmlCallback);
 		}
 
+		//This function takes the XML file and formats the data into JSON/Dictionary that we can use to load the Nodes and Links in D3.
 		function CreateJSON(data)
 		{
 			//Create JSON structure.
@@ -73,18 +67,23 @@
 							{
 								var arr = cDependencies[i].getAttribute("name").split('.');
 								//remove the class name from the FullName string.
-								arr.pop(); 
+								arr.pop();
+								var firstName = arr[0];
+								var secondName = arr[1];
 								var namespaceStr = arr.join('.').toString();
 								var newLink = {"source": package.getAttribute("name"), "target": namespaceStr};
 								var found = findPackage(Packages, namespaceStr)
-								if(found.length == 0)
+								if(firstName != "java" || (firstName == "com" && secondName == "google"))
 								{
-									Packages.push({"id": namespaceStr, "size": -1});
-								}
+									if(found.length == 0)
+									{
+										Packages.push({"id": namespaceStr, "size": -1});
+									}
 
-								if(Links.indexOf(newLink) < 0)
-								{
-									Links.push(newLink);
+									if(Links.indexOf(newLink) < 0)
+									{
+										Links.push(newLink);
+									}
 								}
 							}			
 					}			
@@ -113,12 +112,22 @@
 				console.log("Packages: " + Packages.length);
 				console.log("Dependencies: " + Links.length);
 
-		        /*Packages = [
-		          {"id": "org.apache.hadoop.yarn.client.api", "size": 2},
+				/*
+				-Example of the data:
+
+				-Node specification:
+				 - id: namespace or package name.
+				 - size -> number of classes in this package.
+
+		        Packages = [
+		          {"id": "org.apache.hadoop.yarn.client.api", "size": 2}, 
 		          {"id": "org.apache.hadoop.yarn.client.api.Bob", "size": 3},
 		          {"id": "org.apache.hadoop.yarn.client.api.Carol", "size": 6}    
 		        ];
-
+				
+				-Dependency definition
+				 -source: package that depends on the target package.
+				 -target: the package that is referenced directly or indirectly or both, depending on how many classes the source package calls.
 		        Links = [
 		          {"source": "org.apache.hadoop.yarn.client.api", "target": "org.apache.hadoop.yarn.client.api.Bob"},
 		          {"source": "org.apache.hadoop.yarn.client.api.Carol", "target": "org.apache.hadoop.yarn.client.api.Bob"}
@@ -127,9 +136,9 @@
 				//Create the D3 Force Object.
 				var simulation = d3.forceSimulation()
 				    .force("link", d3.forceLink().id(function(d) { return d.id; }))
-				    .force("charge", d3.forceManyBody().distanceMin(50).distanceMax(90).strength(-2000))
+				    .force("charge", d3.forceManyBody())//.distanceMin(50).distanceMax(90).strength(-2000))
 				    .force("center", d3.forceCenter(canvas_width / 2, canvas_height / 2))
-				    .force("collide", d3.forceCollide().radius(function(d) { return d.r + 200; }).iterations(9))
+				    .force("collide", d3.forceCollide())//.radius(function(d) { return d.r + 200; }).iterations(9))
 				    .nodes(Packages)
 				    .on("tick", tick)
 				    .force("link")
@@ -154,7 +163,24 @@
 						.attr("stroke-width", 0.2)
 						.attr("fill", "#78b567")
 						.attr("r", function(d) { return classSizeScale(d.size); })
-						.attr("class", "node");
+						.attr("class", "node")
+						.call(d3.drag()							
+							.on("start", function(d){
+								console.log("called canvas START")
+								d3.event.subject.fx = d3.event.subject.x;
+								d3.event.subject.fy = d3.event.subject.y;
+							})
+							.on("drag", function(d){
+								console.log("called canvas DRAG");
+								d3.event.subject.fx = d3.event.x;
+								d3.event.subject.fy = d3.event.y;
+							})
+							.on("end", function(d){
+								console.log("called canvas END");
+								d3.event.subject.fx = null;
+								d3.event.subject.fy = null;
+							})							
+						);
 
 				function tick() {
 				    nodes.attr("cx", function(d) { return d.x; })
@@ -164,7 +190,7 @@
 				        .attr("y1", function(d) { return d.source.y; })
 				        .attr("x2", function(d) { return d.target.x; })
 				        .attr("y2", function(d) { return d.target.y; });
-				}				    
+				}
 			}
 		}		
 	</script>
