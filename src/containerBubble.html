@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<svg width="980" height="980"></svg>
+<script src="https://d3js.org/d3.v4.min.js"></script>
+<script>	
+	var Containers = [];
+	var canvas_width = 960;
+	var canvas_height = 960;
+
+	var canvas = d3.select("svg")
+		.attr("width", canvas_width)
+		.attr("height", canvas_height)
+		.append("g")
+			.attr("transform", "translate(2, 2)");
+
+	loadXML("./XML Files/hadoop_all.xml");
+
+	//Functions
+	function loadXML(path)
+	{
+		//Specify the xml file and the callbackwith D3.
+		d3.xml(path, xmlCallback);
+	}
+
+	function CreateJSON(data)
+	{
+		//Create JSON structure for the Pack.
+		var containers = data.querySelectorAll("container");
+		for(var k = 0; k < containers.length; k++)
+		{
+			var container = containers[k];
+			var packages = container.querySelectorAll("namespace");
+			var containerSize = packages.length;
+			var packageArray = [];
+
+			for(var j = 0; j < containerSize; j++)
+			{
+				var packageSize = packages[j].querySelectorAll("type").length;
+				var packageName = packages[j].getAttribute("name");
+
+				var strArr = packageName.split(".")
+				//if(strArr[0] != "java" || !packageName.includes("com.google"))
+				//{
+					packageArray.push({"name": packageName, "size": packageSize});
+				//}
+			}				
+			var lastElementIndex = container.getAttribute("name").split("/").length - 1;
+			var containerName = container.getAttribute("name").split("/")[lastElementIndex]; //CDA usually places the absolute path to the JAR file. Let's only grab the actual name.
+			Containers.push({"name": containerName, "size": packages.length, "children": packageArray});
+		}
+
+		var context = data.querySelectorAll("context")[0].getAttribute("name");
+		return {"name": context, "children": Containers}
+	}
+
+	function xmlCallback(error, data)
+	{
+		if(error) 
+		{
+			throw error
+		}
+		else
+		{
+			//Create the JSON objects using the CDA generated XML.
+			var jsondata = CreateJSON(data);
+
+			//console.log(jsondata);
+
+			var root = d3.hierarchy(jsondata)
+				.sum(function(d) { return d.size; })
+				.sort(function(d) {return d.name; });
+
+			//Create the pack
+			var systemPack = d3.pack()
+				.size([canvas_width, canvas_height])
+				.padding(2);
+
+			//Create their circle containers that will be drawn into the canvas.
+			var node = canvas.selectAll(".package")
+					.data(systemPack(root).descendants())
+					.enter()
+						.append("g")								
+								.attr("class", "node")
+								.attr("transform", function(d) { return "translate(" + d.x + "," + d.y + ")"; });
+
+			node.append("circle")
+				.attr("stroke", "black")
+				.attr("stroke-width", 0.2)
+				.attr("fill", function(d){ 
+					var color =  "black"; //default
+					if(d.depth == 0) //d.ancestors().length == 1) //root node.
+					{
+						color = "#a0acbf"; //Mid Gray
+					}
+					else if(d.children) //Mid node.
+					{
+						color = "#6284bc"; //Greyish blue
+					}
+					else if(!d.children) //leaf node
+					{
+						color = "#1f69e2"; //middle node. //royal blue
+					}
+
+					return color;
+				})
+				.attr("r", function(d) { return d.r; })
+				.attr("visibility", function(d){ 
+					var vis =  "hidden"; //default
+					if(d.depth == 0)
+					{
+						vis =  "visible";
+					}
+					else if(d.children) //Mid node.
+					{
+						vis =  "visible";
+					}
+
+					return vis;
+				});
+
+			node.append("text")
+				.attr("fill", "black")
+				.attr("font-family", "Arial")
+				.attr("font-size", "8px")
+				.attr("text-anchor", "middle")
+				.attr("visibility", function(d){
+					var vis = "hidden";
+					if(d.children) //mid node
+					{
+						vis = "visible";
+					}
+
+					return vis;
+				})
+				.text(function(d){ return d.data.name; });
+		}
+	}		
+</script>
+
+
