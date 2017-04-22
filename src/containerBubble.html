@@ -95,11 +95,12 @@
 			var node = canvas.selectAll(".package")
 					.data(systemPack(root).descendants())
 					.enter()
-						.append("g")								
+						.append("g")
+								.attr("id", function(d, i) { return new Date().valueOf() + i })						
 								.attr("class", "node")
 								.attr("transform", function(d) { return "translate(" + d.x + "," + d.y + ")"; });
 
-			node.append("circle")
+			node.append("circle")				
 				.attr("stroke", "black")
 				.attr("stroke-width", 0.2)
 				.attr("fill", function(d)
@@ -134,7 +135,7 @@
 						//return d.r = circleScale(d.data.size); 
 					//}
 				})
-				.attr("visibility", function(d){ 
+				.style("visibility", function(d){ 
 					var vis =  "hidden"; //default
 					if(d.depth == 0)
 					{
@@ -153,13 +154,43 @@
 				})
 				.on("mouseover", function(d){ 
 					d3.select(this).style("stroke-width", 2);
-					if(d.children){
-					    d3.selectAll(d.descendants()
-					        .map(function(d) { return d.node; }))
-					      .classed("show", true);
+
+					if(d.depth != 0 && d.children)
+					{
+						var children = d.children;
+						for(var i = 0; i < children.length; i++)
+						{
+							var identifier = "#" + children[i].data.name;
+							d3.select(identifier).selectAll("circle").each(function(d){
+								d3.select(this).style("visibility", "visible");
+							})//.style("visibility", "visible");
+							d3.select(identifier).selectAll("text").each(function(d){
+								d3.select(this).style("visibility", "visible");
+							})//.style("visibility", "visible");
+						}
 					}
 				})
-				.on("mouseout", function(){ d3.select(this).style("stroke-width", 0.2); });
+				.on("mouseout", function(d){			
+					d3.select(this).style("stroke-width", 0.2);
+					console.log("Parent Node:")
+					console.log(this);
+					if(d.depth != 0 && d.children)
+					{
+						var children = d.children;
+						for(var i = 0; i < children.length; i++)
+						{
+							var identifier = "#" + children[i].data.name;
+							d3.select(identifier).selectAll("circle").each(function(d){
+								console.log("Child Node:")
+								console.log(this);
+								d3.select(this).style("visibility", "hidden");
+							})
+							d3.select(identifier).selectAll("text").each(function(d){
+								d3.select(this).style("visibility", "hidden");
+							})
+						}
+					}
+				});
 
 			node.append("text")
 				.attr("fill", "black")
