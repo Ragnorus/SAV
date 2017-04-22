@@ -46,10 +46,10 @@
 				var packageName = packages[j].getAttribute("name");
 
 				var strArr = packageName.split(".")
-				//if(strArr[0] != "java" || !packageName.includes("com.google"))
-				//{
-					packageArray.push({"name": packageName, "size": packageSize});
-				//}
+				packageArray.push({"name": packageName, "size": packageSize});
+
+				//TODO: I need to investigate duplicate JAR Files. If there are duplicate JAR files then we need to show their path to validate that they're copies throughout the system. 
+				//and not just the same file in our data being a duplicate.
 			}				
 			var lastElementIndex = container.getAttribute("name").split("/").length - 1;
 			var containerName = container.getAttribute("name").split("/")[lastElementIndex]; //CDA usually places the absolute path to the JAR file. Let's only grab the actual name.
@@ -71,11 +71,20 @@
 			//Create the JSON objects using the CDA generated XML.
 			var jsondata = CreateJSON(data);
 
-			//console.log(jsondata);
-
 			var root = d3.hierarchy(jsondata)
 				.sum(function(d) { return d.size; })
 				.sort(function(d) {return d.name; });
+
+			// A scale for the circle's radius relative to their size. Size is calculcated using the number of children inside.
+			// Example:
+			// - Container - total number of JAR files
+			// - JAR file - total number of packages
+			// - Package = total number of class/interface files inside that package.
+			var circleScale = d3.scaleLinear()
+				.domain([0, d3.max(jsondata, function(d){ return d.size; })])
+				.range([15, 900]);
+
+			//TODO: investigate if we need a scale for package circles and a separate scale for JAR circles.
 
 			//Create the pack
 			var systemPack = d3.pack()
@@ -93,24 +102,38 @@
 			node.append("circle")
 				.attr("stroke", "black")
 				.attr("stroke-width", 0.2)
-				.attr("fill", function(d){ 
+				.attr("fill", function(d)
+				{ 
 					var color =  "black"; //default
-					if(d.depth == 0) //d.ancestors().length == 1) //root node.
+
+					if(d.depth == 0) //root node.
 					{
-						color = "#a0acbf"; //Mid Gray
+						//Mid Gray
+						color = "#a0acbf";
 					}
 					else if(d.children) //Mid node.
 					{
-						color = "#6284bc"; //Greyish blue
+						//Greyish blue
+						color = "#6284bc";
 					}
 					else if(!d.children) //leaf node
 					{
-						color = "#1f69e2"; //middle node. //royal blue
+						//royal blue
+						color = "#1f69e2"; 
 					}
 
 					return color;
 				})
-				.attr("r", function(d) { return d.r; })
+				.attr("r", function(d) { 
+					//if(d.depth == 0)
+					//{
+						return d.r;
+					//}
+					//else
+					//{
+						//return d.r = circleScale(d.data.size); 
+					//}
+				})
 				.attr("visibility", function(d){ 
 					var vis =  "hidden"; //default
 					if(d.depth == 0)
@@ -141,7 +164,7 @@
 			node.append("text")
 				.attr("fill", "black")
 				.attr("font-family", "Arial")
-				.attr("font-size", "8px")
+				.attr("font-size", "5px")
 				.attr("text-anchor", "middle")
 				.attr("visibility", function(d){
 					var vis = "hidden";

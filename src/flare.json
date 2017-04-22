@@ -1,0 +1,26 @@
+{
+    "name": "hadoop", 
+    "children": 
+    [
+        {
+            "name": "hadoop.yar.jar",
+            "children": 
+              [
+                 {"name": "hadoop.yarn.AgglomerativeCluster", "size": 12},
+                 {"name": "hadoop.yarn.CommunityStructure", "size": 33},
+                 {"name": "hadoop.yarn.HierarchicalCluster", "size": 4},
+                 {"name": "hadoop.yarn.MergeEdge", "size": 15}
+              ]
+        },
+        {
+            "name": "hadoop.common.jar",
+            "children": 
+              [
+                 {"name": "hadoop.common.Foo", "size": 12},
+                 {"name": "hadoop.common.CommunityStructure", "size": 33},
+                 {"name": "hadoop.common.HierarchicalCluster", "size": 4},
+                 {"name": "hadoop.common.MergeEdge", "size": 15}
+              ]
+        }
+    ]
+}
