@@ -1,5 +1,12 @@
 <!DOCTYPE html>
 <meta charset="utf-8">
+<style>
+
+.show circle {
+	visibility: visible;
+}
+
+</style>
 <svg width="980" height="980"></svg>
 <script src="https://d3js.org/d3.v4.min.js"></script>
 <script>	
@@ -114,9 +121,22 @@
 					{
 						vis =  "visible";
 					}
+					else
+					{
+						vis = "hidden"
+					}
 
 					return vis;
-				});
+				})
+				.on("mouseover", function(d){ 
+					d3.select(this).style("stroke-width", 2);
+					if(d.children){
+					    d3.selectAll(d.descendants()
+					        .map(function(d) { return d.node; }))
+					      .classed("show", true);
+					}
+				})
+				.on("mouseout", function(){ d3.select(this).style("stroke-width", 0.2); });
 
 			node.append("text")
 				.attr("fill", "black")
