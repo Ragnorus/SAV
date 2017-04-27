@@ -9,6 +9,8 @@
 </style>
 <svg width="980" height="980"></svg>
 <script src="https://d3js.org/d3.v4.min.js"></script>
+<script src="./d3/d3.js"></script> <!-- This is version 4 of the D3 Library -->
+<script src="./d3/d3.min.js"></script> <!-- This is version 4 of the D3 min Library -->
 <script>	
 	var Containers = [];
 	var canvas_width = 960;
@@ -20,7 +22,7 @@
 		.append("g")
 			.attr("transform", "translate(2, 2)");
 
-	loadXML("./XML Files/hadoop_all.xml");
+	loadXML("./XML Files/all-of-pmd.xml");
 
 	//Functions
 	function loadXML(path)
