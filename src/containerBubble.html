@@ -96,7 +96,7 @@
 					.data(systemPack(root).descendants())
 					.enter()
 						.append("g")
-								.attr("id", function(d, i) { return new Date().valueOf() + i })						
+								.attr("id", function(d){ return d.data.name; })
 								.attr("class", "node")
 								.attr("transform", function(d) { return "translate(" + d.x + "," + d.y + ")"; });
 
@@ -191,6 +191,7 @@
 						}
 					}
 				});
+				//.call(d3.zoom().on("dblclick", handleZoom));
 
 			node.append("text")
 				.attr("fill", "black")
@@ -207,6 +208,11 @@
 					return vis;
 				})
 				.text(function(d){ return d.data.name; });
+		}
+
+		function handleZoom(event)
+		{
+			d3.zoom().scaleTo(event.target, 5);
 		}
 	}		
 </script>
