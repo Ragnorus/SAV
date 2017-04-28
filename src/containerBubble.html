@@ -94,15 +94,21 @@
 				.padding(2);
 
 			//Create their circle containers that will be drawn into the canvas.
-			var node = canvas.selectAll(".package")
+			var nodes = canvas.selectAll(".package")
 					.data(systemPack(root).descendants())
 					.enter()
 						.append("g")
-								.attr("id", function(d){ return d.data.name; })
+								.attr("id", function(d)
+									{ 
+										var id;
+										if(d.children) id = d.data.name;
+										else id = d.parent.data.name;
+										return id;
+									})
 								.attr("class", "node")
 								.attr("transform", function(d) { return "translate(" + d.x + "," + d.y + ")"; });
 
-			node.append("circle")				
+			nodes.append("circle")				
 				.attr("stroke", "black")
 				.attr("stroke-width", 0.2)
 				.attr("fill", function(d)
@@ -154,48 +160,24 @@
 
 					return vis;
 				})
-				.on("mouseover", function(d){ 
+				.on("mouseover", function(d)
+				{ 
 					d3.select(this).style("stroke-width", 2);
-
 					if(d.depth != 0 && d.children)
 					{
-						var children = d.children;
-						for(var i = 0; i < children.length; i++)
-						{
-							var identifier = "#" + children[i].data.name;
-							d3.select(identifier).selectAll("circle").each(function(d){
-								d3.select(this).style("visibility", "visible");
-							})//.style("visibility", "visible");
-							d3.select(identifier).selectAll("text").each(function(d){
-								d3.select(this).style("visibility", "visible");
-							})//.style("visibility", "visible");
-						}
+						d3.select("#" + d.data.name).select("circle").style("visibility", "visible");
 					}
 				})
 				.on("mouseout", function(d){			
-					d3.select(this).style("stroke-width", 0.2);
-					console.log("Parent Node:")
-					console.log(this);
+					d3.select(this).style("stroke-width", 2);
 					if(d.depth != 0 && d.children)
 					{
-						var children = d.children;
-						for(var i = 0; i < children.length; i++)
-						{
-							var identifier = "#" + children[i].data.name;
-							d3.select(identifier).selectAll("circle").each(function(d){
-								console.log("Child Node:")
-								console.log(this);
-								d3.select(this).style("visibility", "hidden");
-							})
-							d3.select(identifier).selectAll("text").each(function(d){
-								d3.select(this).style("visibility", "hidden");
-							})
-						}
+						d3.select("#" + d.data.name).select("circle").style("visibility", "hidden");
 					}
 				});
 				//.call(d3.zoom().on("dblclick", handleZoom));
 
-			node.append("text")
+			var text = nodes.append("text")
 				.attr("fill", "black")
 				.attr("font-family", "Arial")
 				.attr("font-size", "5px")
