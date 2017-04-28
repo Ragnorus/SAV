@@ -15,7 +15,8 @@
 	var Containers = [];
 	var canvas_width = 960;
 	var canvas_height = 960;
-
+	//Transition definition for when we switch on/off the visibility of a node.
+	var visibilityTransition = d3.transition().delay(1000).ease(d3.easeLinear);
 	var canvas = d3.select("svg")
 		.attr("width", canvas_width)
 		.attr("height", canvas_height)
@@ -133,7 +134,7 @@
 
 	function handleNodeMouseOut(d)
 	{
-		if(d.children)
+		if(d.depth != 2 && d.children)
 		{
 			d3.select(this).style("stroke-width", 0.2);
 			if(d.depth != 0)
