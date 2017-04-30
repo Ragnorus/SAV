@@ -23,46 +23,6 @@
 		.append("g")
 			.attr("transform", "translate(2, 2)");
 
-	loadXML("./XML Files/all-of-pmd.xml");
-
-	//Functions
-	function loadXML(path)
-	{
-		//Specify the xml file and the callbackwith D3.
-		d3.xml(path, xmlCallback);
-	}
-
-	function CreateJSON(data)
-	{
-		//Create JSON structure for the Pack.
-		var containers = data.querySelectorAll("container");
-		for(var k = 0; k < containers.length; k++)
-		{
-			var container = containers[k];
-			var packages = container.querySelectorAll("namespace");
-			var containerSize = packages.length;
-			var packageArray = [];
-
-			for(var j = 0; j < containerSize; j++)
-			{
-				var packageSize = packages[j].querySelectorAll("type").length;
-				var packageName = packages[j].getAttribute("name");
-
-				var strArr = packageName.split(".")
-				packageArray.push({"id": "package" + getRandomInt().toString(), "name": packageName, "size": packageSize});
-
-				//TODO: I need to investigate duplicate JAR Files. If there are duplicate JAR files then we need to show their path to validate that they're copies throughout the system. 
-				//and not just the same file in our data being a duplicate.
-			}				
-			var lastElementIndex = container.getAttribute("name").split("/").length - 1;
-			var containerName = container.getAttribute("name").split("/")[lastElementIndex]; //CDA usually places the absolute path to the JAR file. Let's only grab the actual name.
-			Containers.push({"id": "container" + getRandomInt().toString(), "name": containerName, "size": packages.length, "children": packageArray});
-		}
-
-		var context = data.querySelectorAll("context")[0].getAttribute("name");
-		return {"name": context, "children": Containers}
-	}
-
 	function setNodeRadius(d)
 	{
 		//if(d.depth == 0)
@@ -160,7 +120,7 @@
 	  return Math.floor(Math.random() * (max - min)) + min;
 	}
 
-	function xmlCallback(error, data)
+	d3.json("output.json", function(error, data)
 	{
 		if(error) 
 		{
@@ -169,9 +129,7 @@
 		else
 		{
 			//Create the JSON objects using the CDA generated XML.
-			var jsondata = CreateJSON(data);
-
-			var root = d3.hierarchy(jsondata)
+			var root = d3.hierarchy(data)
 				.sum(function(d) { return d.size; })
 				.sort(function(d) {return d.name; });
 
@@ -181,7 +139,7 @@
 			// - JAR file - total number of packages
 			// - Package = total number of class/interface files inside that package.
 			var circleScale = d3.scaleLinear()
-				.domain([0, d3.max(jsondata, function(d){ return d.size; })])
+				.domain([0, d3.max(data, function(d){ return d.size; })])
 				.range([15, 900]);
 
 			//TODO: investigate if we need a scale for package circles and a separate scale for JAR circles.
@@ -226,7 +184,7 @@
 				})
 				.text(function(d){ return d.data.name; });
 		}
-	}		
+	})	
 </script>
 
 
