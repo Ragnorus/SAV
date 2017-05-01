@@ -1,5 +1,6 @@
 import os
 import sys
+from CDAContainerXMLParser import *
 
 #Function that validates the input string path that was given by the User
 def ValidatePath(path):
@@ -18,5 +19,5 @@ if len(sys.argv) > 1:
 		print("\n" + message + "\n")
 	else:
 		print("\n Formatting the CDA XML Data to JSON\n")
-		from CDAContainerXMLParser import *
-		CreateContainerJSON(sys.argv[1])
+		#CreateContainerJSON(sys.argv[1])
+		CreateNodeLinkJSON(sys.argv[1])
