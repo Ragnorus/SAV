@@ -18,78 +18,11 @@
 		var canvas = d3.select("body").append("svg")
 			.attr("width", canvas_width)
 			.attr("height", canvas_height)
-			.attr("margin", "0px");
+			.attr("margin", "0px")
+			.attr("background", "black");
 			
 		var nodeGroup = canvas.append("g").attr("class", "nodes");
 		var linkGroup = canvas.append("g").attr("class", "links");
-
-		//Load XML file.
-		//Note/TODO: In the future the user or a different script would provide the path to the generated CDA xml file.
-		loadXML("./XML Files/hadoop_yarn.xml");
-
-		//Functions
-		function loadXML(path)
-		{
-			//Specify the xml file and the callbackwith D3.
-			d3.xml(path, xmlCallback);
-		}
-
-		//This function takes the XML file and formats the data into JSON/Dictionary that we can use to load the Nodes and Links in D3.
-		function CreateJSON(data)
-		{
-			//Create JSON structure.
-			var packages = data.querySelectorAll("namespace");
-			for(var k = 0; k < packages.length; k++)
-			{
-				var package = packages[k];
-				var classes = package.querySelectorAll("type");
-
-				//Add the new package.
-				var findSource = findPackage(Packages, package.getAttribute("name"))
-				if(findSource.length > 0)
-				{
-					//This means we already have an entry with this Package name.
-					//This can happen when a package entry is added as part of another packages dependency definition below.
-					//Update accordingly.
-					Packages[Packages.indexOf(findSource[0])].size = classes.length;
-				}
-				else{
-					//This means the package name is still not defined in the Packages node collection. So add the new entry.
-					Packages.push({"id": package.getAttribute("name"), "size": classes.length});
-				}
-				for(var j = 0; j < classes.length; j++)
-				{
-					var c = classes[j];
-					if(c.children.length > 0)
-					{
-						var cDependencies = c.children[0].children;
-						for(var i = 0; i < cDependencies.length; i++)
-							{
-								var arr = cDependencies[i].getAttribute("name").split('.');
-								//remove the class name from the FullName string.
-								arr.pop();
-								var firstName = arr[0];
-								var secondName = arr[1];
-								var namespaceStr = arr.join('.').toString();
-								var newLink = {"source": package.getAttribute("name"), "target": namespaceStr};
-								var found = findPackage(Packages, namespaceStr)
-								if(firstName != "java" || (firstName == "com" && secondName == "google"))
-								{
-									if(found.length == 0)
-									{
-										Packages.push({"id": namespaceStr, "size": -1});
-									}
-
-									if(Links.indexOf(newLink) < 0)
-									{
-										Links.push(newLink);
-									}
-								}
-							}			
-					}			
-				}
-			}
-		}
 
 		function findPackage(collection, namespace)
 		{
@@ -98,7 +31,29 @@
 			})
 		}
 
-		function xmlCallback(error, data)
+		function populateData(package, data, nodes, links)
+		{
+			var target;
+			nodes.push(package);
+			for(i = 0; i < data.links.length; i++)
+			{
+				if(data.links[i].source == package.id && (data.links[i].source != data.links[i].target))
+				{
+					links.push(data.links[i]);
+
+					target = data.nodes.filter(function(d){
+						return d.id == data.links[i].target
+					})
+
+
+					nodes.push(target[0]);
+					//Call recursively and add the target node's links as well.
+					//populateData(target[0], data, nodes, links);
+				}
+			}
+		}
+
+		d3.json("./Output_Data/hadoop-archive-logs-2.8.0-test-sources.json", function(error, data)
 		{
 			if(error) 
 			{
@@ -107,10 +62,13 @@
 			else
 			{
 				//Create the JSON objects using the CDA generated XML.
-				CreateJSON(data);
+				//CreateJSON(data);			
+				var Packages = []
+				var Links = []
+				populateData(data.nodes[0], data, Packages, Links);
 
 				console.log("Packages: " + Packages.length);
-				console.log("Dependencies: " + Links.length);
+				console.log("Dependencies: " + Links.length);	
 
 				/*
 				-Example of the data:
@@ -136,7 +94,7 @@
 				//Create the D3 Force Object.
 				var simulation = d3.forceSimulation()
 				    .force("link", d3.forceLink().id(function(d) { return d.id; }))
-				    .force("charge", d3.forceManyBody())//.distanceMin(50).distanceMax(90).strength(-2000))
+				    .force("charge", d3.forceManyBody().distanceMin(200).distanceMax(300).strength(-2000))
 				    .force("center", d3.forceCenter(canvas_width / 2, canvas_height / 2))
 				    .force("collide", d3.forceCollide())//.radius(function(d) { return d.r + 200; }).iterations(9))
 				    .nodes(Packages)
@@ -163,8 +121,8 @@
 						.attr("stroke-width", 0.2)
 						.attr("fill", "#78b567")
 						.attr("r", function(d) { return classSizeScale(d.size); })
-						.attr("class", "node")
-						.call(d3.drag()							
+						.attr("class", "node");			
+						/*.call(d3.drag()							
 							.on("start", function(d){
 								console.log("called canvas START")
 								d3.event.subject.fx = d3.event.subject.x;
@@ -179,8 +137,8 @@
 								console.log("called canvas END");
 								d3.event.subject.fx = null;
 								d3.event.subject.fy = null;
-							})							
-						);
+							})						
+						);*/
 
 				function tick() {
 				    nodes.attr("cx", function(d) { return d.x; })
@@ -192,7 +150,7 @@
 				        .attr("y2", function(d) { return d.target.y; });
 				}
 			}
-		}		
+		})		
 	</script>
 </body>
 </html>
