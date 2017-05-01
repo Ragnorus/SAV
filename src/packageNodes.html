@@ -11,8 +11,8 @@
 		var Links = [];
 		var classSizes = [];
 		var Packages = [];
-		var canvas_width = 960;
-		var canvas_height = 500;
+		var canvas_width = 1000;
+		var canvas_height = 1000;
 		var force;
 
 		var canvas = d3.select("body").append("svg")
@@ -21,8 +21,8 @@
 			.attr("margin", "0px")
 			.attr("background", "black");
 			
-		var nodeGroup = canvas.append("g").attr("class", "nodes");
-		var linkGroup = canvas.append("g").attr("class", "links");
+		var linkGroup = canvas.append("g").attr("class", "links");			
+		var nodeGroup = canvas.append("g").attr("class", "nodes");		
 
 		function findPackage(collection, namespace)
 		{
@@ -34,7 +34,13 @@
 		function populateData(package, data, nodes, links)
 		{
 			var target;
-			nodes.push(package);
+			var found = [];
+			found = nodes.filter(function(d){
+						return d.id == package.id
+			})
+
+			if(found.length == 0) nodes.push(package);
+
 			for(i = 0; i < data.links.length; i++)
 			{
 				if(data.links[i].source == package.id && (data.links[i].source != data.links[i].target))
@@ -65,7 +71,14 @@
 				//CreateJSON(data);			
 				var Packages = []
 				var Links = []
-				populateData(data.nodes[0], data, Packages, Links);
+				populateData(data.nodes[1], data, Packages, Links);
+
+				//Add a third level into the tree.
+				var dNodes = Packages.slice();
+				for(i = 1; i < dNodes.length; i++)
+				{
+					populateData(dNodes[i], data, Packages, Links);
+				}
 
 				console.log("Packages: " + Packages.length);
 				console.log("Dependencies: " + Links.length);	
@@ -102,7 +115,7 @@
 				    .force("link")
 				    	.links(Links);
 
-				var links = canvas.append("g").selectAll("line")
+				var links = canvas.selectAll("line")
 				    .data(Links)
 				    .enter().append("line")
               			.attr("stroke", "#000")
@@ -121,8 +134,8 @@
 						.attr("stroke-width", 0.2)
 						.attr("fill", "#78b567")
 						.attr("r", function(d) { return classSizeScale(d.size); })
-						.attr("class", "node");			
-						/*.call(d3.drag()							
+						.attr("class", "node")		
+						.call(d3.drag()							
 							.on("start", function(d){
 								console.log("called canvas START")
 								d3.event.subject.fx = d3.event.subject.x;
@@ -138,11 +151,32 @@
 								d3.event.subject.fx = null;
 								d3.event.subject.fy = null;
 							})						
-						);*/
+						);
+
+			    var packageNames = canvas.selectAll(".nodelabel") 
+			       .data(Packages)
+			       .enter()
+				       .append("text")
+							.attr("x", function(d) { return d.x; })
+					        .attr("y", function(d) { return d.y; })			       
+				       		.attr("class", "nodelabel")
+				            .attr("stroke", "black")
+				            .attr("text-anchor", "left")
+				            .attr("dy", function(d) { return (classSizeScale(d.size) + 2).toString() + "px" })
+							.attr("dx", "3px")
+				       		.text(function(d)
+				       			{ 
+				       				var last = d.id.split(".")[d.id.split(".").length -1];
+				       				var next = d.id.split(".")[d.id.split(".").length -2];
+				       				return next + "." + last; 
+				       			});
 
 				function tick() {
+					packageNames.attr("x", function(d) { return d.x; })
+				        	  .attr("y", function(d) { return d.y; });
+
 				    nodes.attr("cx", function(d) { return d.x; })
-				        .attr("cy", function(d) { return d.y; });
+				         .attr("cy", function(d) { return d.y; });
 
 				    links.attr("x1", function(d) { return d.source.x; })
 				        .attr("y1", function(d) { return d.source.y; })
