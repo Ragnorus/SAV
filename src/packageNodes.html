@@ -5,17 +5,46 @@
 	<script src="https://d3js.org/d3.v4.min.js"></script>
 </head>
 <body>
+	  <h1></h1>
+	  <p>Defect Count Legend: </p>
+	  <div id="defectScale" height="20" width="800"></div>
+
+	  <div id="graph"></div>
+
 	<script>
 
 		//Fields
 		var Links = [];
 		var classSizes = [];
 		var Packages = [];
-		var canvas_width = 1000;
-		var canvas_height = 1000;
+		var canvas_width = 800;
+		var canvas_height = 800;
 		var force;
 
-		var canvas = d3.select("body").append("svg")
+		var scaleAarray = [0, 30, 60, 80, 100, 250, 400, 600, 800, 900, 1000, 1300, 1800, 2400, 3000, 4000, 5000, 8000, 10000, 20000];
+		var colorCategories = d3.schemeCategory20c;
+		//Reference: https://github.com/d3/d3-scale/blob/master/README.md#continuous_domain
+		var color = d3.scaleLinear()
+		    .domain(scaleAarray)
+		    .range(colorCategories);
+
+		var legendCanvas = d3.select("#defectScale")
+				.append("svg")
+				.attr("width", canvas_width)
+				.attr("height", 40)
+				.selectAll("circle")
+					.data(scaleAarray)
+					.enter()
+						.append("circle")
+						.attr("stroke", "black")
+						.attr("stroke-width", 1)
+						.attr("fill", function(d){ return color(d)})
+						.attr("r", 15 )
+						.attr("cx", function(d, i){ return 15 * (i+4)})
+						.attr("cy", 20)
+
+
+		var canvas = d3.select("#graph").append("svg")
 			.attr("width", canvas_width)
 			.attr("height", canvas_height)
 			.attr("margin", "0px")
@@ -29,6 +58,12 @@
 			return collection.filter(function(data){
 				return data.id == namespace;
 			})
+		}
+
+		function getRandomInt() {
+		  min = Math.ceil(1);
+		  max = Math.floor(100);
+		  return Math.floor(Math.random() * (max - min)) + min;
 		}
 
 		function populateData(package, data, nodes, links)
@@ -53,10 +88,145 @@
 
 
 					nodes.push(target[0]);
-					//Call recursively and add the target node's links as well.
-					//populateData(target[0], data, nodes, links);
 				}
 			}
+		}
+
+		function getDefectCount(d)
+		{ 
+			var count = 0;
+			for(t = 0; t < Defects.length; t++)
+			{
+				if(Defects[t].package == d.id)
+				{
+					count++;
+				}
+			}
+
+			return count.toString(); 
+		}
+
+		var Packages = []
+		var Links = []
+		var Defects = []
+
+		function CreateVisualization()
+		{
+			/*
+			-Example of the data:
+
+			-Node specification:
+			 - id: namespace or package name.
+			 - size -> number of classes in this package.
+
+			Packages = [
+			  {"id": "org.apache.hadoop.yarn.client.api", "size": 2}, 
+			  {"id": "org.apache.hadoop.yarn.client.api.Bob", "size": 3},
+			  {"id": "org.apache.hadoop.yarn.client.api.Carol", "size": 6}    
+			];
+
+			-Dependency definition
+			 -source: package that depends on the target package.
+			 -target: the package that is referenced directly or indirectly or both, depending on how many classes the source package calls.
+			Links = [
+			  {"source": "org.apache.hadoop.yarn.client.api", "target": "org.apache.hadoop.yarn.client.api.Bob"},
+			  {"source": "org.apache.hadoop.yarn.client.api.Carol", "target": "org.apache.hadoop.yarn.client.api.Bob"}
+			];*/ 
+
+			//Create the D3 Force Object.
+			var simulation = d3.forceSimulation()
+			    .force("link", d3.forceLink().id(function(d) { return d.id; }))
+			    .force("charge", d3.forceManyBody().distanceMin(90).distanceMax(300).strength(-2000))
+			    .force("center", d3.forceCenter(canvas_width / 2, canvas_height / 2))
+			    .force("collide", d3.forceCollide())//.radius(function(d) { return d.r + 200; }).iterations(9))
+			    .nodes(Packages)
+			    .on("tick", tick)
+			    .force("link")
+			    	.links(Links);
+
+			var links = canvas.selectAll("line")
+			    .data(Links)
+			    .enter().append("line")
+						.attr("stroke", "#000")
+						.attr("stroke-width", "0.5px")
+					.attr("class", "link");
+
+			var classSizeScale = d3.scaleLinear()
+				.domain([1, d3.max(Packages, function(package){ return package.size; })])
+				.range([8, 30]);
+
+			var nodes = canvas.selectAll("circle")
+				.data(Packages)
+				.enter()
+					.append("circle")
+					.attr("stroke", "black")
+					.attr("stroke-width", 0.2)
+					.attr("fill", function(d) { return color(getDefectCount(d)); })
+					.attr("r", function(d) { return classSizeScale(d.size); })
+					.attr("class", "node")		
+					.call(d3.drag()							
+						.on("start", function(d){
+							console.log("called canvas START")
+							d3.event.subject.fx = d3.event.subject.x;
+							d3.event.subject.fy = d3.event.subject.y;
+						})
+						.on("drag", function(d){
+							console.log("called canvas DRAG");
+							d3.event.subject.fx = d3.event.x;
+							d3.event.subject.fy = d3.event.y;
+						})
+						.on("end", function(d){
+							console.log("called canvas END");
+							d3.event.subject.fx = null;
+							d3.event.subject.fy = null;
+						})						
+					);
+
+			var packageNames = canvas.selectAll(".nodelabel") 
+			   .data(Packages)
+			   .enter()
+			       .append("text")
+						.attr("x", function(d) { return d.x; })
+				        .attr("y", function(d) { return d.y; })			       
+			       		.attr("class", "nodelabel")
+			            .attr("stroke", "black")
+			            .attr("text-anchor", "left")
+			            .attr("dy", function(d) { return (classSizeScale(d.size) + 2).toString() + "px" })
+						.attr("dx", "3px")
+			       		.text(function(d)
+			       			{ 
+			       				var last = d.id.split(".")[d.id.split(".").length -1];
+			       				var next = d.id.split(".")[d.id.split(".").length -2];
+			       				return next + "." + last; 
+			       			});
+
+			var defectCounts = canvas.selectAll(".defectlabel") 
+			   .data(Packages)
+			   .enter()
+			       .append("text")
+						.attr("x", function(d) { return d.x; })
+				        .attr("y", function(d) { return d.y; })			       
+			       		.attr("class", "defectlabel")
+			            .attr("stroke", "black")
+			            .attr("text-anchor", "middle")
+			       		.text(getDefectCount);
+
+			function tick() 
+			{
+				packageNames.attr("x", function(d) { return d.x; })
+			        	  .attr("y", function(d) { return d.y; });
+
+				defectCounts.attr("x", function(d) { return d.x; })
+			        	  .attr("y", function(d) { return d.y; });
+
+			    nodes.attr("cx", function(d) { return d.x; })
+			         .attr("cy", function(d) { return d.y; });
+
+			    links.attr("x1", function(d) { return d.source.x; })
+			        .attr("y1", function(d) { return d.source.y; })
+			        .attr("x2", function(d) { return d.target.x; })
+			        .attr("y2", function(d) { return d.target.y; });
+			}		
 		}
 
 		d3.json("./Output_Data/hadoop-archive-logs-2.8.0-test-sources.json", function(error, data)
@@ -69,8 +239,7 @@
 			{
 				//Create the JSON objects using the CDA generated XML.
 				//CreateJSON(data);			
-				var Packages = []
-				var Links = []
+
 				populateData(data.nodes[1], data, Packages, Links);
 
 				//Add a third level into the tree.
@@ -81,112 +250,49 @@
 				}
 
 				console.log("Packages: " + Packages.length);
-				console.log("Dependencies: " + Links.length);	
+				console.log("Dependencies: " + Links.length);
 
-				/*
-				-Example of the data:
+				d3.xml("./PMD Reports/pmd_coupling_hadoop_all.xml", function(data){
+					if(error) throw error
+					else
+					{				
+						var defects = data.querySelectorAll("violation");
+						var defect;
+						var found;
+						for(j = 0; j < defects.length; j++)
+						{
+							found = false;
+							defect = defects[j];
+							var defectPackageName = defect.getAttribute("package");
 
-				-Node specification:
-				 - id: namespace or package name.
-				 - size -> number of classes in this package.
+							//Grab all the defects related to this Package
+							//found = Packages.filter(function(p){ return defectName == p.id; });
+							for(p = 0; p < Packages.length; p++)
+							{
+								if(defectPackageName == Packages[p].id)
+								{
+									found = true;
+									break;
+								}
+							}
 
-		        Packages = [
-		          {"id": "org.apache.hadoop.yarn.client.api", "size": 2}, 
-		          {"id": "org.apache.hadoop.yarn.client.api.Bob", "size": 3},
-		          {"id": "org.apache.hadoop.yarn.client.api.Carol", "size": 6}    
-		        ];
-				
-				-Dependency definition
-				 -source: package that depends on the target package.
-				 -target: the package that is referenced directly or indirectly or both, depending on how many classes the source package calls.
-		        Links = [
-		          {"source": "org.apache.hadoop.yarn.client.api", "target": "org.apache.hadoop.yarn.client.api.Bob"},
-		          {"source": "org.apache.hadoop.yarn.client.api.Carol", "target": "org.apache.hadoop.yarn.client.api.Bob"}
-		        ];*/ 
+							if(found)
+							{
+								Defects.push({"name": defect.getAttribute("rule"), "type": defect.getAttribute("ruleset"), "package": defect.getAttribute("package"), "priority": defect.getAttribute("priority")});
+							}				
+						}
 
-				//Create the D3 Force Object.
-				var simulation = d3.forceSimulation()
-				    .force("link", d3.forceLink().id(function(d) { return d.id; }))
-				    .force("charge", d3.forceManyBody().distanceMin(200).distanceMax(300).strength(-2000))
-				    .force("center", d3.forceCenter(canvas_width / 2, canvas_height / 2))
-				    .force("collide", d3.forceCollide())//.radius(function(d) { return d.r + 200; }).iterations(9))
-				    .nodes(Packages)
-				    .on("tick", tick)
-				    .force("link")
-				    	.links(Links);
+						console.log("Defects Count: " + Defects.length.toString());
 
-				var links = canvas.selectAll("line")
-				    .data(Links)
-				    .enter().append("line")
-              			.attr("stroke", "#000")
-              			.attr("stroke-width", "0.5px")
-						.attr("class", "link");
-
-				var classSizeScale = d3.scaleLinear()
-					.domain([1, d3.max(Packages, function(package){ return package.size; })])
-					.range([8, 30]);
-
-				var nodes = canvas.selectAll("circle")
-					.data(Packages)
-					.enter()
-						.append("circle")
-						.attr("stroke", "black")
-						.attr("stroke-width", 0.2)
-						.attr("fill", "#78b567")
-						.attr("r", function(d) { return classSizeScale(d.size); })
-						.attr("class", "node")		
-						.call(d3.drag()							
-							.on("start", function(d){
-								console.log("called canvas START")
-								d3.event.subject.fx = d3.event.subject.x;
-								d3.event.subject.fy = d3.event.subject.y;
-							})
-							.on("drag", function(d){
-								console.log("called canvas DRAG");
-								d3.event.subject.fx = d3.event.x;
-								d3.event.subject.fy = d3.event.y;
-							})
-							.on("end", function(d){
-								console.log("called canvas END");
-								d3.event.subject.fx = null;
-								d3.event.subject.fy = null;
-							})						
-						);
-
-			    var packageNames = canvas.selectAll(".nodelabel") 
-			       .data(Packages)
-			       .enter()
-				       .append("text")
-							.attr("x", function(d) { return d.x; })
-					        .attr("y", function(d) { return d.y; })			       
-				       		.attr("class", "nodelabel")
-				            .attr("stroke", "black")
-				            .attr("text-anchor", "left")
-				            .attr("dy", function(d) { return (classSizeScale(d.size) + 2).toString() + "px" })
-							.attr("dx", "3px")
-				       		.text(function(d)
-				       			{ 
-				       				var last = d.id.split(".")[d.id.split(".").length -1];
-				       				var next = d.id.split(".")[d.id.split(".").length -2];
-				       				return next + "." + last; 
-				       			});
-
-				function tick() {
-					packageNames.attr("x", function(d) { return d.x; })
-				        	  .attr("y", function(d) { return d.y; });
-
-				    nodes.attr("cx", function(d) { return d.x; })
-				         .attr("cy", function(d) { return d.y; });
-
-				    links.attr("x1", function(d) { return d.source.x; })
-				        .attr("y1", function(d) { return d.source.y; })
-				        .attr("x2", function(d) { return d.target.x; })
-				        .attr("y2", function(d) { return d.target.y; });
-				}
+						CreateVisualization();
+					}
+				});
 			}
+
 		})		
 	</script>
 </body>
 </html>
+
 
 
