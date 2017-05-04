@@ -91,7 +91,7 @@
 
 	function setNodeVisibility(d)
 	{
-		/*var vis =  "hidden"; //default
+		var vis =  "hidden"; //default
 		if(d.depth == 0)
 		{
 			vis =  "visible";
@@ -105,9 +105,9 @@
 			vis = "hidden"
 		}
 
-		return vis;	*/
+		return vis;
 
-		return "visible"		
+		//return "visible"		
 	}
 
 	function handleMouseClick(d)
@@ -130,7 +130,7 @@
 			{
 				for(i = 0; i < d.children.length; i++)
 				{
-					d3.select("#" + d.children[i].data.id).select("circle").style("visibility", "visible");
+					//d3.select("#" + d.children[i].data.id).select("circle").style("visibility", "visible");
 				}
 			}
 		}			
@@ -191,7 +191,7 @@
 				.padding(2);
 
 			//Create their circle containers that will be drawn into the canvas.
-			var nodes = canvas.selectAll(".package")
+			var packNode = canvas.selectAll(".package")
 					.data(systemPack(root).descendants())
 					.enter()
 						.append("g")
@@ -199,7 +199,7 @@
 								.attr("class", "node")
 								.attr("transform", function(d) { return "translate(" + d.x + "," + d.y + ")"; });
 
-			nodes.append("circle")				
+			packNode.append("circle")				
 				.attr("stroke", "black")
 				.attr("stroke-width", default_stroke_width)
 				.attr("fill", setNodeFill)
@@ -211,11 +211,12 @@
 				.on("click", handleMouseClick);
 				//.call(d3.zoom().on("dblclick", handleZoom));
 
-			var text = nodes.append("text")
+		var text = packNode.append("text")
 				.attr("fill", "black")
-				.attr("font-family", "Arial")
-				.attr("font-size", "5px")
+				.attr("font-family", "sans-serif")
+				//.attr("font-size", "5px")
 				.attr("text-anchor", "middle")
+				.style("display", function(d) { return d.parent === root ? "inline" : "none"; })
 				.attr("visibility", function(d){
 					var vis = "hidden";
 					if(d.children) //mid node
@@ -225,9 +226,26 @@
 
 					return vis;
 				})
-				.text(function(d){ return d.data.name; });
+				.text(function(d)
+					{ 
+						var strArray = d.data.name.split(".");
+						strArray.pop();
+						var formattedName = strArray.join(".").toString();
+						return formattedName;
+					})  
+				.style("font-size", "1px")
+			    .each(getSize)
+  				.style("font-size", function(d) { return d.scale + "px"; })
 		}
-	})	
+	});
+
+	function getSize(d) 
+	{
+  		var bbox = this.getBBox();
+      	var cbbox = this.parentNode.getBBox();
+      	var scale = Math.min(cbbox.width/bbox.width, cbbox.height/bbox.height);
+  		d.scale = scale;
+	}
 </script>
 
 

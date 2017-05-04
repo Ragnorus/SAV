@@ -35,7 +35,7 @@
 	  <g id="Canvas" width="830">
 		<g id="container">
 			<g id="defectScale">
-				<p style="font-size:20px"><b>Coupling Defect Count Legend:</b></p>
+				<p style="font-size:20px"><b>Defect Count Scale:</b></p>
 			</g>
 			<g id="graph"></g>
 		</g>
@@ -52,7 +52,9 @@
 		var force;
 
 		var scaleArray = [0, 30, 60, 80, 100, 250, 400, 600, 800, 900, 1000, 1300, 1800, 2400, 3000, 4000, 5000, 8000, 10000, 20000];
+		//var scaleArray = [0, 50, 100, 250, 400, 600, 1000, 2000, 5000, 10000];
 		var colorCategories = d3.schemeCategory20c;
+
 		//Reference: https://github.com/d3/d3-scale/blob/master/README.md#continuous_domain
 		var color = d3.scaleLinear()
 		    .domain(scaleArray)
@@ -203,9 +205,13 @@
 						.attr("stroke-width", "0.5px")
 					.attr("class", "link");
 
+			//var classSizeScale = d3.scaleLinear()
+				//.domain([1, d3.max(Packages, function(package){ return package.size; })])
+				//.range([8, 30]);
+
 			var classSizeScale = d3.scaleLinear()
 				.domain([1, d3.max(Packages, function(package){ return package.size; })])
-				.range([8, 30]);
+				.range([25, 55]);
 
 			var nodes = canvas.selectAll("circle")
 				.data(Packages)
@@ -242,8 +248,9 @@
 				        .attr("y", function(d) { return d.y; })			       
 			       		.attr("class", "nodelabel")
 			            .attr("stroke", "black")
-			            .attr("text-anchor", "left")
-			            .attr("dy", function(d) { return (classSizeScale(d.size) + 2).toString() + "px" })
+			            .attr("text-anchor", "middle")
+			            .attr("font-size", "7px")
+			            .attr("dy", "15px")//function(d) { return (classSizeScale(d.size) + 2).toString() + "px" })
 						.attr("dx", "3px")
 			       		.text(function(d)
 			       			{ 
@@ -261,7 +268,8 @@
 			       		.attr("class", "defectlabel")
 			            .attr("stroke", "black")
 			            .attr("text-anchor", "middle")
-			       		.text(function(d) { return d.size });//getDefectCount);
+			            .attr("font-size", "20px")
+			       		.text(function(d) { return getDefectCount(d) });
 
 			function tick() 
 			{
@@ -322,7 +330,6 @@
 							var defectPackageName = defect.getAttribute("package");
 
 							//Grab all the defects related to this Package
-							//found = Packages.filter(function(p){ return defectName == p.id; });
 							for(p = 0; p < Packages.length; p++)
 							{
 								if(defectPackageName == Packages[p].id)
