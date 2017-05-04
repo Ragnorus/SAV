@@ -91,7 +91,7 @@
 
 	function setNodeVisibility(d)
 	{
-		var vis =  "hidden"; //default
+		/*var vis =  "hidden"; //default
 		if(d.depth == 0)
 		{
 			vis =  "visible";
@@ -105,9 +105,9 @@
 			vis = "hidden"
 		}
 
-		return vis;
+		return vis;*/
 
-		//return "visible"		
+		return "visible"		
 	}
 
 	function handleMouseClick(d)
@@ -130,7 +130,7 @@
 			{
 				for(i = 0; i < d.children.length; i++)
 				{
-					//d3.select("#" + d.children[i].data.id).select("circle").style("visibility", "visible");
+					d3.select("#" + d.children[i].data.id).select("circle").style("visibility", "visible");
 				}
 			}
 		}			
@@ -216,12 +216,12 @@
 				.attr("font-family", "sans-serif")
 				//.attr("font-size", "5px")
 				.attr("text-anchor", "middle")
-				.style("display", function(d) { return d.parent === root ? "inline" : "none"; })
+				//.style("display", function(d) { return d.parent === root ? "inline" : "none"; })
 				.attr("visibility", function(d){
-					var vis = "hidden";
+					var vis = "visible";
 					if(d.children) //mid node
 					{
-						vis = "visible";
+						vis = "hidden";
 					}
 
 					return vis;
@@ -232,8 +232,8 @@
 						strArray.pop();
 						var formattedName = strArray.join(".").toString();
 						return formattedName;
-					})  
-				.style("font-size", "1px")
+					})
+				.style("font-size", "5px")
 			    .each(getSize)
   				.style("font-size", function(d) { return d.scale + "px"; })
 		}
