@@ -86,7 +86,7 @@
 
 	function setNodeVisibility(d)
 	{
-		/*var vis =  "hidden"; //default
+		var vis =  "hidden"; //default
 		if(d.depth == 0)
 		{
 			vis =  "visible";
@@ -100,9 +100,7 @@
 			vis = "hidden"
 		}
 
-		return "visible";	*/
-
-		return "visible";	
+		return vis;
 	}
 
 	function handleMouseClick(d)
@@ -110,6 +108,10 @@
 		if(!d.children)
 		{
 			window.location.href = "http://localhost:8080/packageNodes.html?container=\"" + d.parent.data.name + "\"" + "&package=\"" + d.data.name + "\"";
+		}
+		else if(d.children && d.dept != 0)
+		{
+			d3.interpolateZoom(d, [d.x, d.y, d.r ]);//* 2 + margin]);
 		}
 	}
 
@@ -124,7 +126,7 @@
 			{
 				for(i = 0; i < d.children.length; i++)
 				{
-					//d3.select("#" + d.children[i].data.id).select("circle").style("visibility", "visible");
+					d3.select("#" + d.children[i].data.id).select("circle").style("visibility", "visible");
 				}
 			}
 		}			
@@ -142,7 +144,7 @@
 				{
 					for(i = 0; i < d.children.length; i++)
 					{
-						//d3.select("#" + d.children[i].data.id).select("circle").style("visibility", "hidden");
+						d3.select("#" + d.children[i].data.id).select("circle").style("visibility", "hidden");
 					}
 				}
 			}
@@ -203,43 +205,43 @@
 				.style("visibility", setNodeVisibility)
 				.on("mouseover", handleNodeMouseOver)
 				.on("mouseout", handleNodeMouseOut)
-				.on("click", handleMouseClick);
-				//.call(d3.zoom().on("dblclick", handleZoom));
+				.on("dblclick", handleMouseClick)
+				.call(d3.zoom().on("click", handleZoom));
 
-		var text = packNode.append("text")
-				.attr("fill", "black")
-				.attr("font-family", "sans-serif")
-				.attr("font-size", "5px")
-				.attr("text-anchor", "middle")
-				//.style("display", function(d) { return d.parent === root ? "inline" : "none"; })
-				.attr("visibility", function(d){
-					var vis = "hidden";
-					if(d.children) //mid node
-					{
-						vis = "hidden";
-					}
-
-					return "visible";
-				})
-				.text(function(d)
-					{ 
-						/*var strArray = d.data.name.split(".");
-						strArray.pop();
-						if(strArray.length > 2)
+			var text = packNode.append("text")
+					.attr("fill", "black")
+					.attr("font-family", "sans-serif")
+					.attr("font-size", "5px")
+					.attr("text-anchor", "middle")
+					//.style("display", function(d) { return d.parent === root ? "inline" : "none"; })
+					.attr("visibility", function(d){
+						var vis = "hidden";
+						if(d.children) //mid node
 						{
-							if(strArray[0] == "org" && strArray[1] == "apache")
-							{
-								strArray.splice(0, 1);
-								strArray.splice(1, 1);
-							}
+							vis = "visible";
 						}
-						var formattedName = strArray.join(".").toString();
-						return formattedName;*/
-						return d.data.name;
+
+						return vis;
 					})
-				.style("font-size", "1px")
-			    .each(getSize)
-  				.style("font-size", function(d) { return d.scale + "px"; })
+					.text(function(d)
+						{ 
+							/*var strArray = d.data.name.split(".");
+							strArray.pop();
+							if(strArray.length > 2)
+							{
+								if(strArray[0] == "org" && strArray[1] == "apache")
+								{
+									strArray.splice(0, 1);
+									strArray.splice(1, 1);
+								}
+							}
+							var formattedName = strArray.join(".").toString();
+							return formattedName;*/
+							return d.data.name;
+						})
+					.style("font-size", "1px")
+				    .each(getSize)
+	  				.style("font-size", function(d) { return d.scale + "px"; })
 		}
 	});
 
