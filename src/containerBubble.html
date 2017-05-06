@@ -11,7 +11,7 @@
 <script src="https://d3js.org/d3.v4.min.js"></script>
 <script src="./d3/d3.js"></script> <!-- This is version 4 of the D3 Library -->
 <script src="./d3/d3.min.js"></script> <!-- This is version 4 of the D3 min Library -->
-<script>	
+<script type="text/javascript">
 	var Containers = [];
 	var default_stroke_width = 0.5;
 	var highlight_stroke_width = 2;
@@ -91,7 +91,7 @@
 
 	function setNodeVisibility(d)
 	{
-		/*var vis =  "hidden"; //default
+		var vis =  "hidden"; //default
 		if(d.depth == 0)
 		{
 			vis =  "visible";
@@ -105,9 +105,7 @@
 			vis = "hidden"
 		}
 
-		return vis;*/
-
-		return "visible"		
+		return "visible";		
 	}
 
 	function handleMouseClick(d)
@@ -214,7 +212,7 @@
 		var text = packNode.append("text")
 				.attr("fill", "black")
 				.attr("font-family", "sans-serif")
-				//.attr("font-size", "5px")
+				.attr("font-size", "5px")
 				.attr("text-anchor", "middle")
 				//.style("display", function(d) { return d.parent === root ? "inline" : "none"; })
 				.attr("visibility", function(d){
@@ -230,10 +228,18 @@
 					{ 
 						var strArray = d.data.name.split(".");
 						strArray.pop();
+						if(strArray.length > 2)
+						{
+							if(strArray[0] == "org" && strArray[1] == "apache")
+							{
+								strArray.splice(0, 1);
+								strArray.splice(1, 1);
+							}
+						}
 						var formattedName = strArray.join(".").toString();
 						return formattedName;
 					})
-				.style("font-size", "5px")
+				.style("font-size", "1px")
 			    .each(getSize)
   				.style("font-size", function(d) { return d.scale + "px"; })
 		}
