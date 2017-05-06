@@ -1,8 +1,10 @@
 <!doctype html>
 <html>
-<title> Link-Node Package View </title>
+<title> Graph View </title>
 <head>
 	<script src="https://d3js.org/d3.v4.min.js"></script>
+	<script src="./d3/d3.js"></script> <!-- This is version 4 of the D3 Library -->
+	<script src="./d3/d3.min.js"></script> <!-- This is version 4 of the D3 min Library -->	
 	<script type="text/javascript" src="./d3-tip/index.js"></script>
 	<link rel="stylesheet" href="//rawgithub.com/Caged/d3-tip/master/examples/example-styles.css">
 </head>
@@ -56,6 +58,12 @@
 		</g>
 	  </g>
 	<script type="text/javascript">
+
+		var myURL = window.location.href;
+		var unformatted = myURL.split("%22")[1].split(".");
+		unformatted.pop();		
+		var selectedContainerName = unformatted.join(".");
+		var selectedPackageName = myURL.split("%22")[3];
 
 		//Fields
 		var Links = [];
@@ -330,7 +338,7 @@
 			}		
 		}
 
-		d3.json("./Output_Data/hadoop-archive-logs-2.8.0-test-sources.json", function(error, data)
+		d3.json("./Output_Data/" + selectedContainerName + ".json", function(error, data)
 		{
 			if(error) 
 			{
@@ -338,10 +346,15 @@
 			}
 			else
 			{
-				//Create the JSON objects using the CDA generated XML.
-				//CreateJSON(data);			
+				//Retrieve the data for the selectedPackage
+				var packageObject = [];
+				packageObject = data.nodes.filter(function(d)
+				{
+					return d.id == selectedPackageName;
+				})
 
-				populateData(data.nodes[1], data, Packages, Links);
+				//Load JSON data
+				populateData(packageObject[0], data, Packages, Links);
 
 				//Add a third level into the tree.
 				var dNodes = Packages.slice();

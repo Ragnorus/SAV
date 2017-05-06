@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <meta charset="utf-8">
+<title> Pack View </title>
 <style>
 
 .show circle {
@@ -11,6 +12,7 @@
 <script src="https://d3js.org/d3.v4.min.js"></script>
 <script src="./d3/d3.js"></script> <!-- This is version 4 of the D3 Library -->
 <script src="./d3/d3.min.js"></script> <!-- This is version 4 of the D3 min Library -->
+<script type="text/javascript" src="./d3-tip/index.js"></script>
 <script type="text/javascript">
 	var Containers = [];
 	var default_stroke_width = 0.5;
@@ -47,23 +49,16 @@
 		{
 			//Mid Gray
 			color = "#a0acbf";
-			//color = "#003182";
-			//color = "#462284";
-			//color = "#1f69e2";
 		}
 		else if(d.children) //Mid node.
 		{
 			//Greyish blue
 			color = "#6284bc";
-			//color = "#6b13b2";
 		}
 		else if(!d.children) //leaf node
 		{
 			//royal blue
 			color = "#1f69e2";
-			//color = "#5e9aff";
-			//color  = "#bd41f2";
-			//color = "#a0acbf";
 		}
 
 		return color;			
@@ -91,7 +86,7 @@
 
 	function setNodeVisibility(d)
 	{
-		var vis =  "hidden"; //default
+		/*var vis =  "hidden"; //default
 		if(d.depth == 0)
 		{
 			vis =  "visible";
@@ -105,14 +100,16 @@
 			vis = "hidden"
 		}
 
-		return "visible";		
+		return "visible";	*/
+
+		return "visible";	
 	}
 
 	function handleMouseClick(d)
 	{		
 		if(!d.children)
 		{
-			window.location.href = "http://localhost:8080/packageNodes.html";
+			window.location.href = "http://localhost:8080/packageNodes.html?container=\"" + d.parent.data.name + "\"" + "&package=\"" + d.data.name + "\"";
 		}
 	}
 
@@ -122,13 +119,12 @@
 		if(d.depth != 0 && d.children)
 		{
 			currentPackage = d;
-			//d3.select(this).style("stroke", "white");
 			d3.select(this).style("stroke-width", highlight_stroke_width);
 			if(d.depth != 0)
 			{
 				for(i = 0; i < d.children.length; i++)
 				{
-					d3.select("#" + d.children[i].data.id).select("circle").style("visibility", "visible");
+					//d3.select("#" + d.children[i].data.id).select("circle").style("visibility", "visible");
 				}
 			}
 		}			
@@ -136,9 +132,8 @@
 
 	function handleNodeMouseOut(d)
 	{
-		//d3.select(this).style("stroke", "white");
 		d3.select(this).style("stroke-width", default_stroke_width);
-		/*if(currentPackage != d || currentPackage != d.parent)
+		if(currentPackage != d || currentPackage != d.parent)
 		{
 			if(d.depth != 2 && d.children)
 			{
@@ -147,11 +142,11 @@
 				{
 					for(i = 0; i < d.children.length; i++)
 					{
-						d3.select("#" + d.children[i].data.id).select("circle").style("visibility", "hidden");
+						//d3.select("#" + d.children[i].data.id).select("circle").style("visibility", "hidden");
 					}
 				}
 			}
-		}*/
+		}
 	}
 
 	function handleZoom(event)
@@ -181,7 +176,9 @@
 				.domain([0, d3.max(data, function(d){ return d.size; })])
 				.range([15, 900]);
 
-			//TODO: investigate if we need a scale for package circles and a separate scale for JAR circles.
+			var packageScale = d3.scaleLinear()
+				.domain([0, d3.max(data, function(d){ return d.size; })])
+				.range([15, 900]);
 
 			//Create the pack
 			var systemPack = d3.pack()
@@ -216,17 +213,17 @@
 				.attr("text-anchor", "middle")
 				//.style("display", function(d) { return d.parent === root ? "inline" : "none"; })
 				.attr("visibility", function(d){
-					var vis = "visible";
+					var vis = "hidden";
 					if(d.children) //mid node
 					{
 						vis = "hidden";
 					}
 
-					return vis;
+					return "visible";
 				})
 				.text(function(d)
 					{ 
-						var strArray = d.data.name.split(".");
+						/*var strArray = d.data.name.split(".");
 						strArray.pop();
 						if(strArray.length > 2)
 						{
@@ -237,7 +234,8 @@
 							}
 						}
 						var formattedName = strArray.join(".").toString();
-						return formattedName;
+						return formattedName;*/
+						return d.data.name;
 					})
 				.style("font-size", "1px")
 			    .each(getSize)

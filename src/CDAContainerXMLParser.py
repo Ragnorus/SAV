@@ -109,64 +109,6 @@ def CreateNodeLinkJSON(pathToXMLFile):
 			json.dump(data, outfile)
 	print("Finish Time -> " + strftime("%H:%M:%S", gmtime()))
 
-'''def CreateChordJSON(pathToXMLFile):
-
-	print("Calling CreateChordJSON()")
-
-	tree = ET.parse(pathToXMLFile)
-	root = tree.getroot()
-	context = root.findall("context")[0]
-	Packages = []
-
-	print("Start Time -> " + strftime("%H:%M:%S", gmtime()))
-
-	for container in context.findall("container"):	
-		packages = container.findall('namespace')
-		containerSize = len(packages)
-		pArrayData = []
-		for package in packages:
-			classes = package.findall('type')
-			packageSize = len(classes)
-			packageName = package.get('name')
-			currentPackage = {}
-			listOfMatchingElements = [p for p in Packages if p["id"] == packageName]
-
-			if len(listOfMatchingElements) > 0 :
-				currentPackage = Packages[Packages.index(listOfMatchingElements[0])]\
-				currentPackage["size"] = packageSize
-			else:
-				currentPackage = {"name": packageName, "size": packageSize, "imports": []}
-			for c in classes:
-				if len(list(c)) > 0:
-					cDependencies = c.findall('dependencies')[0].findall('depends-on')
-					for dependency in cDependencies:
-						arr = dependency.get("name").split(".")
-						if len(arr) > 2:
-							#remove the class name from the FullName string.
-							arr.pop()
-							firstName = arr[0]
-							secondName = arr[1]
-							namespaceStr = ".".join(arr)
-							newLink = {"source": packageName, "target": namespaceStr}
-							found = [p for p in Packages if p["id"] == namespaceStr]
-							if firstName != "java" or (firstName == "com" and secondName == "google"):
-								if len(found) == 0:
-									Packages.append({"name": namespaceStr, "size": 1})
-								if Links.count(newLink) == 0:
-									Links.append(newLink)
-						else:
-							print("FAILED to split string")
-							print("Dependency Name -> " + dependency.get("name"))
-		data = {"size": containerSize, "nodes": Packages, "links": Links}
-		lastElementIndex = len(container.get('name').split("/")) - 1;
-		containerArr = container.get('name').split("/")[lastElementIndex].split(".");
-		containerArr.pop()
-		containerName = ".".join(containerArr)
-		#print("Container Name: " + containerName)
-		with open(dir_path + "/Output_Data/" + containerName + ".json", 'w') as outfile:
-			json.dump(data, outfile)
-	print("Finish Time -> " + strftime("%H:%M:%S", gmtime()))'''
-
 def getRandomInteger():
 	return str(random.randint(1, 1000000))
 
