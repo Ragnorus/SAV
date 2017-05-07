@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <meta charset="utf-8">
 <title> Pack View </title>
+<link rel="stylesheet" href="//rawgithub.com/Caged/d3-tip/master/examples/example-styles.css">
 <style>
 
 button {
@@ -16,6 +17,7 @@ button {
 <script src="./d3/d3.min.js"></script> <!-- This is version 4 of the D3 min Library -->
 <script type="text/javascript" src="./d3-tip/index.js"></script>
 <script type="text/javascript">
+
 
 	var Containers = [];
 	var default_stroke_width = 0.5;
@@ -33,6 +35,12 @@ button {
 		.attr("transform", "translate(2,2) scale(1)")
 		.call(zoom)
 		.append("g");
+
+	var tip = d3.tip()
+		.attr('class', 'd3-tip')
+		.html(function(d) { return d.data.name; } );
+
+	canvas.call(tip);
 
 	function setNodeFill(d)
 	{
@@ -86,7 +94,10 @@ button {
 
 	//var currentPackage;
 	function handleNodeMouseOver(d)
-	{		
+	{
+		//Show tooltip
+		tip.show(d);
+
 		if(d.depth != 0 && d.children)
 		{
 			//currentPackage = d;
@@ -103,6 +114,8 @@ button {
 
 	function handleNodeMouseOut(d)
 	{
+		//Show tooltip
+		tip.hide(d);
 		d3.select(this).style("stroke-width", default_stroke_width);
 		/*if(currentPackage != d || currentPackage != d.parent)
 		{
@@ -126,7 +139,7 @@ button {
 		{
 			canvas.attr("transform", "translate(" + d3.event.transform.x + "," + d3.event.transform.y + ") scale(" + d3.event.transform.k + ")");
 
-			if(d3.event.transform.k >= 8)
+			if(d3.event.transform.k >= 4)
 			{
 				d3.selectAll(".container").select("text").style("visibility", "hidden");
 				d3.selectAll(".package").select("circle").style("visibility", "visible");
@@ -181,11 +194,7 @@ button {
 								.attr("id", function(d) { return d.data.id; })
 								.attr("class", function(d){
 									var className = "error";
-									if(d.depth == 0)
-									{
-										className = "root"
-									}
-									if(d.depth == 1)
+									if(d.children)
 									{
 										className = "container";
 									}
