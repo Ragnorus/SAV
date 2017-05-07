@@ -89,9 +89,48 @@
 
 		tip = d3.tip()
 			  .attr('class', 'd3-tip')
-			  //.html(function(d) { return getDefectCount(d); })
-			  .html(function(d) {
-			    return "<div><strong>Defects:</strong></div><div>" + "Law of Demeter: 39" + "</div>  <span>" + "Excessive Imports: 19" + "</div>"; });
+			  .html(function(d) 
+			  {
+				var info = [];
+				for(t = 0; t < Defects.length; t++)
+				{
+					var defect = Defects[t];
+					if(defect.package == d.id)
+					{
+						var entry = [];
+						entry = info.filter(function(d)
+						{
+							return d.name == defect.name;
+						})
+
+						if(entry.length > 0)
+						{
+							info[info.indexOf(entry[0])].count++;
+						}
+						else
+						{
+							info.push({"name": defect.name, "count": 1});
+						}
+					}
+				}
+
+				var html1 = "<div><strong>Defects:</strong></div>";
+
+				if(info.length > 0)
+				{
+					for(i = 0; i < info.length; i++)
+					{
+						html1 += "<div>" + info[i].name + ": " + info[i].count.toString() + "</div>";
+					}
+				}
+				else
+				{
+					html1 = "<div><strong>Defects: 0 </strong></div>"
+				}
+
+			    return  html1; 
+			  }
+			);
 			  
 
 		canvas.call(tip);
